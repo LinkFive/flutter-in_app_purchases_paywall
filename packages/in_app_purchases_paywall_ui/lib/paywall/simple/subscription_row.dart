@@ -8,10 +8,12 @@ class SubscriptionRow extends StatelessWidget {
   final ThemeData theme;
   bool shouldBreakText = false;
   double padding = 16;
+  int boxMarginX = 4;
 
   SubscriptionRow(this.subscriptionListData, this.theme){
     if(subscriptionListData.length >= 3){
       shouldBreakText = true;
+      boxMarginX = 1;
     }
     if(subscriptionListData.length >= 4){
       padding = 0;
@@ -21,7 +23,7 @@ class SubscriptionRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> subscriptionList = subscriptionListData
-        .map((subscriptionData) => SubscriptionPriceBox(subscriptionData, theme, shouldBreakText))
+        .map((subscriptionData) => SubscriptionPriceBox(subscriptionData, theme, shouldBreakText, mx: boxMarginX,))
         .toList(growable: false);
 
     return Padding(

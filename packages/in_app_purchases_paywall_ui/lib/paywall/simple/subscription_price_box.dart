@@ -5,15 +5,15 @@ class SubscriptionPriceBox extends StatelessWidget {
   final SubscriptionData data;
   final ThemeData theme;
   final bool shouldBreakText;
+  final int mx;
 
-  SubscriptionPriceBox(this.data, this.theme, this.shouldBreakText);
+  SubscriptionPriceBox(this.data, this.theme, this.shouldBreakText, {this.mx = 1});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        flex: 1,
         child: Container(
-          margin: EdgeInsets.all(4),
+          margin: EdgeInsets.only(left: mx * 4, right: mx * 4, top: 4, bottom: 4),
           child: Ink(
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8.0)), color: theme.primaryColor),

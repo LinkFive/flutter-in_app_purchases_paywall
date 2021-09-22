@@ -5,9 +5,8 @@ import 'package:in_app_purchases_paywall_ui/paywall/model/subscription_data.dart
 import 'package:in_app_purchases_paywall_ui/paywall/model/text_and_url.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/subscription_row.dart';
 
-class SimplePayWall extends StatefulWidget {
+class SimplePayWall extends StatelessWidget {
   final ThemeData theme;
-  final String? appBarTitle;
   final String? title;
   final String? subTitle;
   final TextAndUrl? tosData;
@@ -21,7 +20,6 @@ class SimplePayWall extends StatefulWidget {
 
   SimplePayWall(
       {required this.theme,
-      this.appBarTitle,
       this.title,
       this.subTitle,
       this.tosData,
@@ -37,62 +35,41 @@ class SimplePayWall extends StatefulWidget {
   }
 
   @override
-  State<StatefulWidget> createState() => _SimplePayWallState();
-}
-
-class _SimplePayWallState extends State<SimplePayWall> {
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        key: _scaffoldKey,
-        backgroundColor: widget.theme.appBarTheme.backgroundColor,
-        appBar: AppBar(
-          brightness: widget.theme.brightness,
-          iconTheme: IconThemeData(
-            color: widget.theme.iconTheme.color,
+    return GlowingOverscrollIndicator(
+        axisDirection: AxisDirection.down,
+        color: Colors.red,
+        child: ListView(children: <Widget>[
+          headerContainer ?? Container(),
+          Padding(
+            padding: EdgeInsets.only(left: 16, top: 32, right: 16, bottom: 16),
+            child: Text(
+              title ?? "Go Premium",
+              style: theme.textTheme.headline5,
+            ),
           ),
-          backgroundColor: widget.theme.backgroundColor,
-          title: Text(widget.appBarTitle ?? "Premium"),
-          elevation: 0.0,
-          actions: [],
-        ),
-        body: GlowingOverscrollIndicator(
-            axisDirection: AxisDirection.down,
-            color: Colors.red,
-            child: ListView(children: <Widget>[
-              widget.headerContainer ?? Container(),
-              Padding(
-                padding: EdgeInsets.only(left: 16, top: 32, right: 16, bottom: 16),
-                child: Text(
-                  widget.title ?? "Go Premium",
-                  style: widget.theme.textTheme.headline5,
-                ),
-              ),
-              ..._premiumContent,
-              Container(
-                padding: EdgeInsets.all(8),
-              ),
-              _LegalRow(widget.theme, widget.tosData, widget.ppData)
-            ])));
+          ..._premiumContent,
+          Container(
+            padding: EdgeInsets.all(8),
+          ),
+          _LegalRow(theme, tosData, ppData)
+        ]));
   }
 
   List<Widget> get _premiumContent {
     List<Widget> elements = [];
 
     // add SubTitle
-    if (widget.subTitle != null) {
+    if (subTitle != null) {
       elements.add(Container(
-          margin: EdgeInsets.only(left: 16, right: 16),
-          child: Text(widget.subTitle!, style: widget.theme.textTheme.bodyText2)));
+          margin: EdgeInsets.only(left: 16, right: 16), child: Text(subTitle!, style: theme.textTheme.bodyText2)));
     }
 
     elements.add(Container(
       padding: EdgeInsets.all(4),
     ));
 
-    elements.addAll(widget.bulletPoints
+    elements.addAll(bulletPoints
             ?.map<Widget>((bulletPoint) => Container(
                   margin: EdgeInsets.only(left: 16, right: 16),
                   child: Row(
@@ -100,13 +77,13 @@ class _SimplePayWallState extends State<SimplePayWall> {
                       Icon(
                         bulletPoint.icon,
                         size: 24,
-                        color: widget.theme.iconTheme.color,
+                        color: theme.iconTheme.color,
                       ),
                       Padding(
                         child: Text(
                           bulletPoint.text,
                           maxLines: 2,
-                          style: widget.theme.textTheme.bodyText1,
+                          style: theme.textTheme.bodyText1,
                         ),
                         padding: EdgeInsets.all(16),
                       ),
@@ -116,26 +93,26 @@ class _SimplePayWallState extends State<SimplePayWall> {
             .toList(growable: false) ??
         []);
 
-    if (widget.campaignWidget != null) {
-      elements.add(widget.campaignWidget!);
+    if (campaignWidget != null) {
+      elements.add(campaignWidget!);
     }
 
     elements.add(Container(
       padding: EdgeInsets.all(4),
     ));
 
-    if (widget.subscriptionListData != null) {
-      elements.add(SubscriptionRow(widget.subscriptionListData!, widget.theme));
+    if (subscriptionListData != null) {
+      elements.add(SubscriptionRow(subscriptionListData!, theme));
     }
-    if (widget.onRestoreTap != null) {
+    if (onRestoreTap != null) {
       elements.add(MaterialButton(
         child: Text(
-          widget.restoreText ?? "Restore purchase",
-          style: TextStyle(color: widget.theme.primaryColor),
+          restoreText ?? "Restore purchase",
+          style: TextStyle(color: theme.primaryColor),
         ),
         onPressed: () {
-          if (widget.onRestoreTap != null) {
-            widget.onRestoreTap!();
+          if (onRestoreTap != null) {
+            onRestoreTap!();
           }
         },
       ));

@@ -5,8 +5,23 @@ class CampaignBanner extends StatelessWidget {
   final ThemeData theme;
   final String headline;
   final String? subTitle;
+  final Widget? subContent;
 
-  CampaignBanner({required this.theme, required this.headline, this.subTitle = null});
+  CampaignBanner({required this.theme, required this.headline, this.subTitle = null, this.subContent = null});
+
+  Widget get _subTitleWidget {
+    if (subTitle != null) {
+      return Text(subTitle!, style: theme.textTheme.subtitle1, textAlign: TextAlign.center);
+    }
+    return Container();
+  }
+
+  Widget get _subContentWidget {
+    if (subContent != null) {
+      return subContent!;
+    }
+    return Container();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +36,8 @@ class CampaignBanner extends StatelessWidget {
               style: theme.textTheme.headline6,
               textAlign: TextAlign.center,
             ),
-            subTitle != null
-                ? Text(
-                    subTitle!,
-                    style: theme.textTheme.subtitle1,
-              textAlign: TextAlign.center,
-                  )
-                : Container()
+            _subTitleWidget,
+            _subContentWidget
           ],
         ));
   }

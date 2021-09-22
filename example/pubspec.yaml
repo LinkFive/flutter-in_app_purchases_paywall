@@ -23,6 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_countdown_timer: ^4.1.0
 
   in_app_purchases_paywall_ui:
     path: ../packages/in_app_purchases_paywall_ui

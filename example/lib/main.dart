@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/text_and_url.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/icon_and_text.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/subscription_data.dart';
@@ -110,8 +111,12 @@ class _MyHomePageState extends State<MyHomePage> {
       },
       campaignWidget: CampaignBanner(
         theme: Theme.of(context),
-        headline: "Buy Premium now",
-        subTitle: "and support our great app",
+        headline: "🥳 Summer Special Sale",
+        subContent: Container(
+          padding: EdgeInsets.all(8),
+            child: CountdownTimer(
+          endTime: DateTime.now().add(Duration(days: 2, hours: 7)).millisecondsSinceEpoch,
+        )),
       ),
     );
   }

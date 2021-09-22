@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/icon_and_text.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/model/name_and_url.dart';
+import 'package:in_app_purchases_paywall_ui/paywall/model/subscription_data.dart';
+import 'package:in_app_purchases_paywall_ui/paywall/model/text_and_url.dart';
+import 'package:in_app_purchases_paywall_ui/paywall/simple/subscription_row.dart';
 
 class SimplePayWall extends StatefulWidget {
   final ThemeData theme;
   final String? appBarTitle;
   final String? title;
   final String? subTitle;
-  final NameAndUrl? tosData;
-  final NameAndUrl? ppData;
+  final TextAndUrl? tosData;
+  final TextAndUrl? ppData;
   final Widget? headerContainer;
   final List<IconAndText>? bulletPoints;
   final String? restoreText;
   final Function? onRestoreTap;
+  List<SubscriptionData>? subscriptionListData;
 
   SimplePayWall(
       {required this.theme,
@@ -25,7 +28,11 @@ class SimplePayWall extends StatefulWidget {
       this.headerContainer,
       this.bulletPoints,
       this.restoreText,
-      this.onRestoreTap});
+      this.onRestoreTap,
+      List<SubscriptionData>? subscriptionListData}) {
+    this.subscriptionListData = subscriptionListData;
+    this.subscriptionListData?.sort((a, b) => a.index.compareTo(b.index));
+  }
 
   @override
   State<StatefulWidget> createState() => _SimplePayWallState();
@@ -65,7 +72,7 @@ class _SimplePayWallState extends State<SimplePayWall> {
               Container(
                 padding: EdgeInsets.all(8),
               ),
-              _LegalRow(widget.tosData, widget.ppData)
+              _LegalRow(widget.theme, widget.tosData, widget.ppData)
             ])));
   }
 
@@ -78,6 +85,10 @@ class _SimplePayWallState extends State<SimplePayWall> {
           margin: EdgeInsets.only(left: 16, right: 16),
           child: Text(widget.subTitle!, style: widget.theme.textTheme.bodyText2)));
     }
+
+    elements.add(Container(
+      padding: EdgeInsets.all(4),
+    ));
 
     elements.addAll(widget.bulletPoints
             ?.map<Widget>((bulletPoint) => Container(
@@ -103,14 +114,20 @@ class _SimplePayWallState extends State<SimplePayWall> {
             .toList(growable: false) ??
         []);
 
-    // PremiumPriceBoxes(),
+    elements.add(Container(
+      padding: EdgeInsets.all(4),
+    ));
+
+    if (widget.subscriptionListData != null) {
+      elements.add(SubscriptionRow(widget.subscriptionListData!, widget.theme));
+    }
     elements.add(MaterialButton(
       child: Text(
         widget.restoreText ?? "Restore purchase",
         style: TextStyle(color: widget.theme.primaryColor),
       ),
       onPressed: () {
-        if(widget.onRestoreTap != null) {
+        if (widget.onRestoreTap != null) {
           widget.onRestoreTap!();
         }
       },
@@ -121,10 +138,11 @@ class _SimplePayWallState extends State<SimplePayWall> {
 
 class _LegalRow extends StatelessWidget {
   final ChromeSafariBrowser browser = new ChromeSafariBrowser();
-  final NameAndUrl? tosData;
-  final NameAndUrl? ppData;
+  final ThemeData theme;
+  final TextAndUrl? tosData;
+  final TextAndUrl? ppData;
 
-  _LegalRow(this.tosData, this.ppData);
+  _LegalRow(this.theme, this.tosData, this.ppData);
 
   _onTapTos() async {
     await browser.open(
@@ -140,7 +158,7 @@ class _LegalRow extends StatelessWidget {
           onTap: _onTapTos,
           child: Text(
             tosData?.name ?? "Terms of Service",
-            style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue, fontSize: 12),
+            style: TextStyle(decoration: TextDecoration.underline, color: theme.primaryColor, fontSize: 12),
           ),
         );
 
@@ -150,7 +168,7 @@ class _LegalRow extends StatelessWidget {
           onTap: _onTapTos,
           child: Text(
             ppData?.name ?? "Privacy Policy",
-            style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue, fontSize: 12),
+            style: TextStyle(decoration: TextDecoration.underline, color: theme.primaryColor, fontSize: 12),
           ),
         );
 

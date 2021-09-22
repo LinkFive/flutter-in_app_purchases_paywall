@@ -4,4 +4,4 @@ Welcome to this flutter library!
 
 ## Current Packages
 
-* [In App Purchases Paywall UI](/packages/in_app_purchases_paywall_ui)
+<img src="./packages/in_app_purchases_paywall_ui" alt="In App Purchases Paywall UI" height="300"/>

@@ -13,11 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          primarySwatch: Colors.green,
-          brightness: Brightness.light,
-          iconTheme: IconThemeData(color: Colors.lightGreen),
-          accentColor: Colors.amber,
-          /*
+        primarySwatch: Colors.green,
+        brightness: Brightness.light,
+        iconTheme: IconThemeData(color: Colors.lightGreen),
+        accentColor: Colors.amber,
+        /*
         appBarTheme: AppBarTheme(backgroundColor: Colors.white),
         brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.red),
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           style: ElevatedButton.styleFrom(primary: Colors.purple, onPrimary: Colors.red),
         )
         */
-          ),
+      ),
       home: MyHomePage(),
     );
   }

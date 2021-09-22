@@ -14,6 +14,7 @@ class SimplePayWall extends StatefulWidget {
   final TextAndUrl? ppData;
   final Widget? headerContainer;
   final List<IconAndText>? bulletPoints;
+  final Widget? campaignWidget;
   final String? restoreText;
   final Function? onRestoreTap;
   List<SubscriptionData>? subscriptionListData;
@@ -27,6 +28,7 @@ class SimplePayWall extends StatefulWidget {
       this.ppData,
       this.headerContainer,
       this.bulletPoints,
+      this.campaignWidget,
       this.restoreText,
       this.onRestoreTap,
       List<SubscriptionData>? subscriptionListData}) {
@@ -114,6 +116,10 @@ class _SimplePayWallState extends State<SimplePayWall> {
             .toList(growable: false) ??
         []);
 
+    if (widget.campaignWidget != null) {
+      elements.add(widget.campaignWidget!);
+    }
+
     elements.add(Container(
       padding: EdgeInsets.all(4),
     ));
@@ -121,17 +127,19 @@ class _SimplePayWallState extends State<SimplePayWall> {
     if (widget.subscriptionListData != null) {
       elements.add(SubscriptionRow(widget.subscriptionListData!, widget.theme));
     }
-    elements.add(MaterialButton(
-      child: Text(
-        widget.restoreText ?? "Restore purchase",
-        style: TextStyle(color: widget.theme.primaryColor),
-      ),
-      onPressed: () {
-        if (widget.onRestoreTap != null) {
-          widget.onRestoreTap!();
-        }
-      },
-    ));
+    if (widget.onRestoreTap != null) {
+      elements.add(MaterialButton(
+        child: Text(
+          widget.restoreText ?? "Restore purchase",
+          style: TextStyle(color: widget.theme.primaryColor),
+        ),
+        onPressed: () {
+          if (widget.onRestoreTap != null) {
+            widget.onRestoreTap!();
+          }
+        },
+      ));
+    }
     return elements;
   }
 }
@@ -152,6 +160,14 @@ class _LegalRow extends StatelessWidget {
             ios: IOSSafariOptions(barCollapsingEnabled: true)));
   }
 
+  _onTapPp() async {
+    await browser.open(
+        url: Uri.parse(ppData!.url),
+        options: ChromeSafariBrowserClassOptions(
+            android: AndroidChromeCustomTabsOptions(addDefaultShareMenuItem: false),
+            ios: IOSSafariOptions(barCollapsingEnabled: true)));
+  }
+
   Widget get tosItem => tosData == null
       ? Container()
       : GestureDetector(
@@ -165,7 +181,7 @@ class _LegalRow extends StatelessWidget {
   Widget get ppItem => ppData == null
       ? Container()
       : GestureDetector(
-          onTap: _onTapTos,
+          onTap: _onTapPp,
           child: Text(
             ppData?.name ?? "Privacy Policy",
             style: TextStyle(decoration: TextDecoration.underline, color: theme.primaryColor, fontSize: 12),

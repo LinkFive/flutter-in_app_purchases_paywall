@@ -39,10 +39,10 @@ class SimplePayWallScaffold extends StatelessWidget {
         key: _scaffoldKey,
         backgroundColor: theme.appBarTheme.backgroundColor,
         appBar: AppBar(
+          textTheme: theme.textTheme,
+          actionsIconTheme: theme.accentIconTheme,
           brightness: theme.brightness,
-          iconTheme: IconThemeData(
-            color: theme.iconTheme.color,
-          ),
+          iconTheme: theme.iconTheme,
           backgroundColor: theme.backgroundColor,
           title: Text(appBarTitle ?? "Premium"),
           elevation: 0.0,

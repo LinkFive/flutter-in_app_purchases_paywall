@@ -1,7 +1,9 @@
 library in_app_purchases_paywall_ui;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'paywall/simple/simple_paywall.dart';
+export 'paywall/simple/simple_paywall_scaffold.dart';
+export 'paywall/widgets/campaign_banner.dart';
+export 'paywall/model/icon_and_text.dart';
+export 'paywall/model/subscription_data.dart';
+export 'paywall/model/text_and_url.dart';
+export 'paywall/model/text_and_url.dart';

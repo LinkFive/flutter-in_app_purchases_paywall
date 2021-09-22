@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/model/text_and_url.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/model/icon_and_text.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/model/subscription_data.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/simple/simple_paywall_scaffold.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/widgets/campaign_banner.dart';
+import 'package:in_app_purchases_paywall_ui/in_app_purchases_paywall_ui.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          primarySwatch: Colors.green, brightness: Brightness.light, iconTheme: IconThemeData(color: Colors.lightGreen)
+          primarySwatch: Colors.green,
+          brightness: Brightness.light,
+          iconTheme: IconThemeData(color: Colors.lightGreen),
+          accentColor: Colors.amber,
           /*
         appBarTheme: AppBarTheme(backgroundColor: Colors.white),
         brightness: Brightness.light,
@@ -30,7 +29,14 @@ class MyApp extends StatelessWidget {
           bodyText2: TextStyle(color: Colors.blue)
         ),
         primaryColor: Colors.cyan,
-        accentColor: Colors.yellowAccent*/
+        primaryColorDark: Colors.green,
+        primaryColorLight: Colors.blue
+        accentColor: Colors.yellowAccent
+
+        textButtonTheme: TextButtonThemeData(
+          style: ElevatedButton.styleFrom(primary: Colors.purple, onPrimary: Colors.red),
+        )
+        */
           ),
       home: MyHomePage(),
     );
@@ -113,10 +119,10 @@ class _MyHomePageState extends State<MyHomePage> {
         theme: Theme.of(context),
         headline: "🥳 Summer Special Sale",
         subContent: Container(
-          padding: EdgeInsets.all(8),
+            padding: EdgeInsets.all(8),
             child: CountdownTimer(
-          endTime: DateTime.now().add(Duration(days: 2, hours: 7)).millisecondsSinceEpoch,
-        )),
+              endTime: DateTime.now().add(Duration(days: 2, hours: 7)).millisecondsSinceEpoch,
+            )),
       ),
     );
   }

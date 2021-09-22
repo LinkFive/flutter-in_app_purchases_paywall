@@ -16,7 +16,7 @@ class SubscriptionPriceBox extends StatelessWidget {
           margin: EdgeInsets.only(left: mx * 4, right: mx * 4, top: 4, bottom: 4),
           child: Ink(
               decoration:
-                  BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8.0)), color: theme.primaryColor),
+                  BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8.0)), color: theme.primaryColorDark),
               child: InkWell(
                   onTap: data.onTap,
                   child: Padding(
@@ -24,7 +24,7 @@ class SubscriptionPriceBox extends StatelessWidget {
                       child: Container(
                           margin: EdgeInsets.all(1),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(8.0)), color: Color(0xccffffff)),
+                              borderRadius: BorderRadius.all(Radius.circular(8.0)), color: theme.primaryColorLight),
                           child: Stack(
                             children: [
                               Align(
@@ -35,7 +35,7 @@ class SubscriptionPriceBox extends StatelessWidget {
                                     children: [
                                       Text(
                                         data.durationTitle,
-                                        style: theme.textTheme.button,
+                                        style: theme.textTheme.bodyText1,
                                       ),
                                       Container(
                                         padding: EdgeInsets.all(8),
@@ -48,6 +48,7 @@ class SubscriptionPriceBox extends StatelessWidget {
                                         child: Text(
                                           "${data.price} /${shouldBreakText?"\n":" "}${data.durationShort.replaceAll(" ", "\u{00A0}")}",
                                           textAlign: TextAlign.center,
+                                          style: theme.textTheme.bodyText2,
                                         ),
                                       )
                                     ],
@@ -61,7 +62,7 @@ class SubscriptionPriceBox extends StatelessWidget {
                                           color: theme.accentColor),
                                       child: Padding(
                                         padding: EdgeInsets.all(4),
-                                        child: Text("-${data.dealPercentage}%"),
+                                        child: Text("-${data.dealPercentage}%", style: theme.accentTextTheme.caption,),
                                       ))
                                   : Container(),
                             ],

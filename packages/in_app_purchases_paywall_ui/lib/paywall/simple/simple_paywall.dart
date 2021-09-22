@@ -105,16 +105,21 @@ class SimplePayWall extends StatelessWidget {
       elements.add(SubscriptionRow(subscriptionListData!, theme));
     }
     if (onRestoreTap != null) {
-      elements.add(MaterialButton(
-        child: Text(
-          restoreText ?? "Restore purchase",
-          style: TextStyle(color: theme.primaryColor),
-        ),
-        onPressed: () {
-          if (onRestoreTap != null) {
-            onRestoreTap!();
-          }
-        },
+      elements.add(Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextButton(
+            child: Text(
+              restoreText ?? "Restore purchase",
+            ),
+            style: theme.textButtonTheme.style,
+            onPressed: () {
+              if (onRestoreTap != null) {
+                onRestoreTap!();
+              }
+            },
+          ),
+        ],
       ));
     }
     return elements;
@@ -151,7 +156,7 @@ class _LegalRow extends StatelessWidget {
           onTap: _onTapTos,
           child: Text(
             tosData?.name ?? "Terms of Service",
-            style: TextStyle(decoration: TextDecoration.underline, color: theme.primaryColor, fontSize: 12),
+            style: TextStyle(decoration: TextDecoration.underline, color: theme.textTheme.button?.color ?? theme.primaryColor, fontSize: 12),
           ),
         );
 
@@ -161,7 +166,7 @@ class _LegalRow extends StatelessWidget {
           onTap: _onTapPp,
           child: Text(
             ppData?.name ?? "Privacy Policy",
-            style: TextStyle(decoration: TextDecoration.underline, color: theme.primaryColor, fontSize: 12),
+            style: TextStyle(decoration: TextDecoration.underline, color: theme.textTheme.button?.color ?? theme.primaryColor, fontSize: 12),
           ),
         );
 

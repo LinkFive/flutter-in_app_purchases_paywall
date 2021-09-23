@@ -16,6 +16,8 @@ class SimplePayWallScaffold extends StatelessWidget {
   final Widget? campaignWidget;
   final String? restoreText;
   final Function? onRestoreTap;
+  final bool isSubscriptionLoading;
+  final bool isPurchaseInProgress;
   final List<SubscriptionData>? subscriptionListData;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -31,6 +33,8 @@ class SimplePayWallScaffold extends StatelessWidget {
       this.campaignWidget,
       this.restoreText,
       this.onRestoreTap,
+      this.isSubscriptionLoading = false,
+      this.isPurchaseInProgress = false,
       this.subscriptionListData});
 
   @override
@@ -59,6 +63,8 @@ class SimplePayWallScaffold extends StatelessWidget {
             campaignWidget: campaignWidget,
             restoreText: restoreText,
             onRestoreTap: onRestoreTap,
+            isSubscriptionLoading: isSubscriptionLoading,
+            isPurchaseInProgress: isPurchaseInProgress,
             subscriptionListData: subscriptionListData));
   }
 }

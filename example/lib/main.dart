@@ -71,6 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
         IconAndText(Icons.hd, "Premium HD"),
         IconAndText(Icons.sort, "Access to All Premium Articles")
       ],
+      isSubscriptionLoading: false,
+      isPurchaseInProgress: false,
       subscriptionListData: [
         SubscriptionData(
             durationTitle: "Yearly",

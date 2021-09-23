@@ -16,6 +16,8 @@ class SimplePayWall extends StatelessWidget {
   final Widget? campaignWidget;
   final String? restoreText;
   final Function? onRestoreTap;
+  final bool isSubscriptionLoading;
+  final bool isPurchaseInProgress;
   List<SubscriptionData>? subscriptionListData;
 
   SimplePayWall(
@@ -29,6 +31,8 @@ class SimplePayWall extends StatelessWidget {
       this.campaignWidget,
       this.restoreText,
       this.onRestoreTap,
+      this.isSubscriptionLoading = false,
+      this.isPurchaseInProgress = false,
       List<SubscriptionData>? subscriptionListData}) {
     this.subscriptionListData = subscriptionListData;
     this.subscriptionListData?.sort((a, b) => a.index.compareTo(b.index));
@@ -36,7 +40,8 @@ class SimplePayWall extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GlowingOverscrollIndicator(
+    List<Widget> stackItems = [];
+    stackItems.add(GlowingOverscrollIndicator(
         axisDirection: AxisDirection.down,
         color: Colors.red,
         child: ListView(children: <Widget>[
@@ -53,7 +58,11 @@ class SimplePayWall extends StatelessWidget {
             padding: EdgeInsets.all(8),
           ),
           _LegalRow(theme, tosData, ppData)
-        ]));
+        ])));
+    if (isPurchaseInProgress) {
+      stackItems.add(Scaffold(body: Center(child: CircularProgressIndicator()), backgroundColor: Color(0x22000000),));
+    }
+    return Stack(children: stackItems);
   }
 
   List<Widget> get _premiumContent {
@@ -102,7 +111,7 @@ class SimplePayWall extends StatelessWidget {
     ));
 
     if (subscriptionListData != null) {
-      elements.add(SubscriptionRow(subscriptionListData!, theme));
+      elements.add(SubscriptionRow(subscriptionListData!, isSubscriptionLoading, theme));
     }
     if (onRestoreTap != null) {
       elements.add(Row(
@@ -156,7 +165,10 @@ class _LegalRow extends StatelessWidget {
           onTap: _onTapTos,
           child: Text(
             tosData?.name ?? "Terms of Service",
-            style: TextStyle(decoration: TextDecoration.underline, color: theme.textTheme.button?.color ?? theme.primaryColor, fontSize: 12),
+            style: TextStyle(
+                decoration: TextDecoration.underline,
+                color: theme.textTheme.button?.color ?? theme.primaryColor,
+                fontSize: 12),
           ),
         );
 
@@ -166,7 +178,10 @@ class _LegalRow extends StatelessWidget {
           onTap: _onTapPp,
           child: Text(
             ppData?.name ?? "Privacy Policy",
-            style: TextStyle(decoration: TextDecoration.underline, color: theme.textTheme.button?.color ?? theme.primaryColor, fontSize: 12),
+            style: TextStyle(
+                decoration: TextDecoration.underline,
+                color: theme.textTheme.button?.color ?? theme.primaryColor,
+                fontSize: 12),
           ),
         );
 

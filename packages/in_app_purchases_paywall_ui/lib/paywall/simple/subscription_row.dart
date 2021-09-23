@@ -6,32 +6,41 @@ import 'package:in_app_purchases_paywall_ui/paywall/simple/subscription_price_bo
 class SubscriptionRow extends StatelessWidget {
   final List<SubscriptionData> subscriptionListData;
   final ThemeData theme;
-  bool shouldBreakText = false;
-  double padding = 16;
-  int boxMarginX = 4;
-  bool expandItems = true;
+  final bool isSubscriptionLoading;
 
-  SubscriptionRow(this.subscriptionListData, this.theme){
-    if(subscriptionListData.length == 1){
-      expandItems = false;
+  bool _shouldBreakText = false;
+  double _padding = 16;
+  int _boxMarginX = 4;
+  bool _expandItems = true;
+
+  SubscriptionRow(this.subscriptionListData, this.isSubscriptionLoading, this.theme) {
+    if (subscriptionListData.length == 1) {
+      _expandItems = false;
     }
-    if(subscriptionListData.length >= 3){
-      shouldBreakText = true;
-      boxMarginX = 1;
+    if (subscriptionListData.length >= 3) {
+      _shouldBreakText = true;
+      _boxMarginX = 1;
     }
-    if(subscriptionListData.length >= 4){
-      padding = 0;
+    if (subscriptionListData.length >= 4) {
+      _padding = 0;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     List<Widget> subscriptionList = subscriptionListData
-        .map((subscriptionData) => SubscriptionPriceBox(subscriptionData, theme, shouldBreakText, mx: boxMarginX, expandItems: expandItems))
+        .map((subscriptionData) =>
+            SubscriptionPriceBox(subscriptionData, theme, _shouldBreakText, mx: _boxMarginX, expandItems: _expandItems))
         .toList(growable: false);
+    if (isSubscriptionLoading) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [Container(child: CircularProgressIndicator())],
+      );
+    }
 
     return Padding(
-      padding: EdgeInsets.only(left: padding, right: padding),
+      padding: EdgeInsets.only(left: _padding, right: _padding),
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: subscriptionList),
     );
   }

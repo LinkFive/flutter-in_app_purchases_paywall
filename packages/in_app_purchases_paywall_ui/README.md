@@ -5,9 +5,9 @@ We have a few premade UI elements for paywalls
 
 ### Simple Paywall
 Light Design:
-<img src="./images/simple1_light.png" alt="Simple Paywall dark" height="750"/>
+<img src="./images/simple1_light.png" alt="Simple Paywall dark" height="700"/>
 Dark Design:
-<img src="./images/simple1_dark.png" alt="Simple Paywall dark" height="750"/>
+<img src="./images/simple1_dark.png" alt="Simple Paywall dark" height="700"/>
 
 #### implement
 Example usage:

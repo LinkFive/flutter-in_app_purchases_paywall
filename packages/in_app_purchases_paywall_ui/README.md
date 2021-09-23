@@ -5,9 +5,9 @@ We have a few premade UI elements for your custom paywalls. (more UI will follow
 
 ### Simple Paywall
 Light Design:
-<img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/resources/in_app_purchases_paywall_ui/images/simple1_light.png" alt="Simple Paywall light" height="600"/>
+<img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/simple1_light.png" alt="Simple Paywall light" height="600"/>
 Dark Design:
-<img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/resources/in_app_purchases_paywall_ui/images/simple1_dark.png" alt="Simple Paywall dark" height="600"/>
+<img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/simple1_dark.png" alt="Simple Paywall dark" height="600"/>
 
 #### implement
 Example usage:

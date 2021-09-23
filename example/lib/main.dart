@@ -13,11 +13,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        // primary color schema
         primarySwatch: Colors.green,
+        // set light or dark
         brightness: Brightness.light,
+        // custom icon theme
         iconTheme: IconThemeData(color: Colors.lightGreen),
+        // your accentColor
         accentColor: Colors.amber,
         /*
+        // and many more color options
         appBarTheme: AppBarTheme(backgroundColor: Colors.white),
         brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.red),
@@ -52,8 +57,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return SimplePayWallScaffold(
+      // set a theme
       theme: Theme.of(context),
+      // appBarTitle for scaffold
       appBarTitle: "Premium",
+      // set a custom header
       headerContainer: Container(
           margin: EdgeInsets.all(16),
           height: 100,
@@ -64,15 +72,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   alignment: FractionalOffset.center,
                   image: AssetImage('assets/images/premium_bg.png'))),
           child: Container()),
+      // Title Bar
       title: "Go Premium",
+      // SubTitle
       subTitle: "All features at a glance",
+      // Add as many bullet points as you like
       bulletPoints: [
         IconAndText(Icons.stop_screen_share_outlined, "No Ads"),
         IconAndText(Icons.hd, "Premium HD"),
         IconAndText(Icons.sort, "Access to All Premium Articles")
       ],
-      isSubscriptionLoading: false,
-      isPurchaseInProgress: false,
+      // Your subscriptions, you want to offer
       subscriptionListData: [
         SubscriptionData(
             durationTitle: "Yearly",
@@ -112,11 +122,19 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             index: 3)
       ],
+      // set true if subscriptions are loading
+      isSubscriptionLoading: false,
+      // if purchase is in progress, set to true. this will show a fullscreen progress indicator
+      isPurchaseInProgress: false,
+      // provide your TOS
       tosData: TextAndUrl("Terms of Service", "https://www.linkfive.io/tos"),
+      // provide your PP
       ppData: TextAndUrl("Privacy Policy", "https://www.linkfive.io/privacy"),
+      // if user clicks on Restore
       onRestoreTap: () {
         print("restore");
       },
+      // add a custom campaign widget
       campaignWidget: CampaignBanner(
         theme: Theme.of(context),
         headline: "🥳 Summer Special Sale",

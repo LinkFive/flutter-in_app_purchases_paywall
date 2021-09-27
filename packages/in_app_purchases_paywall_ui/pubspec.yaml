@@ -2,7 +2,7 @@ name: in_app_purchases_paywall_ui
 description: >
   A collection of in app purchase PayWalls as a UI library.
   More UIs will follow. Subscriptions are supported.
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/LinkFive/flutter-in_app_purchases_paywall
 repository: https://github.com/LinkFive/flutter-in_app_purchases_paywall
 

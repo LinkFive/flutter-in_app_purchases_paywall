@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class SubscriptionData {
@@ -8,6 +7,7 @@ class SubscriptionData {
   String price;
   int index;
   VoidCallback? onTap;
+  dynamic productDetails;
 
   SubscriptionData(
       {required this.durationTitle,
@@ -15,5 +15,6 @@ class SubscriptionData {
       required this.price,
       this.dealPercentage = 0,
       this.index = 0,
-      this.onTap = null});
+      this.onTap = null,
+      this.productDetails = null});
 }

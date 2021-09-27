@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/icon_and_text.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/model/subscription_data.dart';
+import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/text_and_url.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/simple_paywall.dart';
 
-class SimplePayWallScaffold extends StatelessWidget {
+class SimplePayWallScaffold extends StatelessWidget  {
   final ThemeData theme;
   final String? appBarTitle;
   final String? title;
@@ -19,6 +19,7 @@ class SimplePayWallScaffold extends StatelessWidget {
   final bool isSubscriptionLoading;
   final bool isPurchaseInProgress;
   final List<SubscriptionData>? subscriptionListData;
+  final CallbackInterface? callbackInterface;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   SimplePayWallScaffold(
@@ -35,6 +36,7 @@ class SimplePayWallScaffold extends StatelessWidget {
       this.onRestoreTap,
       this.isSubscriptionLoading = false,
       this.isPurchaseInProgress = false,
+      this.callbackInterface = null,
       this.subscriptionListData});
 
   @override
@@ -62,7 +64,7 @@ class SimplePayWallScaffold extends StatelessWidget {
             bulletPoints: bulletPoints,
             campaignWidget: campaignWidget,
             restoreText: restoreText,
-            onRestoreTap: onRestoreTap,
+            callbackInterface: callbackInterface,
             isSubscriptionLoading: isSubscriptionLoading,
             isPurchaseInProgress: isPurchaseInProgress,
             subscriptionListData: subscriptionListData));

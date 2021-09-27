@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/icon_and_text.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/model/subscription_data.dart';
+import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/text_and_url.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/subscription_row.dart';
+import 'package:in_app_purchases_paywall_ui/paywall/widgets/basic_statelesswidget.dart';
 
-class SimplePayWall extends StatelessWidget {
+class SimplePayWall extends BasicStatelessWidget {
   final ThemeData theme;
   final String? title;
   final String? subTitle;
@@ -15,28 +16,24 @@ class SimplePayWall extends StatelessWidget {
   final List<IconAndText>? bulletPoints;
   final Widget? campaignWidget;
   final String? restoreText;
-  final Function? onRestoreTap;
-  final bool isSubscriptionLoading;
-  final bool isPurchaseInProgress;
-  List<SubscriptionData>? subscriptionListData;
+  bool isSubscriptionLoading = false;
+  bool isPurchaseInProgress = false;
 
-  SimplePayWall(
-      {required this.theme,
-      this.title,
-      this.subTitle,
-      this.tosData,
-      this.ppData,
-      this.headerContainer,
-      this.bulletPoints,
-      this.campaignWidget,
-      this.restoreText,
-      this.onRestoreTap,
-      this.isSubscriptionLoading = false,
-      this.isPurchaseInProgress = false,
-      List<SubscriptionData>? subscriptionListData}) {
-    this.subscriptionListData = subscriptionListData;
-    this.subscriptionListData?.sort((a, b) => a.index.compareTo(b.index));
-  }
+  SimplePayWall({required this.theme,
+    this.title,
+    this.subTitle,
+    this.tosData,
+    this.ppData,
+    this.headerContainer,
+    this.bulletPoints,
+    this.campaignWidget,
+    this.restoreText,
+    this.isSubscriptionLoading = false,
+    this.isPurchaseInProgress = false,
+    CallbackInterface? callbackInterface,
+    List<SubscriptionData>? subscriptionListData})
+      : super(callbackInterface: callbackInterface,
+      subscriptionListData: subscriptionListData);
 
   @override
   Widget build(BuildContext context) {
@@ -79,27 +76,28 @@ class SimplePayWall extends StatelessWidget {
     ));
 
     elements.addAll(bulletPoints
-            ?.map<Widget>((bulletPoint) => Container(
-                  margin: EdgeInsets.only(left: 16, right: 16),
-                  child: Row(
-                    children: [
-                      Icon(
-                        bulletPoint.icon,
-                        size: 24,
-                        color: theme.iconTheme.color,
-                      ),
-                      Padding(
-                        child: Text(
-                          bulletPoint.text,
-                          maxLines: 2,
-                          style: theme.textTheme.bodyText1,
-                        ),
-                        padding: EdgeInsets.all(16),
-                      ),
-                    ],
-                  ),
-                ))
-            .toList(growable: false) ??
+        ?.map<Widget>((bulletPoint) =>
+        Container(
+          margin: EdgeInsets.only(left: 16, right: 16),
+          child: Row(
+            children: [
+              Icon(
+                bulletPoint.icon,
+                size: 24,
+                color: theme.iconTheme.color,
+              ),
+              Padding(
+                child: Text(
+                  bulletPoint.text,
+                  maxLines: 2,
+                  style: theme.textTheme.bodyText1,
+                ),
+                padding: EdgeInsets.all(16),
+              ),
+            ],
+          ),
+        ))
+        .toList(growable: false) ??
         []);
 
     if (campaignWidget != null) {
@@ -111,7 +109,7 @@ class SimplePayWall extends StatelessWidget {
     ));
 
     if (subscriptionListData != null) {
-      elements.add(SubscriptionRow(subscriptionListData!, isSubscriptionLoading, theme));
+      elements.add(SubscriptionRow(subscriptionListData!, onPurchase, isSubscriptionLoading, theme));
     }
     if (onRestoreTap != null) {
       elements.add(Row(
@@ -123,9 +121,7 @@ class SimplePayWall extends StatelessWidget {
             ),
             style: theme.textButtonTheme.style,
             onPressed: () {
-              if (onRestoreTap != null) {
-                onRestoreTap!();
-              }
+              onRestoreTap();
             },
           ),
         ],
@@ -159,31 +155,33 @@ class _LegalRow extends StatelessWidget {
             ios: IOSSafariOptions(barCollapsingEnabled: true)));
   }
 
-  Widget get tosItem => tosData == null
-      ? Container()
-      : GestureDetector(
-          onTap: _onTapTos,
-          child: Text(
-            tosData?.name ?? "Terms of Service",
-            style: TextStyle(
-                decoration: TextDecoration.underline,
-                color: theme.textTheme.button?.color ?? theme.primaryColor,
-                fontSize: 12),
-          ),
-        );
+  Widget get tosItem =>
+      tosData == null
+          ? Container()
+          : GestureDetector(
+        onTap: _onTapTos,
+        child: Text(
+          tosData?.name ?? "Terms of Service",
+          style: TextStyle(
+              decoration: TextDecoration.underline,
+              color: theme.textTheme.button?.color ?? theme.primaryColor,
+              fontSize: 12),
+        ),
+      );
 
-  Widget get ppItem => ppData == null
-      ? Container()
-      : GestureDetector(
-          onTap: _onTapPp,
-          child: Text(
-            ppData?.name ?? "Privacy Policy",
-            style: TextStyle(
-                decoration: TextDecoration.underline,
-                color: theme.textTheme.button?.color ?? theme.primaryColor,
-                fontSize: 12),
-          ),
-        );
+  Widget get ppItem =>
+      ppData == null
+          ? Container()
+          : GestureDetector(
+        onTap: _onTapPp,
+        child: Text(
+          ppData?.name ?? "Privacy Policy",
+          style: TextStyle(
+              decoration: TextDecoration.underline,
+              color: theme.textTheme.button?.color ?? theme.primaryColor,
+              fontSize: 12),
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {

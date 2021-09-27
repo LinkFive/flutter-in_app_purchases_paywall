@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/model/subscription_data.dart';
+import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/subscription_price_box.dart';
 
 class SubscriptionRow extends StatelessWidget {
   final List<SubscriptionData> subscriptionListData;
+  final Function(SubscriptionData) onPurchase;
   final ThemeData theme;
   final bool isSubscriptionLoading;
 
@@ -13,7 +14,7 @@ class SubscriptionRow extends StatelessWidget {
   int _boxMarginX = 4;
   bool _expandItems = true;
 
-  SubscriptionRow(this.subscriptionListData, this.isSubscriptionLoading, this.theme) {
+  SubscriptionRow(this.subscriptionListData, this.onPurchase, this.isSubscriptionLoading, this.theme) {
     if (subscriptionListData.length == 1) {
       _expandItems = false;
     }
@@ -30,7 +31,7 @@ class SubscriptionRow extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> subscriptionList = subscriptionListData
         .map((subscriptionData) =>
-            SubscriptionPriceBox(subscriptionData, theme, _shouldBreakText, mx: _boxMarginX, expandItems: _expandItems))
+            SubscriptionPriceBox(subscriptionData, onPurchase, theme, _shouldBreakText, mx: _boxMarginX, expandItems: _expandItems))
         .toList(growable: false);
     if (isSubscriptionLoading) {
       return Row(

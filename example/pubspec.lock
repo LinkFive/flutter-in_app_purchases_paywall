@@ -81,13 +81,20 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  in_app_purchases_interface:
+    dependency: transitive
+    description:
+      path: "../packages/in_app_purchases_interface"
+      relative: true
+    source: path
+    version: "0.0.1"
   in_app_purchases_paywall_ui:
     dependency: "direct main"
     description:
       path: "../packages/in_app_purchases_paywall_ui"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.1.0"
   matcher:
     dependency: transitive
     description:

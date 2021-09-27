@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/model/subscription_data.dart';
+import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
 
 class SubscriptionPriceBox extends StatelessWidget {
   final SubscriptionData data;
+  final Function(SubscriptionData) onPurchase;
   final ThemeData theme;
   final bool shouldBreakText;
   final int mx;
   final bool expandItems;
 
-  SubscriptionPriceBox(this.data, this.theme, this.shouldBreakText, {this.mx = 1, this.expandItems = true});
+  SubscriptionPriceBox(this.data, this.onPurchase, this.theme, this.shouldBreakText,
+      {this.mx = 1, this.expandItems = true});
 
   Widget get _expanded {
     return Expanded(child: _fixed);
@@ -21,7 +23,9 @@ class SubscriptionPriceBox extends StatelessWidget {
           decoration:
               BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8.0)), color: theme.primaryColorDark),
           child: InkWell(
-              onTap: data.onTap,
+              onTap: () {
+                onPurchase(data);
+              },
               child: Padding(
                   padding: EdgeInsets.all(1),
                   child: Container(

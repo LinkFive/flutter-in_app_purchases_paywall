@@ -92,6 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onTap: () {
               print("click 1 year");
             },
+            productDetails: "Dynamic purchase data",
             index: 0),
         /*
         SubscriptionData(
@@ -102,6 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onTap: () {
               print("click");
             },
+            productDetails: "Dynamic purchase data",
             index: 1),*/
         SubscriptionData(
             durationTitle: "Quarterly",
@@ -111,6 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onTap: () {
               print("click");
             },
+            productDetails: "Dynamic purchase data",
             index: 2),
         SubscriptionData(
             durationTitle: "Monthly",
@@ -120,6 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onTap: () {
               print("click");
             },
+            productDetails: "Dynamic purchase data",
             index: 3)
       ],
       // set true if subscriptions are loading
@@ -130,10 +134,8 @@ class _MyHomePageState extends State<MyHomePage> {
       tosData: TextAndUrl("Terms of Service", "https://www.linkfive.io/tos"),
       // provide your PP
       ppData: TextAndUrl("Privacy Policy", "https://www.linkfive.io/privacy"),
-      // if user clicks on Restore
-      onRestoreTap: () {
-        print("restore");
-      },
+      // Optional Callback Interface for restore and purchase tap events
+      callbackInterface: null,
       // add a custom campaign widget
       campaignWidget: CampaignBanner(
         theme: Theme.of(context),

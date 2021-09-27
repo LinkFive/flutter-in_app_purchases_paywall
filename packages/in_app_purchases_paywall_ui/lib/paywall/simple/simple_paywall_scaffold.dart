@@ -15,7 +15,6 @@ class SimplePayWallScaffold extends StatelessWidget  {
   final List<IconAndText>? bulletPoints;
   final Widget? campaignWidget;
   final String? restoreText;
-  final Function? onRestoreTap;
   final bool isSubscriptionLoading;
   final bool isPurchaseInProgress;
   final List<SubscriptionData>? subscriptionListData;
@@ -33,7 +32,6 @@ class SimplePayWallScaffold extends StatelessWidget  {
       this.bulletPoints,
       this.campaignWidget,
       this.restoreText,
-      this.onRestoreTap,
       this.isSubscriptionLoading = false,
       this.isPurchaseInProgress = false,
       this.callbackInterface = null,

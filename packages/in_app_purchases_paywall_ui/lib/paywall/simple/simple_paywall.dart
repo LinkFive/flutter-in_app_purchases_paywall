@@ -34,7 +34,9 @@ class SimplePayWall extends BasicStatelessWidget {
       this.isPurchaseInProgress = false,
       CallbackInterface? callbackInterface,
       List<SubscriptionData>? subscriptionListData})
-      : super(callbackInterface: callbackInterface, subscriptionListData: subscriptionListData);
+      : super(
+            callbackInterface: callbackInterface,
+            subscriptionListData: subscriptionListData);
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +74,8 @@ class SimplePayWall extends BasicStatelessWidget {
     // add SubTitle
     if (subTitle != null) {
       elements.add(Container(
-          margin: EdgeInsets.only(left: 16, right: 16), child: Text(subTitle!, style: theme.textTheme.bodyText2)));
+          margin: EdgeInsets.only(left: 16, right: 16),
+          child: Text(subTitle!, style: theme.textTheme.bodyText2)));
     }
 
     elements.add(Container(
@@ -112,7 +115,8 @@ class SimplePayWall extends BasicStatelessWidget {
     ));
 
     if (subscriptionListData != null) {
-      elements.add(SubscriptionRow(subscriptionListData!, onPurchase, isSubscriptionLoading, theme));
+      elements.add(SubscriptionRow(
+          subscriptionListData!, onPurchase, isSubscriptionLoading, theme));
     }
     elements.add(Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -144,7 +148,8 @@ class _LegalRow extends StatelessWidget {
     await browser.open(
         url: Uri.parse(tosData!.url),
         options: ChromeSafariBrowserClassOptions(
-            android: AndroidChromeCustomTabsOptions(addDefaultShareMenuItem: false),
+            android:
+                AndroidChromeCustomTabsOptions(addDefaultShareMenuItem: false),
             ios: IOSSafariOptions(barCollapsingEnabled: true)));
   }
 
@@ -152,7 +157,8 @@ class _LegalRow extends StatelessWidget {
     await browser.open(
         url: Uri.parse(ppData!.url),
         options: ChromeSafariBrowserClassOptions(
-            android: AndroidChromeCustomTabsOptions(addDefaultShareMenuItem: false),
+            android:
+                AndroidChromeCustomTabsOptions(addDefaultShareMenuItem: false),
             ios: IOSSafariOptions(barCollapsingEnabled: true)));
   }
 

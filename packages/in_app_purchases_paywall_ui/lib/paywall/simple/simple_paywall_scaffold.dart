@@ -16,8 +16,12 @@ class SimplePayWallScaffold extends StatelessWidget {
   final List<IconAndText>? bulletPoints;
   final Widget? campaignWidget;
   final String? restoreText;
+  final String? successTitle;
+  final String? successSubTitle;
+  final Widget? successWidget;
   final bool isSubscriptionLoading;
   final bool isPurchaseInProgress;
+  final bool isPurchaseSuccess;
   final List<SubscriptionData>? subscriptionListData;
   final CallbackInterface? callbackInterface;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -33,8 +37,12 @@ class SimplePayWallScaffold extends StatelessWidget {
       this.bulletPoints,
       this.campaignWidget,
       this.restoreText,
+      this.successTitle,
+      this.successSubTitle,
+      this.successWidget,
       this.isSubscriptionLoading = false,
       this.isPurchaseInProgress = false,
+      this.isPurchaseSuccess = false,
       this.callbackInterface = null,
       this.subscriptionListData});
 
@@ -63,9 +71,13 @@ class SimplePayWallScaffold extends StatelessWidget {
             bulletPoints: bulletPoints,
             campaignWidget: campaignWidget,
             restoreText: restoreText,
-            callbackInterface: callbackInterface,
+            successTitle: successTitle,
+            successSubTitle: successSubTitle,
+            successWidget: successWidget,
             isSubscriptionLoading: isSubscriptionLoading,
             isPurchaseInProgress: isPurchaseInProgress,
+            isPurchaseSuccess: isPurchaseSuccess,
+            callbackInterface: callbackInterface,
             subscriptionListData: subscriptionListData));
   }
 }

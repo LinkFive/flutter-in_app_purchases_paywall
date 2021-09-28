@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
         IconAndText(Icons.hd, "Premium HD"),
         IconAndText(Icons.sort, "Access to All Premium Articles")
       ],
-      // Your subscriptions, you want to offer
+      // Your subscriptions that you want to offer to the user
       subscriptionListData: [
         SubscriptionData(
             durationTitle: "Yearly",
@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onTap: () {
               print("click 1 year");
             },
-            productDetails: "Dynamic",
+            productDetails: "Dynamic purchase data",
             index: 0),
         /*
         SubscriptionData(
@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onTap: () {
               print("click");
             },
-            productDetails: "Dynamic",
+            productDetails: "Dynamic purchase data",
             index: 1),*/
         SubscriptionData(
             durationTitle: "Quarterly",
@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onTap: () {
               print("click");
             },
-            productDetails: "Dynamic",
+            productDetails: "Dynamic purchase data",
             index: 2),
         SubscriptionData(
             durationTitle: "Monthly",
@@ -81,18 +81,33 @@ class _MyHomePageState extends State<MyHomePage> {
             onTap: () {
               print("click");
             },
-            productDetails: "Dynamic",
+            productDetails: "Dynamic purchase data",
             index: 3)
       ],
+      // Shown if isPurchaseSuccess == true
+      successTitle: "Success!!",
+      // Shown if isPurchaseSuccess == true
+      successSubTitle: "Thanks for choosing Premium!",
+      // Widget can be anything. Shown if isPurchaseSuccess == true
+      successWidget: Container(
+          padding: EdgeInsets.only(top: 16, bottom: 16),
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            ElevatedButton(
+              child: Text("Let's go!"),
+              onPressed: () {},
+            )
+          ])),
       // set true if subscriptions are loading
       isSubscriptionLoading: false,
       // if purchase is in progress, set to true. this will show a fullscreen progress indicator
       isPurchaseInProgress: false,
+      // to show the success widget
+      isPurchaseSuccess: false,
       // provide your TOS
       tosData: TextAndUrl("Terms of Service", "https://www.linkfive.io/tos"),
       // provide your PP
       ppData: TextAndUrl("Privacy Policy", "https://www.linkfive.io/privacy"),
-      // Optional Callback Interface for Restore and purchase tap events
+      // Optional Callback Interface for restore and purchase tap events
       callbackInterface: null,
       // add a custom campaign widget
       campaignWidget: CampaignBanner(
@@ -101,7 +116,9 @@ class _MyHomePageState extends State<MyHomePage> {
         subContent: Container(
             padding: EdgeInsets.all(8),
             child: CountdownTimer(
-              endTime: DateTime.now().add(Duration(days: 2, hours: 7)).millisecondsSinceEpoch,
+              endTime: DateTime.now()
+                  .add(Duration(days: 2, hours: 7))
+                  .millisecondsSinceEpoch,
             )),
       ),
     );

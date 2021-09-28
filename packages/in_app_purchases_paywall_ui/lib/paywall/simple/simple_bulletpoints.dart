@@ -4,8 +4,8 @@ import 'package:in_app_purchases_paywall_ui/in_app_purchases_paywall_ui.dart';
 
 /// Simple bullet point widget
 class SimpleBulletPoints extends StatelessWidget {
-
   final ThemeData theme;
+
   /// Bullet points
   final List<IconAndText> bulletPoints;
 

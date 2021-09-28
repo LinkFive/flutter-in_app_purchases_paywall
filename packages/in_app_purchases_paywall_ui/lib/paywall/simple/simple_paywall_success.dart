@@ -46,17 +46,18 @@ class SimplePayWallSuccess extends BasicStatelessWidget {
       ),
     );
 
-    if(successTitle != null){
+    if (successTitle != null) {
       elements.add(
-        Center(child:
-        Padding(
-          padding: EdgeInsets.only(left: 16, top: 8, right: 16, bottom: 8),
-          child: Text(
-            successTitle!,
-            style: theme.textTheme.headline5,
+        Center(
+          child: Padding(
+            padding: EdgeInsets.only(left: 16, top: 8, right: 16, bottom: 8),
+            child: Text(
+              successTitle!,
+              style: theme.textTheme.headline5,
+            ),
           ),
         ),
-      ),);
+      );
     }
     if (successSubTitle != null) {
       elements.add(
@@ -71,7 +72,7 @@ class SimplePayWallSuccess extends BasicStatelessWidget {
         ),
       );
     }
-    if(successWidget != null){
+    if (successWidget != null) {
       elements.add(successWidget!);
     }
 

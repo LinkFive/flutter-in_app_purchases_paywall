@@ -1,3 +1,6 @@
+## 0.1.2
+Just more documentation and code formatting
+
 ## 0.1.1
 Add possibility to add an interface to handle purchase and restore events.
 

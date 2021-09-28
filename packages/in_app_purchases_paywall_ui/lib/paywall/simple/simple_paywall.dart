@@ -6,6 +6,7 @@ import 'package:in_app_purchases_paywall_ui/paywall/model/text_and_url.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/subscription_row.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/widgets/basic_statelesswidget.dart';
 
+/// This Widget is without a scaffold. Use SimplePayWallScaffold if you want to have an appBar
 class SimplePayWall extends BasicStatelessWidget {
   final ThemeData theme;
   final String? title;
@@ -19,21 +20,23 @@ class SimplePayWall extends BasicStatelessWidget {
   bool isSubscriptionLoading = false;
   bool isPurchaseInProgress = false;
 
-  SimplePayWall({required this.theme,
-    this.title,
-    this.subTitle,
-    this.tosData,
-    this.ppData,
-    this.headerContainer,
-    this.bulletPoints,
-    this.campaignWidget,
-    this.restoreText,
-    this.isSubscriptionLoading = false,
-    this.isPurchaseInProgress = false,
-    CallbackInterface? callbackInterface,
-    List<SubscriptionData>? subscriptionListData})
-      : super(callbackInterface: callbackInterface,
-      subscriptionListData: subscriptionListData);
+  SimplePayWall(
+      {required this.theme,
+      this.title,
+      this.subTitle,
+      this.tosData,
+      this.ppData,
+      this.headerContainer,
+      this.bulletPoints,
+      this.campaignWidget,
+      this.restoreText,
+      this.isSubscriptionLoading = false,
+      this.isPurchaseInProgress = false,
+      CallbackInterface? callbackInterface,
+      List<SubscriptionData>? subscriptionListData})
+      : super(
+            callbackInterface: callbackInterface,
+            subscriptionListData: subscriptionListData);
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +60,10 @@ class SimplePayWall extends BasicStatelessWidget {
           _LegalRow(theme, tosData, ppData)
         ])));
     if (isPurchaseInProgress) {
-      stackItems.add(Scaffold(body: Center(child: CircularProgressIndicator()), backgroundColor: Color(0x22000000),));
+      stackItems.add(Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+        backgroundColor: Color(0x22000000),
+      ));
     }
     return Stack(children: stackItems);
   }
@@ -68,7 +74,8 @@ class SimplePayWall extends BasicStatelessWidget {
     // add SubTitle
     if (subTitle != null) {
       elements.add(Container(
-          margin: EdgeInsets.only(left: 16, right: 16), child: Text(subTitle!, style: theme.textTheme.bodyText2)));
+          margin: EdgeInsets.only(left: 16, right: 16),
+          child: Text(subTitle!, style: theme.textTheme.bodyText2)));
     }
 
     elements.add(Container(
@@ -76,28 +83,27 @@ class SimplePayWall extends BasicStatelessWidget {
     ));
 
     elements.addAll(bulletPoints
-        ?.map<Widget>((bulletPoint) =>
-        Container(
-          margin: EdgeInsets.only(left: 16, right: 16),
-          child: Row(
-            children: [
-              Icon(
-                bulletPoint.icon,
-                size: 24,
-                color: theme.iconTheme.color,
-              ),
-              Padding(
-                child: Text(
-                  bulletPoint.text,
-                  maxLines: 2,
-                  style: theme.textTheme.bodyText1,
-                ),
-                padding: EdgeInsets.all(16),
-              ),
-            ],
-          ),
-        ))
-        .toList(growable: false) ??
+            ?.map<Widget>((bulletPoint) => Container(
+                  margin: EdgeInsets.only(left: 16, right: 16),
+                  child: Row(
+                    children: [
+                      Icon(
+                        bulletPoint.icon,
+                        size: 24,
+                        color: theme.iconTheme.color,
+                      ),
+                      Padding(
+                        child: Text(
+                          bulletPoint.text,
+                          maxLines: 2,
+                          style: theme.textTheme.bodyText1,
+                        ),
+                        padding: EdgeInsets.all(16),
+                      ),
+                    ],
+                  ),
+                ))
+            .toList(growable: false) ??
         []);
 
     if (campaignWidget != null) {
@@ -109,24 +115,23 @@ class SimplePayWall extends BasicStatelessWidget {
     ));
 
     if (subscriptionListData != null) {
-      elements.add(SubscriptionRow(subscriptionListData!, onPurchase, isSubscriptionLoading, theme));
+      elements.add(SubscriptionRow(
+          subscriptionListData!, onPurchase, isSubscriptionLoading, theme));
     }
-    if (onRestoreTap != null) {
-      elements.add(Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextButton(
-            child: Text(
-              restoreText ?? "Restore purchase",
-            ),
-            style: theme.textButtonTheme.style,
-            onPressed: () {
-              onRestoreTap();
-            },
+    elements.add(Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TextButton(
+          child: Text(
+            restoreText ?? "Restore purchase",
           ),
-        ],
-      ));
-    }
+          style: theme.textButtonTheme.style,
+          onPressed: () {
+            onRestoreTap();
+          },
+        ),
+      ],
+    ));
     return elements;
   }
 }
@@ -143,7 +148,8 @@ class _LegalRow extends StatelessWidget {
     await browser.open(
         url: Uri.parse(tosData!.url),
         options: ChromeSafariBrowserClassOptions(
-            android: AndroidChromeCustomTabsOptions(addDefaultShareMenuItem: false),
+            android:
+                AndroidChromeCustomTabsOptions(addDefaultShareMenuItem: false),
             ios: IOSSafariOptions(barCollapsingEnabled: true)));
   }
 
@@ -151,37 +157,36 @@ class _LegalRow extends StatelessWidget {
     await browser.open(
         url: Uri.parse(ppData!.url),
         options: ChromeSafariBrowserClassOptions(
-            android: AndroidChromeCustomTabsOptions(addDefaultShareMenuItem: false),
+            android:
+                AndroidChromeCustomTabsOptions(addDefaultShareMenuItem: false),
             ios: IOSSafariOptions(barCollapsingEnabled: true)));
   }
 
-  Widget get tosItem =>
-      tosData == null
-          ? Container()
-          : GestureDetector(
-        onTap: _onTapTos,
-        child: Text(
-          tosData?.name ?? "Terms of Service",
-          style: TextStyle(
-              decoration: TextDecoration.underline,
-              color: theme.textTheme.button?.color ?? theme.primaryColor,
-              fontSize: 12),
-        ),
-      );
+  Widget get tosItem => tosData == null
+      ? Container()
+      : GestureDetector(
+          onTap: _onTapTos,
+          child: Text(
+            tosData?.name ?? "Terms of Service",
+            style: TextStyle(
+                decoration: TextDecoration.underline,
+                color: theme.textTheme.button?.color ?? theme.primaryColor,
+                fontSize: 12),
+          ),
+        );
 
-  Widget get ppItem =>
-      ppData == null
-          ? Container()
-          : GestureDetector(
-        onTap: _onTapPp,
-        child: Text(
-          ppData?.name ?? "Privacy Policy",
-          style: TextStyle(
-              decoration: TextDecoration.underline,
-              color: theme.textTheme.button?.color ?? theme.primaryColor,
-              fontSize: 12),
-        ),
-      );
+  Widget get ppItem => ppData == null
+      ? Container()
+      : GestureDetector(
+          onTap: _onTapPp,
+          child: Text(
+            ppData?.name ?? "Privacy Policy",
+            style: TextStyle(
+                decoration: TextDecoration.underline,
+                color: theme.textTheme.button?.color ?? theme.primaryColor,
+                fontSize: 12),
+          ),
+        );
 
   @override
   Widget build(BuildContext context) {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/subscription_price_box.dart';
 
+/// Simple Subscription Row.
 class SubscriptionRow extends StatelessWidget {
   final List<SubscriptionData> subscriptionListData;
   final Function(SubscriptionData) onPurchase;
@@ -14,7 +15,8 @@ class SubscriptionRow extends StatelessWidget {
   int _boxMarginX = 4;
   bool _expandItems = true;
 
-  SubscriptionRow(this.subscriptionListData, this.onPurchase, this.isSubscriptionLoading, this.theme) {
+  SubscriptionRow(this.subscriptionListData, this.onPurchase,
+      this.isSubscriptionLoading, this.theme) {
     if (subscriptionListData.length == 1) {
       _expandItems = false;
     }
@@ -30,8 +32,9 @@ class SubscriptionRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> subscriptionList = subscriptionListData
-        .map((subscriptionData) =>
-            SubscriptionPriceBox(subscriptionData, onPurchase, theme, _shouldBreakText, mx: _boxMarginX, expandItems: _expandItems))
+        .map((subscriptionData) => SubscriptionPriceBox(
+            subscriptionData, onPurchase, theme, _shouldBreakText,
+            mx: _boxMarginX, expandItems: _expandItems))
         .toList(growable: false);
     if (isSubscriptionLoading) {
       return Row(
@@ -42,7 +45,9 @@ class SubscriptionRow extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.only(left: _padding, right: _padding),
-      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: subscriptionList),
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: subscriptionList),
     );
   }
 }

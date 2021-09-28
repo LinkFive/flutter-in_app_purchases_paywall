@@ -4,7 +4,8 @@ import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/text_and_url.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/simple_paywall.dart';
 
-class SimplePayWallScaffold extends StatelessWidget  {
+/// Wrap the SimplePayWall into a scaffold including an AppBar
+class SimplePayWallScaffold extends StatelessWidget {
   final ThemeData theme;
   final String? appBarTitle;
   final String? title;

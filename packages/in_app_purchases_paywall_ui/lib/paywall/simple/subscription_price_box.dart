@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
 
+/// Price Box to show subscriptions
 class SubscriptionPriceBox extends StatelessWidget {
   final SubscriptionData data;
   final Function(SubscriptionData) onPurchase;
@@ -9,7 +10,8 @@ class SubscriptionPriceBox extends StatelessWidget {
   final int mx;
   final bool expandItems;
 
-  SubscriptionPriceBox(this.data, this.onPurchase, this.theme, this.shouldBreakText,
+  SubscriptionPriceBox(
+      this.data, this.onPurchase, this.theme, this.shouldBreakText,
       {this.mx = 1, this.expandItems = true});
 
   Widget get _expanded {
@@ -20,8 +22,9 @@ class SubscriptionPriceBox extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(left: mx * 4, right: mx * 4, top: 4, bottom: 4),
       child: Ink(
-          decoration:
-              BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8.0)), color: theme.primaryColorDark),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+              color: theme.primaryColorDark),
           child: InkWell(
               onTap: () {
                 onPurchase(data);
@@ -31,7 +34,8 @@ class SubscriptionPriceBox extends StatelessWidget {
                   child: Container(
                       margin: EdgeInsets.all(1),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)), color: theme.primaryColorLight),
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                          color: theme.primaryColorLight),
                       child: Stack(
                         children: [
                           Align(
@@ -48,7 +52,9 @@ class SubscriptionPriceBox extends StatelessWidget {
                                     padding: EdgeInsets.all(8),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(left: expandItems ? 4 : 16, right: expandItems ? 4 : 16),
+                                    padding: EdgeInsets.only(
+                                        left: expandItems ? 4 : 16,
+                                        right: expandItems ? 4 : 16),
                                     child: Text(
                                       "${data.price} /${shouldBreakText ? "\n" : " "}${data.durationShort.replaceAll(" ", "\u{00A0}")}",
                                       textAlign: TextAlign.center,
@@ -62,7 +68,9 @@ class SubscriptionPriceBox extends StatelessWidget {
                           data.dealPercentage > 0
                               ? Container(
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(Radius.circular(8.0)), color: theme.accentColor),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: theme.accentColor),
                                   child: Padding(
                                     padding: EdgeInsets.all(4),
                                     child: Text(

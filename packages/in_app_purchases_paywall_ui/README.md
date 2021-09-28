@@ -1,12 +1,16 @@
 # In App Purchases Paywall UI for Flutter
 
-## Current Designs
-We have a few premade UI elements for your custom paywalls. (more UI will follow soon)
-
-* UI is fully customizable
+## Paywall Design as easy as possible
+Simple to use PayWall. Fully customizable.
 
 ### Simple Paywall
+The Simple Paywall design is a basic design without any animations
+
+#### Purchase Page
 <img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/simple_paywall_design.png" alt="Simple Paywall"/>
+
+#### Success Page
+<img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/simple_paywall_design_success.png" alt="Simple Paywall Success"/>
 
 #### implement
 Example usage:

@@ -1,3 +1,6 @@
+## 0.2.0
+Add success widget
+
 ## 0.1.2
 Just more documentation and code formatting
 

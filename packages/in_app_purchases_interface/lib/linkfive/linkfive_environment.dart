@@ -1,2 +1,1 @@
-
 enum LinkFiveEnvironment { STAGING, PRODUCTION }

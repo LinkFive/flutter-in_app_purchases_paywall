@@ -1,3 +1,9 @@
+## 0.0.4
+Add PurchaseInProgressStreamInterface for managing the loading State of a purchase
+Add PurchaseStateStreamInterface for managing the purchase State. NOT_PURCHASED PURCHASED 
+Add PurchaseState enum
+
+
 ## 0.0.3
 callback interface changed from Future<void> to Future<bool> to handle success and error purchases
 

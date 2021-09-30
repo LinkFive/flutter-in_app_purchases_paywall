@@ -1,6 +1,6 @@
 name: in_app_purchases_interface
-description: Interface Package for interpackage communications and shared classes
-version: 0.0.3
+description: Interface Package for interpackage communications for in app purchases and shared classes
+version: 0.0.4
 homepage: https://github.com/LinkFive/flutter-in_app_purchases_paywall
 repository: https://github.com/LinkFive/flutter-in_app_purchases_paywall
 

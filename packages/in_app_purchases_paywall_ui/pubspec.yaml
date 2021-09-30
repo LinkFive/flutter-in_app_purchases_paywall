@@ -1,8 +1,8 @@
 name: in_app_purchases_paywall_ui
 description: >
-  A collection of in app purchase PayWalls as a UI library.
-  More UIs will follow. Subscriptions are supported.
-version: 0.2.0
+  A collection of in app purchase Paywall as a UI library.
+  Also handles Purchase success state. Currently only subscriptions are supported.
+version: 0.2.1
 homepage: https://github.com/LinkFive/flutter-in_app_purchases_paywall
 repository: https://github.com/LinkFive/flutter-in_app_purchases_paywall
 
@@ -14,7 +14,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_inappwebview: ^5.3.2
-  in_app_purchases_interface: ^0.0.2
+  in_app_purchases_interface: ^0.0.4
     #path: ../in_app_purchases_interface
 
 dev_dependencies:

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:in_app_purchases_paywall_ui/paywall/inherit/subscription_callback_iw.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/icon_and_text.dart';
 import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/text_and_url.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/legal_row.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/simple_bulletpoints.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/subscription_row.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/widgets/basic_statelesswidget.dart';
 
 /// This Widget is without a scaffold. Use SimplePayWallScaffold if you want to have an appBar
-class SimplePayWallPurchase extends BasicStatelessWidget {
+class SimplePaywallPurchase extends StatelessWidget {
   final ThemeData theme;
   final String? title;
   final String? subTitle;
@@ -20,37 +19,32 @@ class SimplePayWallPurchase extends BasicStatelessWidget {
   final Widget? campaignWidget;
   final String? restoreText;
   bool isSubscriptionLoading = false;
-  bool isPurchaseInProgress = false;
 
-  SimplePayWallPurchase(
-      {required this.theme,
-      this.title,
-      this.subTitle,
-      this.tosData,
-      this.ppData,
-      this.headerContainer,
-      this.bulletPoints,
-      this.campaignWidget,
-      this.restoreText,
-      this.isSubscriptionLoading = false,
-      this.isPurchaseInProgress = false,
-      CallbackInterface? callbackInterface,
-      List<SubscriptionData>? subscriptionListData})
-      : super(
-            callbackInterface: callbackInterface,
-            subscriptionListData: subscriptionListData);
+  SimplePaywallPurchase({
+    required this.theme,
+    this.title,
+    this.subTitle,
+    this.tosData,
+    this.ppData,
+    this.headerContainer,
+    this.bulletPoints,
+    this.campaignWidget,
+    this.restoreText,
+    this.isSubscriptionLoading = false,
+    CallbackInterface? callbackInterface,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: _premiumContent,
+      children: _premiumContent(context),
       primary: false,
       shrinkWrap: true,
       physics: ClampingScrollPhysics(),
     );
   }
 
-  List<Widget> get _premiumContent {
+  List<Widget> _premiumContent(BuildContext context) {
     List<Widget> elements = [];
 
     elements.add(
@@ -85,10 +79,12 @@ class SimplePayWallPurchase extends BasicStatelessWidget {
     elements.add(Container(
       padding: EdgeInsets.all(4),
     ));
-
-    if (subscriptionListData != null) {
+    var inheritedWidget = SubscriptionCallbackIW.of(context)!;
+    if (inheritedWidget.subscriptionListData != null) {
       elements.add(SubscriptionRow(
-          subscriptionListData!, onPurchase, isSubscriptionLoading, theme));
+          subscriptionListData: inheritedWidget.subscriptionListData!,
+          isSubscriptionLoading: isSubscriptionLoading,
+          theme: theme));
     }
     elements.add(Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -99,7 +95,7 @@ class SimplePayWallPurchase extends BasicStatelessWidget {
           ),
           style: theme.textButtonTheme.style,
           onPressed: () {
-            onRestoreTap();
+            SubscriptionCallbackIW.of(context)?.onRestoreTap();
           },
         ),
       ],

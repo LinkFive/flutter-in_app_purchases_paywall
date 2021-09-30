@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
+import 'package:in_app_purchases_paywall_ui/paywall/inherit/subscription_callback_iw.dart';
 
 /// Price Box to show subscriptions
 class SubscriptionPriceBox extends StatelessWidget {
   final SubscriptionData data;
-  final Function(SubscriptionData) onPurchase;
   final ThemeData theme;
   final bool shouldBreakText;
   final int mx;
   final bool expandItems;
 
-  SubscriptionPriceBox(
-      this.data, this.onPurchase, this.theme, this.shouldBreakText,
+  SubscriptionPriceBox(this.data, this.theme, this.shouldBreakText,
       {this.mx = 1, this.expandItems = true});
 
-  Widget get _expanded {
-    return Expanded(child: _fixed);
+  Widget _expanded(BuildContext context) {
+    return Expanded(child: _fixed(context));
   }
 
-  Widget get _fixed {
+  Widget _fixed(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: mx * 4, right: mx * 4, top: 4, bottom: 4),
       child: Ink(
@@ -27,7 +26,7 @@ class SubscriptionPriceBox extends StatelessWidget {
               color: theme.primaryColorDark),
           child: InkWell(
               onTap: () {
-                onPurchase(data);
+                SubscriptionCallbackIW.of(context)?.onPurchase(data);
               },
               child: Padding(
                   padding: EdgeInsets.all(1),
@@ -87,8 +86,8 @@ class SubscriptionPriceBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (expandItems) {
-      return _expanded;
+      return _expanded(context);
     }
-    return _fixed;
+    return _fixed(context);
   }
 }

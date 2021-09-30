@@ -6,7 +6,6 @@ import 'package:in_app_purchases_paywall_ui/paywall/simple/subscription_price_bo
 /// Simple Subscription Row.
 class SubscriptionRow extends StatelessWidget {
   final List<SubscriptionData> subscriptionListData;
-  final Function(SubscriptionData) onPurchase;
   final ThemeData theme;
   final bool isSubscriptionLoading;
 
@@ -15,8 +14,10 @@ class SubscriptionRow extends StatelessWidget {
   int _boxMarginX = 4;
   bool _expandItems = true;
 
-  SubscriptionRow(this.subscriptionListData, this.onPurchase,
-      this.isSubscriptionLoading, this.theme) {
+  SubscriptionRow(
+      {required this.subscriptionListData,
+      required this.isSubscriptionLoading,
+      required this.theme}) {
     if (subscriptionListData.length == 1) {
       _expandItems = false;
     }
@@ -33,7 +34,7 @@ class SubscriptionRow extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> subscriptionList = subscriptionListData
         .map((subscriptionData) => SubscriptionPriceBox(
-            subscriptionData, onPurchase, theme, _shouldBreakText,
+            subscriptionData, theme, _shouldBreakText,
             mx: _boxMarginX, expandItems: _expandItems))
         .toList(growable: false);
     if (isSubscriptionLoading) {

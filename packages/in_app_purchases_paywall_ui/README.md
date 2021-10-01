@@ -1,18 +1,18 @@
-# In App Purchases Paywall UI for Flutter
+This package is an in app purchases paywall UI for Flutter
 
-## Paywall Design as easy as possible
-Simple to use PayWall. Fully customizable.
+# Paywall design for everyone
+This simple to use Paywall UI is developed for the flutter community. Fully customizable and easy to integrate.
 
-### Simple Paywall
+## Simple Paywall
 The Simple Paywall design is a basic design without any animations
 
-#### Purchase Page
+### Purchase Page
 <img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/simple_paywall_design.png" alt="Simple Paywall"/>
 
-#### Success Page
+### Success Page
 <img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/simple_paywall_design_success.png" alt="Simple Paywall Success"/>
 
-#### Easy integration
+### Easy integration
 Use the SimplePaywall without a Scaffold or wrap the Paywall in a PaywallScaffold
 
 ```dart
@@ -26,7 +26,7 @@ PaywallScaffold(
 );
 ```
 
-#### State control included
+### State control included
 
 Control the State: *PURCHASED* to show the Success Page or *Purchase in Progress* for a fullscreen loading indicator.
 
@@ -70,23 +70,29 @@ class PurchaseHandler extends DefaultPurchaseHandler {
 
 <img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/state_management_control.gif" alt="Simple Paywall Success state"/>
 
-#### Easy Integration with in_app_purchase library
+---
+
+## Easy Integration with in_app_purchase library
 This UI library is build for an easy integration with the flutter library in_app_purchase.
 
-Example & Package coming soon. [in_app_purchase package](https://pub.dev/packages/in_app_purchase)
+* Example & Package coming soon. **[in_app_purchase package](https://pub.dev/packages/in_app_purchase)**
 
-#### Easy Integration with linkfive_purchases library
-Since LinkFive is using in_app_purchase as a dependency, the integration is seamless [linkfive_purchases package](https://pub.dev/packages/linkfive_purchases)
+## Easy Integration with linkfive_purchases library
+Since LinkFive is using in_app_purchase as a dependency, the integration is seamless **[linkfive_purchases package](https://pub.dev/packages/linkfive_purchases)**
 
-Example & Package coming soon.
+* Example & Package coming soon.
 
-#### Provider usage
-Example & Package coming soon.
 
-#### Riverpod usage
-Example & Package coming soon.
+## Provider usage
+* Example & Package coming soon.
 
-#### implement
+
+## Riverpod usage
+* Example & Package coming soon.
+
+---
+
+## implement
 Example usage:
 ```dart
 class _MyHomePageState extends State<MyHomePage> {
@@ -194,7 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
-#### Change colours and font
+### Change colours and font
 ```dart
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

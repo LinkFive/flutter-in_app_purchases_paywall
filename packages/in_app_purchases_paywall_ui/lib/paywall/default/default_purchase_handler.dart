@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:in_app_purchases_interface/interface/purchase_state_stream_interface.dart';
-import 'package:in_app_purchases_interface/model/purchase_state.dart';
-import 'package:in_app_purchases_paywall_ui/in_app_purchases_paywall_ui.dart';
+import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
 
+/// Default Purchase Handler
+/// Extend for your own logic
 class DefaultPurchaseHandler
     implements PurchaseStateStreamInterface, CallbackInterface {
   /// initial value for purchase in Progress
@@ -77,10 +77,8 @@ class DefaultPurchaseHandler
   /// set [purchaseState] to [PurchaseState.PURCHASED] or [PurchaseState.NOT_PURCHASED]
   @override
   Future<bool> purchase(SubscriptionData productDetails) async {
-    print("purchase start");
     isPendingPurchase = true;
     await Future.delayed(Duration(seconds: 2));
-    print("purchase done");
     purchaseState = PurchaseState.PURCHASED;
     isPendingPurchase = false;
     return true;

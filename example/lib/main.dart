@@ -99,14 +99,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 dealPercentage: 69,
                 productDetails: "Dynamic purchase data",
                 index: 0),
-            /*
-        SubscriptionData(
-            durationTitle: "Biannual",
-            durationShort: "6 Months",
-            price: "9,99€",
-            dealPercentage: 59,
-            productDetails: "Dynamic purchase data",
-            index: 1),*/
             SubscriptionData(
                 durationTitle: "Quarterly",
                 durationShort: "3 Months",
@@ -146,6 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
           purchaseState: PurchaseState.NOT_PURCHASED,
           // callback Interface for restore and purchase tap events. Extend DefaultPurchaseHandler
           callbackInterface: purchaseHandler,
+          purchaseStateStreamInterface: purchaseHandler,
           // provide your TOS
           tosData:
               TextAndUrl("Terms of Service", "https://www.linkfive.io/tos"),

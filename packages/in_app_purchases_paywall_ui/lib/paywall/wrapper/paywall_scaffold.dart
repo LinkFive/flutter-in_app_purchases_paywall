@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/// Wrap the Paywall in a Scaffold or use your own
+/// It uses the Theme.of(context) if you don't provide your own theme
 class PaywallScaffold extends StatelessWidget {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final Widget child;

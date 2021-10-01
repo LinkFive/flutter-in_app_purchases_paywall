@@ -79,6 +79,7 @@ class SimplePaywall extends StatefulWidget {
   State createState() => _SimplePaywallState();
 }
 
+/// State to control the State Streams
 class _SimplePaywallState extends State<SimplePaywall> {
   /// Stream Subscription PurchaseState
   late Stream<PurchaseState> purchaseStateStream;
@@ -100,6 +101,15 @@ class _SimplePaywallState extends State<SimplePaywall> {
     return StreamBuilder<PurchaseState>(
       stream: purchaseStateStream,
       builder: (context, snapshot) {
+        // if there is no data yet, show a progress Indicator
+        if (!snapshot.hasData) {
+          return Container(
+              height: 10000,
+              width: 10000,
+              child: Center(child: CircularProgressIndicator()));
+        }
+
+        // if State is purchased
         if (snapshot.hasData && snapshot.data == PurchaseState.PURCHASED) {
           return SimplePaywallSuccess(
             theme: widget.theme,
@@ -109,6 +119,7 @@ class _SimplePaywallState extends State<SimplePaywall> {
             successWidget: widget.successWidget,
           );
         } else {
+          // if state is not purchased yet
           return SimplePaywallPurchase(
               theme: widget.theme,
               title: widget.title,

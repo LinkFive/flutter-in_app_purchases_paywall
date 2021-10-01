@@ -1,3 +1,7 @@
+## 0.3.0
+Add state control for purchase in progress and success
+Add Default Purchase Handler to easy extend and manipulate the widget
+
 ## 0.2.0
 Add success widget
 

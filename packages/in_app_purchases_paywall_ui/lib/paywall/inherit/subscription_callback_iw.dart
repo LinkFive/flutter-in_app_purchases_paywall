@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
 
-/// Inhereted Widget to pass subscriptions and callbackInterface
+/// Inherited Widget to pass subscriptions and callbackInterface
 class SubscriptionCallbackIW extends InheritedWidget {
   /// All subscription Data
   final List<SubscriptionData>? subscriptionListData;

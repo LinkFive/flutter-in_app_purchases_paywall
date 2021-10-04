@@ -13,6 +13,10 @@ We try to create a package suite that work smoothly in combination.
 * Github: [In App Purchases Interface](/packages/in_app_purchases_interface)
 * pub.dev: [Interface Package](https://pub.dev/packages/in_app_purchases_interface)
 
+### Intl
+* Github: [In App Purchases Intl](/packages/in_app_purchases_intl)
+* pub.dev: [Interface Package](https://pub.dev/packages/in_app_purchases_intl)
+
 ### Subscription Management for flutter
 * Github: [LinkFive Purchases](https://github.com/LinkFive/flutter-purchases-sdk)
 * pub.dev: [LinkFive Purchases Package](https://pub.dev/packages/linkfive_purchases)

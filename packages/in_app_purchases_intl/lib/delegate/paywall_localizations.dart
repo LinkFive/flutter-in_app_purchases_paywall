@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -61,15 +60,18 @@ import 'paywall_localizations_en.dart';
 /// be consistent with the languages listed in the PaywallLocalizations.supportedLocales
 /// property.
 abstract class PaywallLocalizations {
-  PaywallLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  PaywallLocalizations(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
   static PaywallLocalizations? of(BuildContext context) {
-    return Localizations.of<PaywallLocalizations>(context, PaywallLocalizations);
+    return Localizations.of<PaywallLocalizations>(
+        context, PaywallLocalizations);
   }
 
-  static const LocalizationsDelegate<PaywallLocalizations> delegate = _PaywallLocalizationsDelegate();
+  static const LocalizationsDelegate<PaywallLocalizations> delegate =
+      _PaywallLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -81,7 +83,8 @@ abstract class PaywallLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -185,36 +188,36 @@ abstract class PaywallLocalizations {
   String get most_popular;
 }
 
-class _PaywallLocalizationsDelegate extends LocalizationsDelegate<PaywallLocalizations> {
+class _PaywallLocalizationsDelegate
+    extends LocalizationsDelegate<PaywallLocalizations> {
   const _PaywallLocalizationsDelegate();
 
   @override
   Future<PaywallLocalizations> load(Locale locale) {
-    return SynchronousFuture<PaywallLocalizations>(_lookupPaywallLocalizations(locale));
+    return SynchronousFuture<PaywallLocalizations>(
+        _lookupPaywallLocalizations(locale));
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['de', 'en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['de', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_PaywallLocalizationsDelegate old) => false;
 }
 
 PaywallLocalizations _lookupPaywallLocalizations(Locale locale) {
-  
-
-
 // Lookup logic when only language code is specified.
-switch (locale.languageCode) {
-  case 'de': return PaywallLocalizationsDe();
-    case 'en': return PaywallLocalizationsEn();
-}
-
+  switch (locale.languageCode) {
+    case 'de':
+      return PaywallLocalizationsDe();
+    case 'en':
+      return PaywallLocalizationsEn();
+  }
 
   throw FlutterError(
-    'PaywallLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
-  );
+      'PaywallLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

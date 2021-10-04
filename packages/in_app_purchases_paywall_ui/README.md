@@ -83,11 +83,15 @@ Since LinkFive is using in_app_purchase as a dependency, the integration is seam
 * Example & Package coming soon.
 
 
-## Provider usage
+## Navigator 2.0 Example
 * Example & Package coming soon.
 
 
-## Riverpod usage
+## Provider example
+* Example & Package coming soon.
+
+
+## Riverpod example
 * Example & Package coming soon.
 
 ---

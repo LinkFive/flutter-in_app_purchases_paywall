@@ -1,0 +1,4 @@
+arb-dir: lib/l10n
+template-arb-file: paywall_en.arb
+output-localization-file: paywall_localizations.dart
+output-class: PaywallLocalizations

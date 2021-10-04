@@ -1,0 +1,43 @@
+{
+  "weekly": "weekly",
+  "monthly": "monthly",
+  "quarterly": "quarterly",
+  "biannual": "biannual",
+  "yearly": "yearly",
+  "year": "year",
+  "nyear": "{count,plural, =1{1 year} other{{count} years}}",
+  "@nyear": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "month": "month",
+  "nmonth": "{count,plural, =1{1 month} other{{count} months}}",
+  "@nmonth": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "week": "week",
+  "nweek": "{count,plural, =1{1 week} other{{count} weeks}}",
+  "@nweek": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "day": "day",
+  "nday": "{count,plural, =1{1 day} other{{count} days}}",
+  "@nday": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "continue_button": "continue",
+  "@continue_button": {
+    "description": "A button to select a premium subscription"
+  },
+  "most_popular": "Most popular",
+  "@most_popular": {
+    "description": "A banner usually to show which subscription is most popular"
+  }
+}

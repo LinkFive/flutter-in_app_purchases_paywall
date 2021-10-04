@@ -1,0 +1,37 @@
+{
+  "weekly": "wöchentlich",
+  "monthly": "monatlich",
+  "quarterly": "pro quartal",
+  "biannual": "halbjährlich",
+  "yearly": "jährlich",
+  "year": "jahr",
+  "nyear": "{count,plural, =1{1 jahr} other{{count} jahre}}",
+  "@nyear": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "month": "monat",
+  "nmonth": "{count,plural, =1{1 monat} other{{count} monate}}",
+  "@nmonth": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "week": "woche",
+  "nweek": "{count,plural, =1{1 woche} other{{count} wochen}}",
+  "@nweek": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "day": "tag",
+  "nday": "{count,plural, =1{1 tag} other{{count} tage}}",
+  "@nday": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "continue_button": "weiter",
+  "most_popular": "am beliebtesten"
+}

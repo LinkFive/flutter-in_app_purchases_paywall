@@ -1,4 +1,8 @@
 ## 0.3.0
+Upgrade to Interface 0.0.5.
+Add an empty page wrapper for Navigation 2.0
+
+## 0.3.0
 Add state control for purchase in progress and success
 Add Default Purchase Handler to easy extend and manipulate the widget
 

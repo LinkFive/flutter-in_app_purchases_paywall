@@ -1,3 +1,6 @@
+## 0.0.5
+Add Subscription Duration data class
+
 ## 0.0.4
 Add PurchaseInProgressStreamInterface for managing the loading State of a purchase
 Add PurchaseStateStreamInterface for managing the purchase State. NOT_PURCHASED PURCHASED 

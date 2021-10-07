@@ -97,7 +97,7 @@ SimplePaywall(
 // That‘s it! Your subscriptions are now automatically included. (paywall state management works as well) 
 ```
 
-<img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/linkfive-and-flutter-works-best" alt="LinkFive and Flutter works perfectly together"/>
+<img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/linkfive-and-flutter-works-best.png" alt="LinkFive and Flutter works perfectly together"/>
 
 Read more about an easy [Flutter Paywall Integration](https://www.linkfive.io/flutter-integration/)
 

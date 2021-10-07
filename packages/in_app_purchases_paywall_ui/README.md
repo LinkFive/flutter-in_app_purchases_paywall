@@ -99,7 +99,7 @@ SimplePaywall(
 
 <img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/linkfive-and-flutter-works-best.png" alt="LinkFive and Flutter works perfectly together"/>
 
-Read more about an easy [Flutter Paywall Integration](https://www.linkfive.io/flutter-integration/)
+Read more about an easy [Flutter Paywall Integration](https://www.linkfive.io/flutter-integration/?ref=github&utm_source=github&utm_medium=paywall_link)
 
 
 ## Navigator 2.0 & Provider Example

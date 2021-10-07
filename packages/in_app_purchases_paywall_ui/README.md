@@ -72,27 +72,38 @@ class PurchaseHandler extends DefaultPurchaseHandler {
 
 ---
 
-## Easy Integration with in_app_purchase library
-This UI library is build for an easy integration with the flutter library in_app_purchase.
-
-* Example & Package coming soon. **[in_app_purchase package](https://pub.dev/packages/in_app_purchase)**
-
 ## Easy Integration with linkfive_purchases library
-Since LinkFive is using in_app_purchase as a dependency, the integration is seamless **[linkfive_purchases package](https://pub.dev/packages/linkfive_purchases)**
+Since LinkFive is using **[in_app_purchase package](https://pub.dev/packages/in_app_purchase)** as a dependency, the integration is seamless and effortless. 
 
-* Example & Package coming soon.
+Pub.dev plugin: **[linkfive_purchases package](https://pub.dev/packages/linkfive_purchases)**
+
+```dart
+// get LinkFivePurchases object from your provider or just create it
+final linkFivePurchases = LinkFivePurchasesMain();
+
+// get subscription data from your provider or from your stream (as described above)
+LinkFiveSubscriptionData? linkFiveSubscriptionData = subscriptionData;
+
+// you can use your own strings or use the intl package to automatically generate the subscription strings
+final subscriptionListData = linkFiveSubscriptionData?.getSubscriptionData(context: context) ?? [];
+
+SimplePaywall(
+    // ...
+    callbackInterface: linkFivePurchases,
+    subscriptionListData: subscriptionListData,
+    // ...
+});
+
+// That‘s it! Your subscriptions are now automatically included. (paywall state management works as well) 
+```
+
+<img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/linkfive-and-flutter-works-best" alt="LinkFive and Flutter works perfectly together"/>
+
+Read more about an easy [Flutter Paywall Integration](https://www.linkfive.io/flutter-integration/)
 
 
-## Navigator 2.0 Example
-* Example & Package coming soon.
-
-
-## Provider example
-* Example & Package coming soon.
-
-
-## Riverpod example
-* Example & Package coming soon.
+## Navigator 2.0 & Provider Example
+Check out the following example: [Provider and Navigator Example](https://pub.dev/packages/linkfive_purchases/example)
 
 ---
 

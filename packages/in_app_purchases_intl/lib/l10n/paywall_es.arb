@@ -1,0 +1,43 @@
+{
+  "weekly": "semanal",
+  "monthly": "mensualmente",
+  "quarterly": "trimestral",
+  "biannual": "bianual",
+  "yearly": "anualmente",
+  "year": "año",
+  "nyear": "{count,plural, =1{1 año} other{{count} años}}",
+  "@nyear": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "month": "mes",
+  "nmonth": "{count,plural, =1{1 mes} other{{count} meses}}",
+  "@nmonth": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "week": "semana",
+  "nweek": "{count,plural, =1{1 semana} other{{count} semanas}}",
+  "@nweek": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "day": "día",
+  "nday": "{count,plural, =1{1 día} other{{count} días}}",
+  "@nday": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "continue_button": "continuar",
+  "@continue_button": {
+    "description": "A button to select a premium subscription"
+  },
+  "most_popular": "Más populares",
+  "@most_popular": {
+    "description": "A banner usually to show which subscription is most popular. this should be short."
+  }
+}

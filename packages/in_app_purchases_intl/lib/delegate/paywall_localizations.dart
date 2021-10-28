@@ -7,6 +7,7 @@ import 'package:intl/intl.dart' as intl;
 
 import 'paywall_localizations_de.dart';
 import 'paywall_localizations_en.dart';
+import 'paywall_localizations_es.dart';
 
 /// Callers can lookup localized strings with an instance of PaywallLocalizations returned
 /// by `PaywallLocalizations.of(context)`.
@@ -94,7 +95,8 @@ abstract class PaywallLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('de'),
-    Locale('en')
+    Locale('en'),
+    Locale('es')
   ];
 
   /// No description provided for @weekly.
@@ -200,7 +202,7 @@ class _PaywallLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['de', 'en'].contains(locale.languageCode);
+      <String>['de', 'en', 'es'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_PaywallLocalizationsDelegate old) => false;
@@ -213,6 +215,8 @@ PaywallLocalizations _lookupPaywallLocalizations(Locale locale) {
       return PaywallLocalizationsDe();
     case 'en':
       return PaywallLocalizationsEn();
+    case 'es':
+      return PaywallLocalizationsEs();
   }
 
   throw FlutterError(

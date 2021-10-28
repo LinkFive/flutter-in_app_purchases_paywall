@@ -1,3 +1,7 @@
+## 0.0.3
+Add spanish translations
+Add **How to contribute** to the readme 
+
 ## 0.0.2
 Add DurationExtension to convert ISO_8601 durations to a model.
 Use EN as fallback. 

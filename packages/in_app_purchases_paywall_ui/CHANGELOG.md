@@ -1,3 +1,8 @@
+## 0.4.0
+interface v0.0.6 added loadSubscriptions to PurchaseStateStreamInterface to dynamically load the subscriptions if needed
+Theme is now optional and uses the default context if null
+added the linkfive provider example
+
 ## 0.3.2
 Just updated the readme for pub.dev
 

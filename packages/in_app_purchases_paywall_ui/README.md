@@ -26,6 +26,25 @@ PaywallScaffold(
 );
 ```
 
+#### Navigation 2.0 Page
+If you use flutter navigation 2.0 you might want to wrap the scaffold in a page element or use the class PaywallPage:
+```dart
+class PremiumPage extends Page {
+  @override
+  Route createRoute(BuildContext context) {
+    return MaterialPageRoute(
+      settings: this,
+      builder: (BuildContext context) {
+        return PaywallScaffold(
+          // ...
+        );
+      },
+    );
+  }
+}
+```
+
+
 ### State control included
 
 Control the State: *PURCHASED* to show the Success Page or *Purchase in Progress* for a fullscreen loading indicator.
@@ -100,6 +119,36 @@ SimplePaywall(
 <img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/linkfive-and-flutter-works-best.png" alt="LinkFive and Flutter works perfectly together"/>
 
 Read more about an easy [Flutter Paywall Integration](https://www.linkfive.io/flutter-integration/?ref=github&utm_source=github&utm_medium=paywall_link)
+
+### LinkFive Provider Plugin
+LinkFive created a provider which you can use out of the box: [linkfive_purchases_provider](https://pub.dev/packages/linkfive_purchases_provider)
+
+All you need to do to show a **fully working paywall including state management**. Register the module:
+
+```dart
+MultiProvider(
+  providers: [
+    // ...
+    ChangeNotifierProvider(
+      create: (context) => LinkFiveProvider("API_KEY"),
+      lazy: false,
+    ),
+  ]
+)
+```
+
+And pass the callback and pass the subscriptionData from [linkfive_purchases_provider](https://pub.dev/packages/linkfive_purchases_provider)
+```dart
+PaywallScaffold(
+  child: SimplePaywall(
+    callbackInterface: LinkFivePurchases.callbackInterface,
+    subscriptionListData: provider.getSubscriptionListData(context),
+    // ...
+  )
+)
+```
+
+Now you have a **fully functional subscription system**.
 
 
 ## Navigator 2.0 & Provider Example

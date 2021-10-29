@@ -18,6 +18,10 @@ class DefaultPurchaseHandler
   /// Pending Purchase Cached data
   late PurchaseState _purchaseState;
 
+  /// used to fetch the subscriptions at least once when the page
+  /// opens and the purchase state is NOT_PURCHASED
+  bool _loadedSubscriptionsOnce = false;
+
   DefaultPurchaseHandler(
       {this.initialIsPurchaseInProgress = false,
       this.initialPurchaseState = PurchaseState.NOT_PURCHASED}) {
@@ -115,12 +119,36 @@ class DefaultPurchaseHandler
     var controller = StreamController<PurchaseState>();
     _streamControllerPurchaseState.add(controller);
     controller.add(_purchaseState);
+    _checkPurchaseStateAndLoad();
     return controller.stream;
+  }
+
+  /// Check if the purchase state is NOT_PURCHASED and if true
+  /// call too loadSubscriptions
+  void _checkPurchaseStateAndLoad() async {
+    if (_purchaseState == PurchaseState.NOT_PURCHASED) {
+      if (!_loadedSubscriptionsOnce) {
+        bool success = await loadSubscriptions();
+        // if the subscription loaded successful, make sure to not call
+        // it again to avoid looping behaviour
+        if (success) {
+          this._loadedSubscriptionsOnce = true;
+        }
+      }
+    }
   }
 
   void _cleanStreams(List<StreamController> streams) {
     streams.removeWhere((element) {
       return element.isClosed;
     });
+  }
+
+  /// Reload the subscriptions
+  /// This will be overwritten by LinkFivePurchasesMain
+  @override
+  Future<bool> loadSubscriptions() async {
+    print("You should load your store subscriptions now");
+    return false;
   }
 }

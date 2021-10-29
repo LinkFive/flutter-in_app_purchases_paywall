@@ -9,9 +9,10 @@ import 'package:in_app_purchases_paywall_ui/paywall/model/text_and_url.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/simple_paywall_purchase.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/simple_paywall_success.dart';
 
-/// This Widget is without a scaffold. Wrap it with an PayWallScaffold if you want to have an appBar
+/// This Widget is without a scaffold. Wrap it with PayWallScaffold
+/// if you want to include an appBar to your screen
 class SimplePaywall extends StatefulWidget {
-  final ThemeData theme;
+  final ThemeData? theme;
   final String? title;
   final String? subTitle;
   final TextAndUrl? tosData;
@@ -30,8 +31,11 @@ class SimplePaywall extends StatefulWidget {
   late PurchaseStateStreamInterface purchaseStateStreamInterface;
   final List<SubscriptionData>? subscriptionListData;
 
+  /// Define the Design through the Theme you apply in your
+  /// root theme: ThemeData(...)
+  /// Icons are colored with iconTheme: IconThemeData(color: Colors.teal)
   SimplePaywall(
-      {required this.theme,
+      {this.theme,
       this.title,
       this.subTitle,
       this.tosData,
@@ -109,10 +113,14 @@ class _SimplePaywallState extends State<SimplePaywall> {
               child: Center(child: CircularProgressIndicator()));
         }
 
+        // use the theme of the context if not set
+        ThemeData _theme =
+            widget.theme != null ? widget.theme! : Theme.of(context);
+
         // if State is purchased
         if (snapshot.hasData && snapshot.data == PurchaseState.PURCHASED) {
           return SimplePaywallSuccess(
-            theme: widget.theme,
+            theme: _theme,
             headerContainer: widget.headerContainer,
             successTitle: widget.successTitle,
             successSubTitle: widget.successSubTitle,
@@ -121,7 +129,7 @@ class _SimplePaywallState extends State<SimplePaywall> {
         } else {
           // if state is not purchased yet
           return SimplePaywallPurchase(
-              theme: widget.theme,
+              theme: _theme,
               title: widget.title,
               subTitle: widget.subTitle,
               tosData: widget.tosData,

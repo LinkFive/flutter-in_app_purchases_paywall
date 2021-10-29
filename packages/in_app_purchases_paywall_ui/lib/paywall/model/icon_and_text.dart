@@ -7,5 +7,7 @@ class IconAndText {
   final IconData icon;
   final String text;
 
+  /// Icons are colored with iconTheme: IconThemeData(color: Colors.teal) in
+  /// your roots Theme
   IconAndText(this.icon, this.text);
 }

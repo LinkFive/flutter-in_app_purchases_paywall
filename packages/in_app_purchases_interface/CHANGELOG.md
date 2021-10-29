@@ -1,3 +1,13 @@
+## 0.0.6
+Changed PurchaseStateStreamInterface and added a new method you might want to override:
+
+/// If the purchase state is NOT_PURCHASED, you
+/// might want to load your subscriptions from the stores.
+///
+/// loadSubscriptions gets called whenever you should load
+/// the store information
+Future<bool> loadSubscriptions();
+
 ## 0.0.5
 Add Subscription Duration data class
 

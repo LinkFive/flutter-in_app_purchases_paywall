@@ -2,6 +2,7 @@ library in_app_purchases_paywall_ui;
 
 export 'paywall/default/default_purchase_handler.dart';
 export 'paywall/simple/simple_paywall.dart';
+export 'paywall/moritz/moritz_paywall.dart';
 export 'paywall/wrapper/paywall_scaffold.dart';
 export 'paywall/wrapper/paywall_page.dart';
 export 'paywall/widgets/campaign_banner.dart';

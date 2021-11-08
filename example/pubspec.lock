@@ -92,7 +92,7 @@ packages:
       path: "../packages/in_app_purchases_interface"
       relative: true
     source: path
-    version: "0.0.5"
+    version: "0.0.6"
   in_app_purchases_intl:
     dependency: "direct main"
     description:
@@ -106,7 +106,7 @@ packages:
       path: "../packages/in_app_purchases_paywall_ui"
       relative: true
     source: path
-    version: "0.3.2"
+    version: "0.4.0"
   intl:
     dependency: "direct main"
     description:

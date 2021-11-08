@@ -1,4 +1,4 @@
-## next
+## 0.5.0
 Moritz Paywall. SubscriptionData can now hold more data and can show the average price per month. 
 added a data inherited widget to not always pass the data through the widget-tree
 use interface v0.0.7

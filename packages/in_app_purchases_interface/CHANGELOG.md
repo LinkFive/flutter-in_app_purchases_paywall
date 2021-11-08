@@ -1,3 +1,7 @@
+## next
+SubscriptionData enhanced: added: rawPrice, currencySymbol, duration and monthText. 
+if you pass the data, some uis will show the average price per month. (everything is optional) 
+
 ## 0.0.6
 Changed PurchaseStateStreamInterface and added a new method you might want to override:
 

@@ -20,11 +20,16 @@ class MyApp extends StatelessWidget {
         // primary color schema
         primarySwatch: Colors.green,
         // set light or dark
-        brightness: Brightness.light,
+        // brightness: Brightness.dark,
         // custom icon theme
         iconTheme: IconThemeData(color: Colors.lightGreen),
         // your accentColor
-        accentColor: Colors.amber,
+        colorScheme: ColorScheme.fromSwatch(accentColor: Colors.amber, brightness: Brightness.light, primarySwatch: Colors.green, ),
+        backgroundColor: Colors.green.shade50,
+        cardColor: Colors.grey.shade100,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(primary: Colors.green)
+        )
         /*
         // and many more color options
         appBarTheme: AppBarTheme(backgroundColor: Colors.white),
@@ -66,7 +71,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   PurchaseHandler purchaseHandler = PurchaseHandler();
 
   @override
@@ -79,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBarTitle: "YourApp Premium",
       child: MoritzPaywall(
           // set a theme
-          theme: Theme.of(context),
+          // theme: Theme.of(context),
           // set a custom header
           /*headerContainer: Container(
               margin: EdgeInsets.all(16),
@@ -94,7 +98,9 @@ class _MyHomePageState extends State<MyHomePage> {
           // Title Bar
           title: "Go Premium",
           // SubTitle
-          subTitle: "Enjoy all the advantages of YourApp with the Premium subscription.",
+          subTitle:
+              "Enjoy all the advantages of YourApp with the Premium subscription.",
+          continueText: "Continue",
           // Add as many bullet points as you like
           bulletPoints: [
             IconAndText(Icons.stop_screen_share_outlined, "No Ads"),
@@ -110,6 +116,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 highlightText: "Most popular",
                 dealPercentage: 59,
                 productDetails: "Dynamic purchase data",
+                currencySymbol: "€",
+                rawPrice: 14.99,
+                monthText: translations.month,
+                duration: "P1Y",
                 index: 3),
             SubscriptionData(
                 durationTitle: translations.quarterly.toTitleCase(),
@@ -117,6 +127,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 price: "€8,99",
                 dealPercentage: 42,
                 productDetails: "Dynamic purchase data",
+                currencySymbol: "€",
+                rawPrice: 8.99,
+                monthText: translations.month,
+                duration: "P3M",
                 index: 2),
             SubscriptionData(
                 durationTitle: translations.monthly.toTitleCase(),
@@ -124,6 +138,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 price: "€2,99",
                 dealPercentage: 0,
                 productDetails: "Dynamic purchase data",
+                currencySymbol: "€",
+                rawPrice: 2.99,
+                monthText: translations.month,
+                duration: "P1M",
                 index: 1)
           ],
           // Shown if isPurchaseSuccess == true
@@ -158,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ppData:
               TextAndUrl("Privacy Policy", "https://www.linkfive.io/privacy"),
           // add a custom campaign widget
-          campaignWidget: CampaignBanner(
+          /*campaignWidget: CampaignBanner(
             theme: Theme.of(context),
             headline: "🥳 Summer Special Sale",
             subContent: Container(
@@ -168,13 +186,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       .add(Duration(days: 2, hours: 7))
                       .millisecondsSinceEpoch,
                 )),
-          )),
+          )*/),
     );
   }
 }
 
 class PurchaseHandler extends DefaultPurchaseHandler {
-
   @override
   Future<bool> purchase(SubscriptionData productDetails) async {
     print("purchase start");

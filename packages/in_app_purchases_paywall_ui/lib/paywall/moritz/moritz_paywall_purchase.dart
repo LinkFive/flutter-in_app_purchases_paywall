@@ -39,6 +39,7 @@ class MoritzPaywallPurchase extends StatelessWidget {
                       style: theme.textTheme.subtitle1,
                     )
                   ),
+                  paywallData.campaignWidget != null ? paywallData.campaignWidget! : Container(),
                   MoritzSubRow(),
                   Container(height: 16,),
                   MoritzBulletPoints(),

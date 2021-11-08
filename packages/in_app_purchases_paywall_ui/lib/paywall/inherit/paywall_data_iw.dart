@@ -8,6 +8,7 @@ class PaywallDataIW extends InheritedWidget {
   final ThemeData? theme;
   final String? title;
   final String? subTitle;
+  final String? continueText;
   final TextAndUrl? tosData;
   final TextAndUrl? ppData;
   final List<IconAndText>? bulletPoints;
@@ -22,6 +23,7 @@ class PaywallDataIW extends InheritedWidget {
     this.theme,
     this.title,
     this.subTitle,
+    this.continueText,
     this.tosData,
     this.ppData,
     this.bulletPoints,

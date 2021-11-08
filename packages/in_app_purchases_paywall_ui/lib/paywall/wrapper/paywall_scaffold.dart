@@ -15,7 +15,7 @@ class PaywallScaffold extends StatelessWidget {
     ThemeData _theme = theme != null ? theme! : Theme.of(context);
     return Scaffold(
         key: _scaffoldKey,
-        backgroundColor: _theme.appBarTheme.backgroundColor,
+        backgroundColor: _theme.scaffoldBackgroundColor,
         appBar: AppBar(
           textTheme: _theme.textTheme,
           toolbarTextStyle: _theme.textTheme.headline6,

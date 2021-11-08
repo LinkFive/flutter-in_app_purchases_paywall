@@ -17,6 +17,7 @@ abstract class BasePaywall extends StatefulWidget {
 
   final String? title;
   final String? subTitle;
+  final String? continueText;
   final TextAndUrl? tosData;
   final TextAndUrl? ppData;
   final Widget? headerContainer;
@@ -40,6 +41,7 @@ abstract class BasePaywall extends StatefulWidget {
       {this.theme,
       this.title,
       this.subTitle,
+      this.continueText,
       this.tosData,
       this.ppData,
       this.headerContainer,
@@ -104,6 +106,7 @@ abstract class BasePaywallState<T extends BasePaywall> extends State<T> {
         theme: widget.theme,
         title: widget.title,
         subTitle: widget.subTitle,
+        continueText: widget.continueText,
         tosData: widget.tosData,
         ppData: widget.ppData,
         bulletPoints: widget.bulletPoints,

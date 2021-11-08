@@ -1,6 +1,7 @@
 ## next
 Moritz Paywall. SubscriptionData can now hold more data and can show the average price per month. 
 added a data inherited widget to not always pass the data through the widget-tree
+use interface v0.0.7
 
 ## 0.4.0
 interface v0.0.6 added loadSubscriptions to PurchaseStateStreamInterface to dynamically load the subscriptions if needed

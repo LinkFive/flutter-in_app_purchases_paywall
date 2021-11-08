@@ -6,13 +6,16 @@ This simple to use Paywall UI is developed for the flutter community. Fully cust
 ## Simple Paywall
 The Simple Paywall design is a basic design without any animations
 
-### Purchase Page
-<img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/simple_paywall_design.png" alt="Simple Paywall"/>
+### Screenshots 
+<img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/simple_paywall_all.png" alt="Simple Paywall"/>
 
-### Success Page
-<img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/simple_paywall_design_success.png" alt="Simple Paywall Success"/>
+## Moritz Paywall
+The second Paywall designed by Moritz is available from version 0.5 and upwards.
 
-### Easy integration
+### Screenshots
+<img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/moritz_paywall_all.png" alt="Moritz Paywall"/>
+
+## Easy integration
 Use the SimplePaywall without a Scaffold or wrap the Paywall in a PaywallScaffold
 
 ```dart
@@ -26,7 +29,7 @@ PaywallScaffold(
 );
 ```
 
-#### Navigation 2.0 Page
+### Navigation 2.0 Page
 If you use flutter navigation 2.0 you might want to wrap the scaffold in a page element or use the class PaywallPage:
 ```dart
 class PremiumPage extends Page {
@@ -45,7 +48,7 @@ class PremiumPage extends Page {
 ```
 
 
-### State control included
+## State control included
 
 Control the State: *PURCHASED* to show the Success Page or *Purchase in Progress* for a fullscreen loading indicator.
 

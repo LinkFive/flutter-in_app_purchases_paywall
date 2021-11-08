@@ -3,16 +3,14 @@ This package is an in app purchases paywall UI for Flutter
 # Paywall design for everyone
 This simple to use Paywall UI is developed for the flutter community. Fully customizable and easy to integrate.
 
-## Simple Paywall
+## Design 1: Simple Paywall
 The Simple Paywall design is a basic design without any animations
 
-### Screenshots 
 <img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/simple_paywall_all.png" alt="Simple Paywall"/>
 
-## Moritz Paywall
+## Design 2: Moritz Paywall
 The second Paywall designed by Moritz is available from version 0.5 and upwards.
 
-### Screenshots
 <img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/moritz_paywall_all.png" alt="Moritz Paywall"/>
 
 ## Easy integration

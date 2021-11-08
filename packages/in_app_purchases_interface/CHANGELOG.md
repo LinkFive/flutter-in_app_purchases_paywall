@@ -1,4 +1,4 @@
-## next
+## 0.0.7
 SubscriptionData enhanced: added: rawPrice, currencySymbol, duration and monthText. 
 if you pass the data, some uis will show the average price per month. (everything is optional) 
 

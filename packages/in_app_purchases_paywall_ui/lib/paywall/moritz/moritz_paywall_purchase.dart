@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/inherit/paywall_data_iw.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/moritz/moritz_bulletpoints.dart';
+import 'package:in_app_purchases_paywall_ui/paywall/moritz/moritz_restore_row.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/moritz/moritz_sub_row.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/legal_row.dart';
 
 class MoritzPaywallPurchase extends StatelessWidget {
-
   MoritzPaywallPurchase();
 
   @override
@@ -33,17 +33,23 @@ class MoritzPaywallPurchase extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 16, right: 16),
-                    child: Text(
-                      PaywallDataIW.of(context).subTitle ?? "",
-                      style: theme.textTheme.subtitle1,
-                    )
-                  ),
-                  paywallData.campaignWidget != null ? paywallData.campaignWidget! : Container(),
+                      padding: EdgeInsets.only(left: 16, right: 16),
+                      child: Text(
+                        PaywallDataIW.of(context).subTitle ?? "",
+                        style: theme.textTheme.subtitle1,
+                      )),
+                  paywallData.campaignWidget != null
+                      ? paywallData.campaignWidget!
+                      : Container(),
                   MoritzSubRow(),
-                  Container(height: 16,),
+                  Container(
+                    height: 16,
+                  ),
                   MoritzBulletPoints(),
-                  Container(height: 16,),
+                  MoritzRestoreRow(),
+                  Container(
+                    height: 16,
+                  ),
                   LegalRow(theme, paywallData.tosData, paywallData.ppData)
                 ],
               ),

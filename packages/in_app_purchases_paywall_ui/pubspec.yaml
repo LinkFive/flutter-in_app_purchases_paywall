@@ -14,8 +14,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_inappwebview: ^5.3.2
-  in_app_purchases_interface: #^0.0.6
-    path: ../in_app_purchases_interface
+  in_app_purchases_interface: ^0.0.7
+    #path: ../in_app_purchases_interface
 
 dev_dependencies:
   flutter_test:

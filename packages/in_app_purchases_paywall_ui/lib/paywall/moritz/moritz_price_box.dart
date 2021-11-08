@@ -85,10 +85,11 @@ class MoritzPriceBox extends StatelessWidget {
                   : themeData.textTheme.subtitle1
                       ?.apply(color: themeData.primaryColor),
             ),
-            Text("/${data.monthText ?? "month"}", style: isLightBrightness
-                ? themeData.textTheme.subtitle2
-                : themeData.textTheme.subtitle2
-                ?.apply(color: themeData.primaryColor))
+            Text("/${data.monthText ?? "month"}",
+                style: isLightBrightness
+                    ? themeData.textTheme.subtitle2
+                    : themeData.textTheme.subtitle2
+                        ?.apply(color: themeData.primaryColor))
           ]),
     );
   }
@@ -118,10 +119,10 @@ class MoritzPriceBox extends StatelessWidget {
   /// Total Price
   Widget get priceWidget {
     TextStyle? textStyle = themeData.textTheme.subtitle1;
-    if(highlight){
+    if (highlight) {
       textStyle = textStyle?.apply(fontWeightDelta: 1);
     }
-    if(!isLightBrightness){
+    if (!isLightBrightness) {
       textStyle = textStyle?.apply(color: themeData.primaryColor);
     }
     return Container(

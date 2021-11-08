@@ -30,7 +30,8 @@ class MoritzBulletPoints extends StatelessWidget {
                             maxLines: 2,
                             style: theme.textTheme.bodyText1,
                           ),
-                          padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                          padding: EdgeInsets.only(
+                              left: 16, right: 16, top: 8, bottom: 8),
                         ),
                       ],
                     ),

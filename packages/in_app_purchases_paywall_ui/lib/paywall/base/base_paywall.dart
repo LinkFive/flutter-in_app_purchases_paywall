@@ -101,6 +101,8 @@ abstract class BasePaywallState<T extends BasePaywall> extends State<T> {
     super.initState();
   }
 
+  /// This will wrap either the purchase widget or Success widget
+  /// inside an inherited widget to pass the data to all children
   Widget get _dataWidget => PaywallDataIW(
         child: _getPurchaseOrSuccess,
         theme: widget.theme,

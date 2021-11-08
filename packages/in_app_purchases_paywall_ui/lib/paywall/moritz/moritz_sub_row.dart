@@ -22,12 +22,10 @@ class _MoritzSubRowState extends State<MoritzSubRow> {
 
   @override
   Widget build(BuildContext context) {
-    PaywallDataIW paywallData = PaywallDataIW.of(context);
     SubscriptionCallbackIW subscriptionData =
         SubscriptionCallbackIW.of(context)!;
     return LayoutBuilder(
       builder: (context, constraints) {
-        print(constraints.maxWidth);
         int size = subscriptionData.subscriptionListData?.length ?? 0;
         double width = constraints.maxWidth / size;
 
@@ -43,7 +41,9 @@ class _MoritzSubRowState extends State<MoritzSubRow> {
                             e.index == _selectedIndex, onSelectIndex))
                         .toList() ??
                     []),
-            Container(height: 8,),
+            Container(
+              height: 8,
+            ),
             SizedBox(
                 width: min(constraints.maxWidth, 340),
                 child: ElevatedButton(

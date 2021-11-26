@@ -83,13 +83,13 @@ class MoritzPriceBox extends StatelessWidget {
               style: isLightBrightness
                   ? themeData.textTheme.subtitle1
                   : themeData.textTheme.subtitle1
-                      ?.apply(color: themeData.primaryColor),
+                      ?.apply(color: highlight ? null : themeData.primaryColor),
             ),
             Text("/${data.monthText ?? "month"}",
                 style: isLightBrightness
                     ? themeData.textTheme.subtitle2
-                    : themeData.textTheme.subtitle2
-                        ?.apply(color: themeData.primaryColor))
+                    : themeData.textTheme.subtitle2?.apply(
+                        color: highlight ? null : themeData.primaryColor))
           ]),
     );
   }
@@ -106,7 +106,12 @@ class MoritzPriceBox extends StatelessWidget {
         alignment: Alignment.center,
         child: data.dealPercentage > 0
             ? Text("-${data.dealPercentage}%",
-                style: textStyle?.apply(color: themeData.primaryColor))
+                style: textStyle?.apply(
+                    color: highlight && !isLightBrightness
+                        ? null
+                        : themeData.primaryColor,
+                    fontWeightDelta: 2,
+                    fontStyle: FontStyle.italic))
             : null);
   }
 
@@ -123,7 +128,8 @@ class MoritzPriceBox extends StatelessWidget {
       textStyle = textStyle?.apply(fontWeightDelta: 1);
     }
     if (!isLightBrightness) {
-      textStyle = textStyle?.apply(color: themeData.primaryColor);
+      textStyle =
+          textStyle?.apply(color: highlight ? null : themeData.primaryColor);
     }
     return Container(
       margin: EdgeInsets.only(top: 16),
@@ -148,14 +154,21 @@ class MoritzPriceBox extends StatelessWidget {
         highlightedWidget,
         Container(
             decoration: BoxDecoration(
-                color: highlight
-                    ? themeData.primaryColor
-                    : themeData.backgroundColor),
+              color: highlight
+                  ? themeData.primaryColor
+                  : themeData.backgroundColor,
+              borderRadius: BorderRadius.circular(4),
+            ),
             child: Container(
               width: width - widthMargin - 8,
               margin: EdgeInsets.all(4),
               padding: EdgeInsets.only(top: 16, bottom: 16),
-              decoration: BoxDecoration(color: themeData.backgroundColor),
+              decoration: BoxDecoration(
+                color: highlight
+                    ? themeData.scaffoldBackgroundColor
+                    : themeData.backgroundColor,
+                borderRadius: BorderRadius.circular(4),
+              ),
               child: Column(
                 children: [
                   Text(
@@ -163,8 +176,10 @@ class MoritzPriceBox extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: themeData.brightness == Brightness.light
                         ? themeData.textTheme.headline6
-                        : themeData.textTheme.headline6
-                            ?.apply(color: themeData.primaryColor),
+                            ?.apply(fontWeightDelta: 2)
+                        : themeData.textTheme.headline6?.apply(
+                            color: highlight ? null : themeData.primaryColor,
+                            fontWeightDelta: 2),
                   ),
                   pricePerMonthWidget,
                   percentageWidget,

@@ -57,7 +57,8 @@ class _MoritzSubRowState extends State<MoritzSubRow> {
                             }
                           }
                         : null,
-                    child: Text(paywallData.continueText ?? "Continue"),
+                    child: Text(
+                        (paywallData.continueText ?? "Continue").toUpperCase()),
                     style: themeData.elevatedButtonTheme.style))
           ],
         );

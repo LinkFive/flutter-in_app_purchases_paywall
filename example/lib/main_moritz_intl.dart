@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         // custom icon theme
         iconTheme: IconThemeData(color: Colors.lightGreen),
         // your accentColor
-        colorScheme: ColorScheme.fromSwatch(accentColor: Colors.amber, brightness: Brightness.dark, primarySwatch: Colors.green, ),
+        colorScheme: ColorScheme.fromSwatch(accentColor: Colors.amber, brightness: Brightness.light, primarySwatch: Colors.green, ),
         backgroundColor: Colors.green.shade50,
         cardColor: Colors.grey.shade100,
         elevatedButtonTheme: ElevatedButtonThemeData(

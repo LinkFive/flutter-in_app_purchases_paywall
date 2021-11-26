@@ -1,3 +1,6 @@
+## 0.5.1
+Minor Design Fixes from Moritz himself.
+
 ## 0.5.0
 Moritz Paywall. SubscriptionData can now hold more data and can show the average price per month. 
 added a data inherited widget to not always pass the data through the widget-tree

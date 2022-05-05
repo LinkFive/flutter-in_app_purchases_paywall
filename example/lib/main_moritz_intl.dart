@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:in_app_purchases_intl/in_app_purchases_intl.dart';
 import 'package:in_app_purchases_paywall_ui/in_app_purchases_paywall_ui.dart';
@@ -17,40 +16,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+
         // primary color schema
         primarySwatch: Colors.green,
-        // set light or dark
-        // brightness: Brightness.dark,
+
         // custom icon theme
         iconTheme: IconThemeData(color: Colors.lightGreen),
-        // your accentColor
-        colorScheme: ColorScheme.fromSwatch(accentColor: Colors.amber, brightness: Brightness.light, primarySwatch: Colors.green, ),
-        backgroundColor: Colors.green.shade50,
-        cardColor: Colors.grey.shade100,
+
+        // color scheme
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber, brightness: Brightness.light),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(primary: Colors.green)
         )
-        /*
-        // and many more color options
-        appBarTheme: AppBarTheme(backgroundColor: Colors.white),
-        brightness: Brightness.light,
-        iconTheme: IconThemeData(color: Colors.red),
-        backgroundColor: Colors.purple,
-        textTheme: TextTheme(
-          button: TextStyle(color: Colors.blueGrey),
-          headline5: TextStyle(color: Colors.amber),
-          bodyText1: TextStyle(color: Colors.green),
-          bodyText2: TextStyle(color: Colors.blue)
-        ),
-        primaryColor: Colors.cyan,
-        primaryColorDark: Colors.green,
-        primaryColorLight: Colors.blue
-        accentColor: Colors.yellowAccent
-
-        textButtonTheme: TextButtonThemeData(
-          style: ElevatedButton.styleFrom(primary: Colors.purple, onPrimary: Colors.red),
-        )
-        */
       ),
       supportedLocales: [
         const Locale('en'),
@@ -77,24 +54,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final translations = PaywallL10NHelper.of(context);
     return PaywallScaffold(
-      // set a theme
-      theme: Theme.of(context),
       // appBarTitle for scaffold
       appBarTitle: "YourApp Premium",
       child: MoritzPaywall(
-          // set a theme
-          // theme: Theme.of(context),
-          // set a custom header
-          /*headerContainer: Container(
-              margin: EdgeInsets.all(16),
-              height: 100,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      alignment: FractionalOffset.center,
-                      image: AssetImage('assets/images/premium_bg.png'))),
-              child: Container()),*/
           // Title Bar
           title: "Go Premium",
           // SubTitle

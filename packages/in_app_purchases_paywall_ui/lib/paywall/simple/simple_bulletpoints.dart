@@ -1,15 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:in_app_purchases_paywall_ui/in_app_purchases_paywall_ui.dart';
 
 /// Simple bullet point widget
 class SimpleBulletPoints extends StatelessWidget {
-  final ThemeData theme;
-
   /// Bullet points
   final List<IconAndText> bulletPoints;
 
-  SimpleBulletPoints(this.theme, this.bulletPoints);
+  SimpleBulletPoints(this.bulletPoints);
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +19,13 @@ class SimpleBulletPoints extends StatelessWidget {
                     Icon(
                       bulletPoint.icon,
                       size: 24,
-                      color: theme.iconTheme.color,
+                      color: Theme.of(context).iconTheme.color,
                     ),
                     Padding(
                       child: Text(
                         bulletPoint.text,
                         maxLines: 2,
-                        style: theme.textTheme.bodyText1,
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                       padding: EdgeInsets.all(16),
                     ),

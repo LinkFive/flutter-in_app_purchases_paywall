@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/inherit/paywall_data_iw.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/moritz/moritz_bulletpoints.dart';
@@ -7,20 +6,27 @@ import 'package:in_app_purchases_paywall_ui/paywall/moritz/moritz_sub_row.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/legal_row.dart';
 
 class MoritzPaywallPurchase extends StatelessWidget {
-  MoritzPaywallPurchase();
+  MoritzPaywallPurchase({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     PaywallDataIW paywallData = PaywallDataIW.of(context);
-    ThemeData theme = paywallData.theme ?? Theme.of(context);
+    ThemeData theme = Theme.of(context);
     return Container(
-      decoration: BoxDecoration(color: theme.primaryColor),
+      decoration: BoxDecoration(
+
+          ///
+          /// Setting the color with the same logic as [AppBar.backgroundColor]
+          ///
+          color: theme.brightness == Brightness.dark
+              ? theme.colorScheme.surface
+              : theme.appBarTheme.backgroundColor ?? theme.colorScheme.primary),
       child: ListView(
         shrinkWrap: true,
         primary: false,
         children: [
           Card(
-            color: theme.scaffoldBackgroundColor,
+            color: theme.cardColor,
             margin: EdgeInsets.only(left: 0, right: 0, top: 8, bottom: 0),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
@@ -38,9 +44,8 @@ class MoritzPaywallPurchase extends StatelessWidget {
                         PaywallDataIW.of(context).subTitle ?? "",
                         style: theme.textTheme.subtitle1,
                       )),
-                  paywallData.campaignWidget != null
-                      ? paywallData.campaignWidget!
-                      : Container(),
+                  if (paywallData.campaignWidget != null)
+                    paywallData.campaignWidget!,
                   MoritzSubRow(),
                   Container(
                     height: 16,

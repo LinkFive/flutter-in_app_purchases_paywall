@@ -5,12 +5,11 @@ import 'package:in_app_purchases_paywall_ui/paywall/inherit/subscription_callbac
 /// Price Box to show subscriptions
 class SubscriptionPriceBox extends StatelessWidget {
   final SubscriptionData data;
-  final ThemeData theme;
   final bool shouldBreakText;
   final int mx;
   final bool expandItems;
 
-  SubscriptionPriceBox(this.data, this.theme, this.shouldBreakText,
+  SubscriptionPriceBox(this.data, this.shouldBreakText,
       {this.mx = 1, this.expandItems = true});
 
   Widget _expanded(BuildContext context) {
@@ -23,7 +22,7 @@ class SubscriptionPriceBox extends StatelessWidget {
       child: Ink(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              color: theme.primaryColorDark),
+              color: Theme.of(context).colorScheme.primary),
           child: InkWell(
               onTap: () {
                 SubscriptionCallbackIW.of(context)?.onPurchase(data);
@@ -34,7 +33,8 @@ class SubscriptionPriceBox extends StatelessWidget {
                       margin: EdgeInsets.all(1),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                          color: theme.primaryColorLight),
+                          color:
+                              Theme.of(context).colorScheme.primaryContainer),
                       child: Stack(
                         children: [
                           Align(
@@ -45,7 +45,8 @@ class SubscriptionPriceBox extends StatelessWidget {
                                 children: [
                                   Text(
                                     data.durationTitle,
-                                    style: theme.textTheme.bodyText1,
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1,
                                   ),
                                   Container(
                                     padding: EdgeInsets.all(8),
@@ -57,7 +58,8 @@ class SubscriptionPriceBox extends StatelessWidget {
                                     child: Text(
                                       "${data.price} /${shouldBreakText ? "\n" : " "}${data.durationShort.replaceAll(" ", "\u{00A0}")}",
                                       textAlign: TextAlign.center,
-                                      style: theme.textTheme.bodyText2,
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2,
                                     ),
                                   )
                                 ],
@@ -69,12 +71,20 @@ class SubscriptionPriceBox extends StatelessWidget {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(8.0)),
-                                      color: theme.accentColor),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .tertiary),
                                   child: Padding(
                                     padding: EdgeInsets.all(4),
                                     child: Text(
                                       "-${data.dealPercentage}%",
-                                      style: theme.accentTextTheme.caption,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .caption
+                                          ?.apply(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onTertiary),
                                     ),
                                   ))
                               : Container(),

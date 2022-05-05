@@ -8,8 +8,8 @@ import 'package:in_app_purchases_paywall_ui/paywall/simple/simple_bulletpoints.d
 import 'package:in_app_purchases_paywall_ui/paywall/simple/subscription_row.dart';
 
 /// This Widget is without a scaffold. Use SimplePayWallScaffold if you want to have an appBar
+///ignore: must_be_immutable
 class SimplePaywallPurchase extends StatelessWidget {
-  final ThemeData theme;
   final String? title;
   final String? subTitle;
   final TextAndUrl? tosData;
@@ -21,7 +21,6 @@ class SimplePaywallPurchase extends StatelessWidget {
   bool isSubscriptionLoading = false;
 
   SimplePaywallPurchase({
-    required this.theme,
     this.title,
     this.subTitle,
     this.tosData,
@@ -52,7 +51,7 @@ class SimplePaywallPurchase extends StatelessWidget {
         padding: EdgeInsets.only(left: 16, top: 32, right: 16, bottom: 16),
         child: Text(
           title ?? "Go Premium",
-          style: theme.textTheme.headline5,
+          style: Theme.of(context).textTheme.headline5,
         ),
       ),
     );
@@ -61,7 +60,8 @@ class SimplePaywallPurchase extends StatelessWidget {
     if (subTitle != null) {
       elements.add(Container(
           margin: EdgeInsets.only(left: 16, right: 16),
-          child: Text(subTitle!, style: theme.textTheme.bodyText2)));
+          child:
+              Text(subTitle!, style: Theme.of(context).textTheme.bodyText2)));
     }
 
     elements.add(Container(
@@ -69,7 +69,7 @@ class SimplePaywallPurchase extends StatelessWidget {
     ));
 
     if (bulletPoints != null) {
-      elements.add(SimpleBulletPoints(theme, bulletPoints!));
+      elements.add(SimpleBulletPoints(bulletPoints!));
     }
 
     if (campaignWidget != null) {
@@ -83,8 +83,7 @@ class SimplePaywallPurchase extends StatelessWidget {
     if (inheritedWidget.subscriptionListData != null) {
       elements.add(SubscriptionRow(
           subscriptionListData: inheritedWidget.subscriptionListData!,
-          isSubscriptionLoading: isSubscriptionLoading,
-          theme: theme));
+          isSubscriptionLoading: isSubscriptionLoading));
     }
     elements.add(Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -93,7 +92,7 @@ class SimplePaywallPurchase extends StatelessWidget {
           child: Text(
             restoreText ?? "Restore purchase",
           ),
-          style: theme.textButtonTheme.style,
+          style: Theme.of(context).textButtonTheme.style,
           onPressed: () {
             SubscriptionCallbackIW.of(context)?.onRestoreTap();
           },
@@ -104,7 +103,7 @@ class SimplePaywallPurchase extends StatelessWidget {
     elements.add(Container(
       padding: EdgeInsets.all(8),
     ));
-    elements.add(LegalRow(theme, tosData, ppData));
+    elements.add(LegalRow(Theme.of(context), tosData, ppData));
 
     elements.add(Container(
       padding: EdgeInsets.all(16),

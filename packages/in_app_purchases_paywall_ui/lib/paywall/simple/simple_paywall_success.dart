@@ -2,30 +2,19 @@ import 'package:flutter/material.dart';
 
 /// This Widget is without a scaffold. Use SimplePayWallScaffold if you want to have an appBar
 class SimplePaywallSuccess extends StatelessWidget {
-  final ThemeData theme;
   final Widget? headerContainer;
   final String? successTitle;
   final String? successSubTitle;
   final Widget? successWidget;
 
   SimplePaywallSuccess(
-      {required this.theme,
-      this.headerContainer,
+      {this.headerContainer,
       this.successTitle,
       this.successSubTitle,
       this.successWidget});
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: _content,
-      primary: false,
-      shrinkWrap: true,
-      physics: ClampingScrollPhysics(),
-    );
-  }
-
-  List<Widget> get _content {
     List<Widget> elements = [];
 
     elements.add(
@@ -34,7 +23,7 @@ class SimplePaywallSuccess extends StatelessWidget {
         child: Icon(
           Icons.check_circle,
           size: 48,
-          color: theme.iconTheme.color,
+          color: Theme.of(context).iconTheme.color,
         ),
       ),
     );
@@ -46,7 +35,7 @@ class SimplePaywallSuccess extends StatelessWidget {
             padding: EdgeInsets.only(left: 16, top: 8, right: 16, bottom: 8),
             child: Text(
               successTitle!,
-              style: theme.textTheme.headline5,
+              style: Theme.of(context).textTheme.headline5,
             ),
           ),
         ),
@@ -59,7 +48,7 @@ class SimplePaywallSuccess extends StatelessWidget {
             padding: EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 0),
             child: Text(
               successSubTitle!,
-              style: theme.textTheme.bodyText2,
+              style: Theme.of(context).textTheme.bodyText2,
             ),
           ),
         ),
@@ -69,6 +58,11 @@ class SimplePaywallSuccess extends StatelessWidget {
       elements.add(successWidget!);
     }
 
-    return elements;
+    return ListView(
+      children: elements,
+      primary: false,
+      shrinkWrap: true,
+      physics: ClampingScrollPhysics(),
+    );
   }
 }

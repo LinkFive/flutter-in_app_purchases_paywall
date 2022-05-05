@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:in_app_purchases_paywall_ui/in_app_purchases_paywall_ui.dart';
 
 class MoritzPriceBox extends StatelessWidget {
-  final ThemeData themeData;
   final SubscriptionData data;
   final double width;
   final bool highlight;
@@ -11,15 +9,74 @@ class MoritzPriceBox extends StatelessWidget {
 
   /// used to change text color inside the box to primary.
   /// Otherwise the text color is too bright on the box
-  final bool isLightBrightness;
 
   final widthMargin = 8;
 
-  MoritzPriceBox(
-      this.themeData, this.data, this.width, this.highlight, this.onSelectIndex)
-      : isLightBrightness = themeData.brightness == Brightness.light {}
+  MoritzPriceBox(this.data, this.width, this.highlight, this.onSelectIndex);
 
-  Widget get highlightedWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        onSelectIndex(data.index);
+      },
+      child: Column(children: [
+        Container(
+          width: width,
+          height: 16,
+        ),
+        _HighlightedWidget(data, width, widthMargin),
+        Container(
+            decoration: BoxDecoration(
+              color: highlight
+                  ? Theme.of(context).colorScheme.primary
+                  : Theme.of(context).colorScheme.primaryContainer,
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Container(
+              width: width - widthMargin - 8,
+              margin: EdgeInsets.all(4),
+              padding: EdgeInsets.only(top: 16, bottom: 16),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primaryContainer,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    "${data.durationShort.replaceAll(" ", "\n")}",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headline6?.apply(
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                        fontWeightDelta: 2),
+                  ),
+                  _PricePerMonthWidget(data, highlight),
+                  _PercentageWidget(data, highlight),
+                  // divider
+                  Container(
+                    decoration:
+                        BoxDecoration(color: Theme.of(context).dividerColor),
+                    width: width / 2,
+                    height: 1,
+                  ),
+                  _PriceWidget(data, highlight)
+                ],
+              ),
+            ))
+      ]),
+    );
+  }
+}
+
+class _HighlightedWidget extends StatelessWidget {
+  final SubscriptionData data;
+  final double width;
+  final int widthMargin;
+
+  _HighlightedWidget(this.data, this.width, this.widthMargin);
+
+  @override
+  Widget build(BuildContext context) {
     if (data.highlightText == null) {
       return Container(
         height: 30,
@@ -27,7 +84,7 @@ class MoritzPriceBox extends StatelessWidget {
     }
     return Container(
       decoration: ShapeDecoration(
-        color: themeData.primaryColor,
+        color: Theme.of(context).colorScheme.primary,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(8), topRight: Radius.circular(8))),
@@ -37,16 +94,25 @@ class MoritzPriceBox extends StatelessWidget {
       child: Align(
         child: Text(
           data.highlightText!,
-          style:
-              themeData.textTheme.bodyText1?.apply(color: themeData.cardColor),
+          style: Theme.of(context)
+              .textTheme
+              .bodyText1
+              ?.apply(color: Theme.of(context).colorScheme.onPrimary),
         ),
         alignment: Alignment.center,
       ),
     );
   }
+}
 
-  /// calculates the price per Month
-  Widget get pricePerMonthWidget {
+class _PricePerMonthWidget extends StatelessWidget {
+  final SubscriptionData data;
+  final bool highlight;
+
+  _PricePerMonthWidget(this.data, this.highlight);
+
+  @override
+  Widget build(BuildContext context) {
     // if some of those are missing, show nothing
     if (data.rawPrice == null ||
         data.currencySymbol == null ||
@@ -80,57 +146,33 @@ class MoritzPriceBox extends StatelessWidget {
           children: [
             Text(
               "${pricePerMonth.toStringAsFixed(2)}${data.currencySymbol}",
-              style: isLightBrightness
-                  ? themeData.textTheme.subtitle1
-                  : themeData.textTheme.subtitle1
-                      ?.apply(color: highlight ? null : themeData.primaryColor),
+              style: Theme.of(context).textTheme.subtitle1?.apply(
+                  color: Theme.of(context).colorScheme.onPrimaryContainer),
             ),
             Text("/${data.monthText ?? "month"}",
-                style: isLightBrightness
-                    ? themeData.textTheme.subtitle2
-                    : themeData.textTheme.subtitle2?.apply(
-                        color: highlight ? null : themeData.primaryColor))
+                style: Theme.of(context).textTheme.subtitle2?.apply(
+                    color: Theme.of(context).colorScheme.onPrimaryContainer))
           ]),
     );
   }
+}
 
-  Widget get percentageWidget {
-    TextStyle? textStyle = themeData.textTheme.headline6;
-    if (data.dealPercentage >= 50) {
-      textStyle = themeData.textTheme.headline4?.apply(fontWeightDelta: 3);
-    } else if (data.dealPercentage >= 30) {
-      textStyle = themeData.textTheme.headline5?.apply(fontWeightDelta: 1);
-    }
-    return Container(
-        height: 70,
-        alignment: Alignment.center,
-        child: data.dealPercentage > 0
-            ? Text("-${data.dealPercentage}%",
-                style: textStyle?.apply(
-                    color: highlight && !isLightBrightness
-                        ? null
-                        : themeData.primaryColor,
-                    fontWeightDelta: 2,
-                    fontStyle: FontStyle.italic))
-            : null);
-  }
+class _PriceWidget extends StatelessWidget {
+  final SubscriptionData data;
+  final bool highlight;
 
-  Widget get dividerWidget => Container(
-        decoration: BoxDecoration(color: Colors.grey.shade400),
-        width: width / 2,
-        height: 1,
-      );
+  _PriceWidget(this.data, this.highlight);
 
-  /// Total Price
-  Widget get priceWidget {
-    TextStyle? textStyle = themeData.textTheme.subtitle1;
+  @override
+  Widget build(BuildContext context) {
+    TextStyle? textStyle = Theme.of(context)
+        .textTheme
+        .subtitle1
+        ?.apply(color: Theme.of(context).colorScheme.onPrimaryContainer);
     if (highlight) {
-      textStyle = textStyle?.apply(fontWeightDelta: 1);
+      textStyle = textStyle?.apply(fontWeightDelta: 2);
     }
-    if (!isLightBrightness) {
-      textStyle =
-          textStyle?.apply(color: highlight ? null : themeData.primaryColor);
-    }
+
     return Container(
       margin: EdgeInsets.only(top: 16),
       child: Text(
@@ -139,56 +181,33 @@ class MoritzPriceBox extends StatelessWidget {
       ),
     );
   }
+}
+
+class _PercentageWidget extends StatelessWidget {
+  final SubscriptionData data;
+  final bool highlight;
+
+  _PercentageWidget(this.data, this.highlight);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        onSelectIndex(data.index);
-      },
-      child: Column(children: [
-        Container(
-          width: width,
-          height: 16,
-        ),
-        highlightedWidget,
-        Container(
-            decoration: BoxDecoration(
-              color: highlight
-                  ? themeData.primaryColor
-                  : themeData.backgroundColor,
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: Container(
-              width: width - widthMargin - 8,
-              margin: EdgeInsets.all(4),
-              padding: EdgeInsets.only(top: 16, bottom: 16),
-              decoration: BoxDecoration(
-                color: highlight
-                    ? themeData.scaffoldBackgroundColor
-                    : themeData.backgroundColor,
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    "${data.durationShort.replaceAll(" ", "\n")}",
-                    textAlign: TextAlign.center,
-                    style: themeData.brightness == Brightness.light
-                        ? themeData.textTheme.headline6
-                            ?.apply(fontWeightDelta: 2)
-                        : themeData.textTheme.headline6?.apply(
-                            color: highlight ? null : themeData.primaryColor,
-                            fontWeightDelta: 2),
-                  ),
-                  pricePerMonthWidget,
-                  percentageWidget,
-                  dividerWidget,
-                  priceWidget
-                ],
-              ),
-            ))
-      ]),
-    );
+    TextStyle? textStyle = Theme.of(context).textTheme.headline6;
+    if (data.dealPercentage >= 50) {
+      textStyle =
+          Theme.of(context).textTheme.headline5?.apply(fontWeightDelta: 3);
+    } else if (data.dealPercentage >= 30) {
+      textStyle =
+          Theme.of(context).textTheme.headline6?.apply(fontWeightDelta: 1);
+    }
+    textStyle = textStyle?.apply(
+        color: Theme.of(context).colorScheme.primary,
+        fontWeightDelta: 2,
+        fontStyle: FontStyle.italic);
+    return Container(
+        height: 70,
+        alignment: Alignment.center,
+        child: data.dealPercentage > 0
+            ? Text("-${data.dealPercentage}%", style: textStyle)
+            : null);
   }
 }

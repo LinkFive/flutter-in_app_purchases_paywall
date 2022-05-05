@@ -16,8 +16,7 @@ class LegalRow extends StatelessWidget {
     await browser.open(
         url: Uri.parse(tosData!.url),
         options: ChromeSafariBrowserClassOptions(
-            android:
-                AndroidChromeCustomTabsOptions(addDefaultShareMenuItem: false),
+            android: AndroidChromeCustomTabsOptions(),
             ios: IOSSafariOptions(barCollapsingEnabled: true)));
   }
 
@@ -26,8 +25,7 @@ class LegalRow extends StatelessWidget {
     await browser.open(
         url: Uri.parse(ppData!.url),
         options: ChromeSafariBrowserClassOptions(
-            android:
-                AndroidChromeCustomTabsOptions(addDefaultShareMenuItem: false),
+            android: AndroidChromeCustomTabsOptions(),
             ios: IOSSafariOptions(barCollapsingEnabled: true)));
   }
 

@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/inherit/paywall_data_iw.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/inherit/subscription_callback_iw.dart';
@@ -30,15 +29,14 @@ class _MoritzSubRowState extends State<MoritzSubRow> {
         double width = constraints.maxWidth / size;
 
         PaywallDataIW paywallData = PaywallDataIW.of(context);
-        ThemeData themeData = paywallData.theme ?? Theme.of(context);
 
         return Column(
           children: [
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: subscriptionData.subscriptionListData
-                        ?.map((e) => MoritzPriceBox(themeData, e, width,
-                            e.index == _selectedIndex, onSelectIndex))
+                        ?.map((e) => MoritzPriceBox(
+                            e, width, e.index == _selectedIndex, onSelectIndex))
                         .toList() ??
                     []),
             Container(
@@ -59,7 +57,7 @@ class _MoritzSubRowState extends State<MoritzSubRow> {
                         : null,
                     child: Text(
                         (paywallData.continueText ?? "Continue").toUpperCase()),
-                    style: themeData.elevatedButtonTheme.style))
+                    style: Theme.of(context).elevatedButtonTheme.style))
           ],
         );
       },

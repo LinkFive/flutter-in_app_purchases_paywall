@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:in_app_purchases_interface/interface/purchase_state_stream_interface.dart';
-import 'package:in_app_purchases_interface/model/purchase_state.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/default/default_purchase_handler.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/inherit/paywall_data_iw.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/inherit/subscription_callback_iw.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/icon_and_text.dart';
 import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/text_and_url.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/simple/simple_paywall_purchase.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/simple/simple_paywall_success.dart';
 
 /// This Widget is without a scaffold. Wrap it with PayWallScaffold
 /// if you want to include an appBar to your screen
+///ignore: must_be_immutable
 abstract class BasePaywall extends StatefulWidget {
-  final ThemeData? theme;
-
   final String? title;
   final String? subTitle;
   final String? continueText;
@@ -38,8 +33,7 @@ abstract class BasePaywall extends StatefulWidget {
   /// Define the Design through the Theme you apply in your
   /// root theme: ThemeData(...)
   BasePaywall(
-      {this.theme,
-      this.title,
+      {this.title,
       this.subTitle,
       this.continueText,
       this.tosData,
@@ -68,14 +62,13 @@ abstract class BasePaywall extends StatefulWidget {
     // use this callbackInterface
     this.callbackInterface = callbackInterface ?? defaultHandler;
 
-    // if purchaseState is null &
-    // callbackInterface implements the purchase State interface
+    // if callbackInterface implements the purchase State interface
     // set callbackInterface as PurchaseStream
     if (purchaseStateStreamInterface == null &&
         this.callbackInterface is PurchaseStateStreamInterface) {
       // set purchaseStream to callbackInterface
       this.purchaseStateStreamInterface =
-          callbackInterface as PurchaseStateStreamInterface;
+          this.callbackInterface as PurchaseStateStreamInterface;
     } else {
       // otherwise set the default handler
       this.purchaseStateStreamInterface =
@@ -105,7 +98,6 @@ abstract class BasePaywallState<T extends BasePaywall> extends State<T> {
   /// inside an inherited widget to pass the data to all children
   Widget get _dataWidget => PaywallDataIW(
         child: _getPurchaseOrSuccess,
-        theme: widget.theme,
         title: widget.title,
         subTitle: widget.subTitle,
         continueText: widget.continueText,
@@ -133,8 +125,7 @@ abstract class BasePaywallState<T extends BasePaywall> extends State<T> {
         }
 
         // use the theme of the context if not set
-        ThemeData _theme =
-            widget.theme != null ? widget.theme! : Theme.of(context);
+        ThemeData _theme = Theme.of(context);
 
         // if State is purchased
         if (snapshot.hasData && snapshot.data == PurchaseState.PURCHASED) {

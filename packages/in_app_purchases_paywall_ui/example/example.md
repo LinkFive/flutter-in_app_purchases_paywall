@@ -2,6 +2,8 @@
 
 ## Import
 ```dart
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:in_app_purchases_paywall_ui/in_app_purchases_paywall_ui.dart';
@@ -17,48 +19,6 @@ void main() {
 ## App Widget
 
 ```dart
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // primary color schema
-        primarySwatch: Colors.green,
-        // set light or dark
-        brightness: Brightness.light,
-        // custom icon theme
-        iconTheme: IconThemeData(color: Colors.lightGreen),
-        // your accentColor
-        accentColor: Colors.amber,
-        /*
-        // and many more color options
-        appBarTheme: AppBarTheme(backgroundColor: Colors.white),
-        brightness: Brightness.light,
-        iconTheme: IconThemeData(color: Colors.red),
-        backgroundColor: Colors.purple,
-        textTheme: TextTheme(
-          button: TextStyle(color: Colors.blueGrey),
-          headline5: TextStyle(color: Colors.amber),
-          bodyText1: TextStyle(color: Colors.green),
-          bodyText2: TextStyle(color: Colors.blue)
-        ),
-        primaryColor: Colors.cyan,
-        primaryColorDark: Colors.green,
-        primaryColorLight: Colors.blue
-        accentColor: Colors.yellowAccent
-
-        textButtonTheme: TextButtonThemeData(
-          style: ElevatedButton.styleFrom(primary: Colors.purple, onPrimary: Colors.red),
-        )
-        */
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
-
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -71,14 +31,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return PaywallScaffold(
-      // set a theme
-      theme: Theme.of(context),
       // appBarTitle for scaffold
       appBarTitle: "Premium",
       child: SimplePaywall(
-        // set a theme
-          theme: Theme.of(context),
-          // set a custom header
+        // set a custom header
           headerContainer: Container(
               margin: EdgeInsets.all(16),
               height: 100,
@@ -156,7 +112,6 @@ class _MyHomePageState extends State<MyHomePage> {
           TextAndUrl("Privacy Policy", "https://www.linkfive.io/privacy"),
           // add a custom campaign widget
           campaignWidget: CampaignBanner(
-            theme: Theme.of(context),
             headline: "🥳 Summer Special Sale",
             subContent: Container(
                 padding: EdgeInsets.all(8),

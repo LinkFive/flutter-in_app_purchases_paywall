@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
 import 'package:in_app_purchases_paywall_ui/in_app_purchases_paywall_ui.dart';
 
 /// Inherited Widget to pass subscriptions and callbackInterface
 class PaywallDataIW extends InheritedWidget {
   /// All subscription Data
-  final ThemeData? theme;
   final String? title;
   final String? subTitle;
   final String? continueText;
@@ -20,7 +18,6 @@ class PaywallDataIW extends InheritedWidget {
 
   PaywallDataIW({
     required Widget child,
-    this.theme,
     this.title,
     this.subTitle,
     this.continueText,

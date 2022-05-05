@@ -1,3 +1,11 @@
+##0.6.0
+
+* Use Theme.of(context) instead of passing a Theme now.
+* Bugfixing a NPE when passing no parameters
+* Flutter update to 2.10.4
+
+Check out our other Flutter plugins on https://www.linkfive.io
+
 ## 0.5.1
 Minor Design Fixes from Moritz himself.
 

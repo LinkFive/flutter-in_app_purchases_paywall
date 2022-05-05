@@ -1,3 +1,11 @@
+## 0.0.8
+* switching from print to log
+* clean up code
+* update to flutter 2.10.4
+* no major change in this version
+
+Check out our other Flutter plugins on https://www.linkfive.io
+
 ## 0.0.7
 SubscriptionData enhanced: added: rawPrice, currencySymbol, duration and monthText. 
 if you pass the data, some uis will show the average price per month. (everything is optional) 

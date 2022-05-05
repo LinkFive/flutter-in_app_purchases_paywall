@@ -1,3 +1,9 @@
+import 'dart:developer';
+
+/// Logger used by LinkFive applications
+///
+/// This class with change in the future and will be replaced by the official Logger
+///
 class LinkFiveLogger {
   static LinkFiveLogLevel _logLevel = LinkFiveLogLevel.DEBUG;
 
@@ -9,31 +15,31 @@ class LinkFiveLogger {
 
   static t(dynamic msg) {
     if (_logLevel.level() <= 0) {
-      print("LinkFive: ${msg?.toString()}");
+      log("LinkFive: ${msg?.toString()}");
     }
   }
 
   static d(dynamic msg) {
     if (_logLevel.level() <= 1) {
-      print("LinkFive: ${msg?.toString()}");
+      log("LinkFive: ${msg?.toString()}");
     }
   }
 
   static i(dynamic msg) {
     if (_logLevel.level() <= 2) {
-      print("LinkFive: ${msg?.toString()}");
+      log("LinkFive: ${msg?.toString()}");
     }
   }
 
   static w(dynamic msg) {
     if (_logLevel.level() <= 3) {
-      print("LinkFive: ${msg?.toString()}");
+      log("LinkFive: ${msg?.toString()}");
     }
   }
 
   static e(dynamic msg) {
     if (_logLevel.level() <= 4) {
-      print("LinkFive: ${msg?.toString()}");
+      log("LinkFive: ${msg?.toString()}");
     }
   }
 }

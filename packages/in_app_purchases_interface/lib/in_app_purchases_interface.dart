@@ -1,3 +1,11 @@
+///
+/// This plugin is made by LinkFive - Flutter Subscription Management https://www.linkfive.io/
+///
+/// It is mainly used to support inter-plugin communication by sharing the same
+/// interface and classes
+///
+/// Check out our Website for other plugins.
+///
 library in_app_purchases_interface;
 
 export 'model/subscription_data.dart';

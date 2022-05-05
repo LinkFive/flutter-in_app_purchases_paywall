@@ -24,7 +24,7 @@ class PaywallLocalizationsEn extends PaywallLocalizations {
   String get year => 'year';
 
   @override
-  String nyear(int count) {
+  String nyear(num count) {
     return intl.Intl.pluralLogic(
       count,
       locale: localeName,
@@ -37,7 +37,7 @@ class PaywallLocalizationsEn extends PaywallLocalizations {
   String get month => 'month';
 
   @override
-  String nmonth(int count) {
+  String nmonth(num count) {
     return intl.Intl.pluralLogic(
       count,
       locale: localeName,
@@ -50,7 +50,7 @@ class PaywallLocalizationsEn extends PaywallLocalizations {
   String get week => 'week';
 
   @override
-  String nweek(int count) {
+  String nweek(num count) {
     return intl.Intl.pluralLogic(
       count,
       locale: localeName,
@@ -63,7 +63,7 @@ class PaywallLocalizationsEn extends PaywallLocalizations {
   String get day => 'day';
 
   @override
-  String nday(int count) {
+  String nday(num count) {
     return intl.Intl.pluralLogic(
       count,
       locale: localeName,
@@ -77,4 +77,7 @@ class PaywallLocalizationsEn extends PaywallLocalizations {
 
   @override
   String get most_popular => 'Most popular';
+
+  @override
+  String get restore_purchase => 'Restore purchase';
 }

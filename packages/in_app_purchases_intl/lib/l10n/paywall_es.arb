@@ -39,5 +39,6 @@
   "most_popular": "Más populares",
   "@most_popular": {
     "description": "A banner usually to show which subscription is most popular. this should be short."
-  }
+  },
+  "restore_purchase": "Restaurar la compra"
 }

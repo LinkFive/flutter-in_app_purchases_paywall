@@ -139,7 +139,7 @@ abstract class PaywallLocalizations {
   ///
   /// In en, this message translates to:
   /// **'{count,plural, =1{1 year} other{{count} years}}'**
-  String nyear(int count);
+  String nyear(num count);
 
   /// No description provided for @month.
   ///
@@ -151,7 +151,7 @@ abstract class PaywallLocalizations {
   ///
   /// In en, this message translates to:
   /// **'{count,plural, =1{1 month} other{{count} months}}'**
-  String nmonth(int count);
+  String nmonth(num count);
 
   /// No description provided for @week.
   ///
@@ -163,7 +163,7 @@ abstract class PaywallLocalizations {
   ///
   /// In en, this message translates to:
   /// **'{count,plural, =1{1 week} other{{count} weeks}}'**
-  String nweek(int count);
+  String nweek(num count);
 
   /// No description provided for @day.
   ///
@@ -175,7 +175,7 @@ abstract class PaywallLocalizations {
   ///
   /// In en, this message translates to:
   /// **'{count,plural, =1{1 day} other{{count} days}}'**
-  String nday(int count);
+  String nday(num count);
 
   /// A button to select a premium subscription
   ///
@@ -188,6 +188,12 @@ abstract class PaywallLocalizations {
   /// In en, this message translates to:
   /// **'Most popular'**
   String get most_popular;
+
+  /// No description provided for @restore_purchase.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore purchase'**
+  String get restore_purchase;
 }
 
 class _PaywallLocalizationsDelegate
@@ -197,7 +203,7 @@ class _PaywallLocalizationsDelegate
   @override
   Future<PaywallLocalizations> load(Locale locale) {
     return SynchronousFuture<PaywallLocalizations>(
-        _lookupPaywallLocalizations(locale));
+        lookupPaywallLocalizations(locale));
   }
 
   @override
@@ -208,8 +214,8 @@ class _PaywallLocalizationsDelegate
   bool shouldReload(_PaywallLocalizationsDelegate old) => false;
 }
 
-PaywallLocalizations _lookupPaywallLocalizations(Locale locale) {
-// Lookup logic when only language code is specified.
+PaywallLocalizations lookupPaywallLocalizations(Locale locale) {
+  // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'de':
       return PaywallLocalizationsDe();

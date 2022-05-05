@@ -1,4 +1,4 @@
-##0.6.0
+## 0.6.0
 
 * Use Theme.of(context) instead of passing a Theme now.
 * Bugfixing a NPE when passing no parameters

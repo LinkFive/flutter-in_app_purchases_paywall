@@ -51,7 +51,7 @@ class MoritzPaywallPurchase extends StatelessWidget {
                     height: 16,
                   ),
                   MoritzBulletPoints(),
-                  MoritzRestoreRow(),
+                  MoritzRestoreRow(restoreText: paywallData.restoreText),
                   Container(
                     height: 16,
                   ),

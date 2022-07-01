@@ -92,21 +92,21 @@ packages:
       name: in_app_purchases_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.7"
+    version: "0.0.8"
   in_app_purchases_intl:
     dependency: "direct main"
     description:
       path: "../packages/in_app_purchases_intl"
       relative: true
     source: path
-    version: "0.0.3"
+    version: "0.0.4"
   in_app_purchases_paywall_ui:
     dependency: "direct main"
     description:
       path: "../packages/in_app_purchases_paywall_ui"
       relative: true
     source: path
-    version: "0.5.1"
+    version: "0.6.0"
   intl:
     dependency: "direct main"
     description:

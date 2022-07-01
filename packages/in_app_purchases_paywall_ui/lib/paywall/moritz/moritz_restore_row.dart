@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/inherit/subscription_callback_iw.dart';
 
 class MoritzRestoreRow extends StatelessWidget {
+  final String? restoreText;
+
+  MoritzRestoreRow({this.restoreText = "Restore"});
+
   @override
   Widget build(BuildContext context) {
     SubscriptionCallbackIW subscriptionData =
@@ -10,6 +14,6 @@ class MoritzRestoreRow extends StatelessWidget {
         onPressed: () {
           subscriptionData.onRestoreTap();
         },
-        child: Text("Restore", style: Theme.of(context).textTheme.button));
+        child: Text(restoreText!, style: Theme.of(context).textTheme.button));
   }
 }

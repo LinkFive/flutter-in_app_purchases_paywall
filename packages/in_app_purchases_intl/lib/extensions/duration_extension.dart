@@ -15,6 +15,12 @@ extension DurationExtension on String {
             durationTextNumber: paywallIntl.nweek(1),
             durationType: paywallIntl.week,
             durationNumber: 1);
+      case "P4W":
+        return DurationStrings(
+            durationText: paywallIntl.weekly,
+            durationTextNumber: paywallIntl.nweek(4),
+            durationType: paywallIntl.week,
+            durationNumber: 4);
       case "P1M":
         return DurationStrings(
             durationText: paywallIntl.monthly,

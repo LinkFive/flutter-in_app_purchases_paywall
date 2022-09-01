@@ -40,5 +40,11 @@
   "@most_popular": {
     "description": "A banner usually to show which subscription is most popular. this should be short."
   },
-  "restore_purchase": "Restaurar la compra"
+  "restore_purchase": "Restaurar la compra",
+  "manage_subscriptions_title": "Gestionar las suscripciones",
+  "manage_subscription_google_play_title":  "Gestionar las suscripciones en Google Play",
+  "manage_subscription_google_play_button": "Suscripciones a Google Play",
+  "subscription_options_title": "Opciones de suscripción",
+  "premium": "Premium",
+  "app_bar_default_title": "Go Premium"
 }

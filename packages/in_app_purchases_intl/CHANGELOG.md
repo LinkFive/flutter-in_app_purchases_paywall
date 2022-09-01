@@ -1,3 +1,6 @@
+## 0.0.5
+* added some more strings
+
 ## 0.0.4
 * update to flutter 2.10.4
 * added restore purchase text

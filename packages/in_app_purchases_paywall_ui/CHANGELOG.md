@@ -1,3 +1,9 @@
+## 0.7.0
+Starting September 30, 2022, every app must include a deep link to the store's subscription page. We have added the link on the success page.
+
+* We added the possibility to add activePlanList to the widget. This will show a deeplink to the appstore page on the success page
+* We also added the dependency in_app_purchases_intl for fallback strings.
+
 ## 0.6.0
 
 * Use Theme.of(context) instead of passing a Theme now.

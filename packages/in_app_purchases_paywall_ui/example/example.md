@@ -95,6 +95,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 )
               ])),
+          activePlanList: [
+            // links to the subscription overview on Android devices:
+            GooglePlayGeneralActivePlan(),
+
+            // links to the specific subscription on Android devices: 
+            GooglePlayActivePlan("yearly_pro", "com.tnx.packed"),
+
+            // links to the subscription overview on iOS devices
+            AppleAppStoreActivePlan(),
+          ],
           // set true if subscriptions are loading
           isSubscriptionLoading: false,
           // if purchase is in progress, set to true. this will show a fullscreen progress indicator

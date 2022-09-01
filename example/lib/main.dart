@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
         // custom icon theme
         iconTheme: IconThemeData(color: Colors.green),
         // your colorScheme
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green, brightness: Brightness.light),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.green, brightness: Brightness.light),
       ),
       home: MyHomePage(),
     );
@@ -31,7 +32,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   PurchaseHandler purchaseHandler = PurchaseHandler();
 
   @override
@@ -86,27 +86,33 @@ class _MyHomePageState extends State<MyHomePage> {
                 index: 3)
           ],
           // Shown if isPurchaseSuccess == true
-          successTitle: "Success!!",
+          successTitle: "Thank you",
           // Shown if isPurchaseSuccess == true
-          successSubTitle: "Thanks for choosing Premium!",
+          successSubTitle: "for being a premium user!",
           // Widget can be anything. Shown if isPurchaseSuccess == true
-          successWidget: Container(
-              padding: EdgeInsets.only(top: 16, bottom: 16),
+          /*successWidget: Container(
+              padding: EdgeInsets.only(top: 8, bottom: 8),
               child:
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                ElevatedButton(
-                  child: Text("Let's go!"),
+                TextButton(
+                  child: Text("Read about all premium features"),
                   onPressed: () {
                     print("let‘s go to the home widget again");
                   },
                 )
-              ])),
+              ])),*/
+          activePlanList: [
+            // GooglePlayGeneralActivePlan(),
+            // GooglePlayActivePlan("yearly_pro", "com.tnx.packed"),
+            AppleAppStoreActivePlan(),
+          ],
           // set true if subscriptions are loading
           isSubscriptionLoading: false,
           // if purchase is in progress, set to true. this will show a fullscreen progress indicator
           isPurchaseInProgress: false,
           // to show the success widget
-          purchaseState: PurchaseState.NOT_PURCHASED,
+          purchaseState: PurchaseState.PURCHASED,
+
           // callback Interface for restore and purchase tap events. Extend DefaultPurchaseHandler
           callbackInterface: purchaseHandler,
           purchaseStateStreamInterface: purchaseHandler,
@@ -132,7 +138,6 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class PurchaseHandler extends DefaultPurchaseHandler {
-
   @override
   Future<bool> purchase(SubscriptionData productDetails) async {
     print("purchase start");

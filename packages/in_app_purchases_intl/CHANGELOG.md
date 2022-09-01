@@ -1,3 +1,6 @@
+## 0.0.6
+* added some more strings
+
 ## 0.0.5
 * added some more strings
 

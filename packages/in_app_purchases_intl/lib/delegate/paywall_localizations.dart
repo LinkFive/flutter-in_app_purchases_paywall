@@ -210,6 +210,24 @@ abstract class PaywallLocalizations {
   /// **'Google Play Subscriptions'**
   String get manage_subscription_google_play_button;
 
+  /// No description provided for @manage_subscription_productId.
+  ///
+  /// In en, this message translates to:
+  /// **'{productId} verwalten'**
+  String manage_subscription_productId(String productId);
+
+  /// No description provided for @manage_subscription_apple_appstore_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage your Subscriptions on the App Store'**
+  String get manage_subscription_apple_appstore_title;
+
+  /// No description provided for @manage_subscription_apple_appstore_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to the subscriptions page'**
+  String get manage_subscription_apple_appstore_button;
+
   /// No description provided for @subscription_options_title.
   ///
   /// In en, this message translates to:

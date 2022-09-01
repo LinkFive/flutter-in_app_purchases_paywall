@@ -93,6 +93,17 @@ class PaywallLocalizationsDe extends PaywallLocalizations {
   String get manage_subscription_google_play_button => 'Google Play-Abonnements';
 
   @override
+  String manage_subscription_productId(String productId) {
+    return 'Manage $productId';
+  }
+
+  @override
+  String get manage_subscription_apple_appstore_title => 'Abonnements im App Store verwalten';
+
+  @override
+  String get manage_subscription_apple_appstore_button => 'Zu den App Store Abonnements';
+
+  @override
   String get subscription_options_title => 'Abonnement Optionen';
 
   @override

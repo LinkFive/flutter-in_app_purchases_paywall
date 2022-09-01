@@ -44,6 +44,17 @@
   "manage_subscriptions_title": "Gestionar las suscripciones",
   "manage_subscription_google_play_title":  "Gestionar las suscripciones en Google Play",
   "manage_subscription_google_play_button": "Suscripciones a Google Play",
+  "manage_subscription_productId": "Gestionar {productId}",
+  "@manage_subscription_productId": {
+    "placeholders": {
+      "productId": {
+        "type": "String",
+        "example": "yearly_pro"
+      }
+    }
+  },
+  "manage_subscription_apple_appstore_title":  "Gestione sus suscripciones en la App Store",
+  "manage_subscription_apple_appstore_button": "Ir a la página de suscripciones",
   "subscription_options_title": "Opciones de suscripción",
   "premium": "Premium",
   "app_bar_default_title": "Go Premium"

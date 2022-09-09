@@ -6,7 +6,7 @@ import 'package:in_app_purchases_paywall_ui/paywall/moritz/moritz_sub_row.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/legal_row.dart';
 
 class MoritzPaywallPurchase extends StatelessWidget {
-  MoritzPaywallPurchase({Key? key}) : super(key: key);
+  const MoritzPaywallPurchase({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,7 @@ class MoritzPaywallPurchase extends StatelessWidget {
                   Container(
                     height: 16,
                   ),
-                  LegalRow(theme, paywallData.tosData, paywallData.ppData)
+                  const LegalRow()
                 ],
               ),
             ),

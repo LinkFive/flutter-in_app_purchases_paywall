@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/default/default_purchase_handler.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/inherit/paywall_data_iw.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/inherit/subscription_callback_iw.dart';
+import 'package:in_app_purchases_paywall_ui/paywall/model/active_plan.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/icon_and_text.dart';
 import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/text_and_url.dart';
@@ -29,6 +30,7 @@ abstract class BasePaywall extends StatefulWidget {
   late CallbackInterface callbackInterface;
   late PurchaseStateStreamInterface purchaseStateStreamInterface;
   final List<SubscriptionData>? subscriptionListData;
+  final List<ActivePlan>? activePlanList;
 
   /// Define the Design through the Theme you apply in your
   /// root theme: ThemeData(...)
@@ -49,6 +51,7 @@ abstract class BasePaywall extends StatefulWidget {
       this.isPurchaseInProgress = false,
       this.purchaseState = PurchaseState.NOT_PURCHASED,
       this.subscriptionListData = null,
+      this.activePlanList = null,
       CallbackInterface? callbackInterface = null,
       PurchaseStateStreamInterface? purchaseStateStreamInterface = null}) {
     // sort Subscriptions to index
@@ -109,6 +112,7 @@ abstract class BasePaywallState<T extends BasePaywall> extends State<T> {
         successTitle: widget.successTitle,
         successSubTitle: widget.successSubTitle,
         successWidget: widget.successWidget,
+        activePlanList: widget.activePlanList,
       );
 
   /// returns either the Purchase Widget or the Success Widget

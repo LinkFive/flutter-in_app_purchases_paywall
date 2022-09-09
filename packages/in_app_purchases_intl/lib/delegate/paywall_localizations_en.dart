@@ -1,3 +1,5 @@
+
+
 import 'package:intl/intl.dart' as intl;
 import 'paywall_localizations.dart';
 
@@ -80,4 +82,33 @@ class PaywallLocalizationsEn extends PaywallLocalizations {
 
   @override
   String get restore_purchase => 'Restore purchase';
+
+  @override
+  String get manage_subscriptions_title => 'Manage subscriptions';
+
+  @override
+  String get manage_subscription_google_play_title => 'Manage your subscriptions on Google Play';
+
+  @override
+  String get manage_subscription_google_play_button => 'Google Play Subscriptions';
+
+  @override
+  String manage_subscription_productId(String productId) {
+    return '$productId verwalten';
+  }
+
+  @override
+  String get manage_subscription_apple_appstore_title => 'Manage your subscriptions on the App Store';
+
+  @override
+  String get manage_subscription_apple_appstore_button => 'Go to the subscriptions page';
+
+  @override
+  String get subscription_options_title => 'Subscription options';
+
+  @override
+  String get premium => 'Premium';
+
+  @override
+  String get app_bar_default_title => 'Go Premium';
 }

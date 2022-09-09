@@ -1,3 +1,4 @@
+
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -61,18 +62,15 @@ import 'paywall_localizations_es.dart';
 /// be consistent with the languages listed in the PaywallLocalizations.supportedLocales
 /// property.
 abstract class PaywallLocalizations {
-  PaywallLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  PaywallLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
   static PaywallLocalizations? of(BuildContext context) {
-    return Localizations.of<PaywallLocalizations>(
-        context, PaywallLocalizations);
+    return Localizations.of<PaywallLocalizations>(context, PaywallLocalizations);
   }
 
-  static const LocalizationsDelegate<PaywallLocalizations> delegate =
-      _PaywallLocalizationsDelegate();
+  static const LocalizationsDelegate<PaywallLocalizations> delegate = _PaywallLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -84,8 +82,7 @@ abstract class PaywallLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -194,40 +191,91 @@ abstract class PaywallLocalizations {
   /// In en, this message translates to:
   /// **'Restore purchase'**
   String get restore_purchase;
+
+  /// No description provided for @manage_subscriptions_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage subscriptions'**
+  String get manage_subscriptions_title;
+
+  /// No description provided for @manage_subscription_google_play_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage your subscriptions on Google Play'**
+  String get manage_subscription_google_play_title;
+
+  /// No description provided for @manage_subscription_google_play_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Play Subscriptions'**
+  String get manage_subscription_google_play_button;
+
+  /// No description provided for @manage_subscription_productId.
+  ///
+  /// In en, this message translates to:
+  /// **'{productId} verwalten'**
+  String manage_subscription_productId(String productId);
+
+  /// No description provided for @manage_subscription_apple_appstore_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage your Subscriptions on the App Store'**
+  String get manage_subscription_apple_appstore_title;
+
+  /// No description provided for @manage_subscription_apple_appstore_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to the subscriptions page'**
+  String get manage_subscription_apple_appstore_button;
+
+  /// No description provided for @subscription_options_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription options'**
+  String get subscription_options_title;
+
+  /// No description provided for @premium.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium'**
+  String get premium;
+
+  /// No description provided for @app_bar_default_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Go Premium'**
+  String get app_bar_default_title;
 }
 
-class _PaywallLocalizationsDelegate
-    extends LocalizationsDelegate<PaywallLocalizations> {
+class _PaywallLocalizationsDelegate extends LocalizationsDelegate<PaywallLocalizations> {
   const _PaywallLocalizationsDelegate();
 
   @override
   Future<PaywallLocalizations> load(Locale locale) {
-    return SynchronousFuture<PaywallLocalizations>(
-        lookupPaywallLocalizations(locale));
+    return SynchronousFuture<PaywallLocalizations>(lookupPaywallLocalizations(locale));
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['de', 'en', 'es'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['de', 'en', 'es'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_PaywallLocalizationsDelegate old) => false;
 }
 
 PaywallLocalizations lookupPaywallLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'de':
-      return PaywallLocalizationsDe();
-    case 'en':
-      return PaywallLocalizationsEn();
-    case 'es':
-      return PaywallLocalizationsEs();
+    case 'de': return PaywallLocalizationsDe();
+    case 'en': return PaywallLocalizationsEn();
+    case 'es': return PaywallLocalizationsEs();
   }
 
   throw FlutterError(
-      'PaywallLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'PaywallLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.'
+  );
 }

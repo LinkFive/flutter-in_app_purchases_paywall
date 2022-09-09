@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:in_app_purchases_intl/helper/paywall_helper.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/inherit/paywall_data_iw.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/inherit/subscription_callback_iw.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/moritz/moritz_price_box.dart';
@@ -55,8 +56,9 @@ class _MoritzSubRowState extends State<MoritzSubRow> {
                             }
                           }
                         : null,
-                    child: Text(
-                        (paywallData.continueText ?? "Continue").toUpperCase()),
+                    child: Text((paywallData.continueText ??
+                            PaywallL10NHelper.of(context).continue_button)
+                        .toUpperCase()),
                     style: Theme.of(context).elevatedButtonTheme.style))
           ],
         );

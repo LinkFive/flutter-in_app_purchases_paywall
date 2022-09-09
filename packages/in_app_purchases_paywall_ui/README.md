@@ -50,7 +50,6 @@ class PremiumPage extends Page {
 }
 ```
 
-
 ## State control included
 
 Control the State: *PURCHASED* to show the Success Page or *Purchase in Progress* to show a fullscreen loading indicator.
@@ -95,6 +94,32 @@ class PurchaseHandler extends DefaultPurchaseHandler {
 ```
 
 <img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/state_management_control.gif" alt="Simple Paywall Success state"/>
+
+## Success Page linked to the subscription page
+
+Starting September 30, 2022, every app must include a deep link to the store's subscription page. We have added the link on the success page.
+
+You can add the link by adding an ActivePlan object to the Paywall:
+
+```dart
+activePlanList: [
+  // links to the subscription overview on Android devices:
+  GooglePlayGeneralActivePlan(), 
+
+  // links to the specific subscription on Android devices: 
+  GooglePlayActivePlan("yearly_pro", "com.tnx.packed"),
+
+  // links to the subscription overview on iOS devices
+  AppleAppStoreActivePlan(), 
+],
+```
+
+Here are the specific App Store docs:
+
+* [Apple App Store Guideline](https://developer.apple.com/documentation/storekit/in-app_purchase/original_api_for_in-app_purchase/subscriptions_and_offers/handling_subscriptions_billing)
+* [Google Play Store Guideline](https://developer.android.com/google/play/billing/subscriptions#deep-link)
+
+<img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/active_plan_link.png" alt="Active Plan"/>
 
 ---
 

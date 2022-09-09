@@ -15,21 +15,23 @@ class PaywallDataIW extends InheritedWidget {
   final String? successTitle;
   final String? successSubTitle;
   final Widget? successWidget;
+  final List<ActivePlan>? activePlanList;
 
-  PaywallDataIW({
-    required Widget child,
-    this.title,
-    this.subTitle,
-    this.continueText,
-    this.tosData,
-    this.ppData,
-    this.bulletPoints,
-    this.campaignWidget,
-    this.restoreText,
-    this.successTitle,
-    this.successSubTitle,
-    this.successWidget,
-  }) : super(child: child);
+  PaywallDataIW(
+      {required Widget child,
+      this.title,
+      this.subTitle,
+      this.continueText,
+      this.tosData,
+      this.ppData,
+      this.bulletPoints,
+      this.campaignWidget,
+      this.restoreText,
+      this.successTitle,
+      this.successSubTitle,
+      this.successWidget,
+      this.activePlanList})
+      : super(child: child);
 
   PaywallDataIW.empty() : this(child: Text("No Widget found"));
 

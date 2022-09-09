@@ -34,5 +34,22 @@
   },
   "continue_button": "weiter",
   "most_popular": "am beliebtesten",
-  "restore_purchase": "Kauf wiederherstellen"
+  "restore_purchase": "Kauf wiederherstellen",
+  "manage_subscriptions_title": "Abonnements verwalten",
+  "manage_subscription_google_play_title":  "Abonnements auf Google Play verwalten",
+  "manage_subscription_google_play_button": "Google Play-Abonnements",
+  "manage_subscription_productId": "Manage {productId}",
+  "@manage_subscription_productId": {
+    "placeholders": {
+      "productId": {
+        "type": "String",
+        "example": "yearly_pro"
+      }
+    }
+  },
+  "manage_subscription_apple_appstore_title":  "Abonnements im App Store verwalten",
+  "manage_subscription_apple_appstore_button": "Zu den App Store Abonnements",
+  "subscription_options_title": "Abonnement Optionen",
+  "premium": "Premium",
+  "app_bar_default_title": "Go Premium"
 }

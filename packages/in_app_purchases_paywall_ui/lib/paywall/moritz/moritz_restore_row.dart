@@ -4,9 +4,7 @@ import 'package:in_app_purchases_paywall_ui/paywall/inherit/paywall_data_iw.dart
 import 'package:in_app_purchases_paywall_ui/paywall/inherit/subscription_callback_iw.dart';
 
 class MoritzRestoreRow extends StatelessWidget {
-  final String? restoreText;
-
-  MoritzRestoreRow({this.restoreText = "Restore"});
+  MoritzRestoreRow();
 
   @override
   Widget build(BuildContext context) {

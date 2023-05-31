@@ -1,12 +1,12 @@
 name: in_app_purchases_interface
 description: Interface Package for interpackage communications for in app purchases and shared classes with the Plugins made by www.linkfive.io
-version: 0.0.8
-homepage: https://github.com/LinkFive/flutter-in_app_purchases_paywall
+version: 1.0.0
+homepage: https://linkfive.io
 repository: https://github.com/LinkFive/flutter-in_app_purchases_paywall
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.17.0"
+  sdk: ^3.0.0
+  flutter: '>=3.10.0'
 
 dependencies:
   flutter:

@@ -1,3 +1,7 @@
+# 1.0.0
+* Flutter 3.10 Update
+* Dart 3.0.0 Update
+
 ## 0.0.8
 * switching from print to log
 * clean up code

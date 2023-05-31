@@ -45,5 +45,5 @@ class SubscriptionData {
       this.highlightText,
       this.dealPercentage = 0,
       this.index = 0,
-      this.productDetails = null});
+      this.productDetails});
 }

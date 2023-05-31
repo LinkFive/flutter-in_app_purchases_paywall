@@ -1,6 +1,6 @@
 name: in_app_purchases_intl
 description: Intl Package for common translations in your In App Purchase App. made by www.linkfive.io
-version: 0.0.6
+version: 0.0.7
 homepage: https://github.com/LinkFive/flutter-in_app_purchases_paywall
 repository: https://github.com/LinkFive/flutter-in_app_purchases_paywall
 
@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: ^0.17.0
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:

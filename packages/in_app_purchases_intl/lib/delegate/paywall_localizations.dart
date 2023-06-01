@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -10,14 +9,14 @@ import 'paywall_localizations_de.dart';
 import 'paywall_localizations_en.dart';
 import 'paywall_localizations_es.dart';
 
-/// Callers can lookup localized strings with an instance of PaywallLocalizations returned
-/// by `PaywallLocalizations.of(context)`.
+/// Callers can lookup localized strings with an instance of PaywallLocalizations
+/// returned by `PaywallLocalizations.of(context)`.
 ///
 /// Applications need to include `PaywallLocalizations.delegate()` in their app's
-/// localizationDelegates list, and the locales they support in the app's
-/// supportedLocales list. For example:
+/// `localizationDelegates` list, and the locales they support in the app's
+/// `supportedLocales` list. For example:
 ///
-/// ```
+/// ```dart
 /// import 'gen_l10n/paywall_localizations.dart';
 ///
 /// return MaterialApp(
@@ -32,14 +31,14 @@ import 'paywall_localizations_es.dart';
 /// Please make sure to update your pubspec.yaml to include the following
 /// packages:
 ///
-/// ```
+/// ```yaml
 /// dependencies:
 ///   # Internationalization support.
 ///   flutter_localizations:
 ///     sdk: flutter
 ///   intl: any # Use the pinned version from flutter_localizations
 ///
-///   # rest of dependencies
+///   # Rest of dependencies
 /// ```
 ///
 /// ## iOS Applications
@@ -219,7 +218,7 @@ abstract class PaywallLocalizations {
   /// No description provided for @manage_subscription_apple_appstore_title.
   ///
   /// In en, this message translates to:
-  /// **'Manage your Subscriptions on the App Store'**
+  /// **'Manage your subscriptions on the App Store'**
   String get manage_subscription_apple_appstore_title;
 
   /// No description provided for @manage_subscription_apple_appstore_button.

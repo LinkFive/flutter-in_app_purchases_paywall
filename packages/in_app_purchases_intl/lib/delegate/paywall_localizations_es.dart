@@ -1,6 +1,5 @@
-
-
 import 'package:intl/intl.dart' as intl;
+
 import 'paywall_localizations.dart';
 
 /// The translations for Spanish Castilian (`es`).
@@ -27,12 +26,13 @@ class PaywallLocalizationsEs extends PaywallLocalizations {
 
   @override
   String nyear(num count) {
-    return intl.Intl.pluralLogic(
+    String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      one: '1 año',
       other: '$count años',
+      one: '1 año',
     );
+    return '$_temp0';
   }
 
   @override
@@ -40,12 +40,13 @@ class PaywallLocalizationsEs extends PaywallLocalizations {
 
   @override
   String nmonth(num count) {
-    return intl.Intl.pluralLogic(
+    String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      one: '1 mes',
       other: '$count meses',
+      one: '1 mes',
     );
+    return '$_temp0';
   }
 
   @override
@@ -53,12 +54,13 @@ class PaywallLocalizationsEs extends PaywallLocalizations {
 
   @override
   String nweek(num count) {
-    return intl.Intl.pluralLogic(
+    String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      one: '1 semana',
       other: '$count semanas',
+      one: '1 semana',
     );
+    return '$_temp0';
   }
 
   @override
@@ -66,12 +68,13 @@ class PaywallLocalizationsEs extends PaywallLocalizations {
 
   @override
   String nday(num count) {
-    return intl.Intl.pluralLogic(
+    String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      one: '1 día',
       other: '$count días',
+      one: '1 día',
     );
+    return '$_temp0';
   }
 
   @override

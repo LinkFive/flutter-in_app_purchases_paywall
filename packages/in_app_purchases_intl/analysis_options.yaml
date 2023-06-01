@@ -1,0 +1,9 @@
+include: package:lints/recommended.yaml
+
+linter:
+  rules:
+    non_constant_identifier_names: false
+    no_leading_underscores_for_local_identifiers: false
+    unnecessary_string_interpolations: false
+    unnecessary_this: false
+    prefer_is_empty: false

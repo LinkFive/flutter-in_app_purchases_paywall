@@ -1,6 +1,5 @@
-
-
 import 'package:intl/intl.dart' as intl;
+
 import 'paywall_localizations.dart';
 
 /// The translations for English (`en`).
@@ -27,12 +26,13 @@ class PaywallLocalizationsEn extends PaywallLocalizations {
 
   @override
   String nyear(num count) {
-    return intl.Intl.pluralLogic(
+    String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      one: '1 year',
       other: '$count years',
+      one: '1 year',
     );
+    return '$_temp0';
   }
 
   @override
@@ -40,12 +40,13 @@ class PaywallLocalizationsEn extends PaywallLocalizations {
 
   @override
   String nmonth(num count) {
-    return intl.Intl.pluralLogic(
+    String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      one: '1 month',
       other: '$count months',
+      one: '1 month',
     );
+    return '$_temp0';
   }
 
   @override
@@ -53,12 +54,13 @@ class PaywallLocalizationsEn extends PaywallLocalizations {
 
   @override
   String nweek(num count) {
-    return intl.Intl.pluralLogic(
+    String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      one: '1 week',
       other: '$count weeks',
+      one: '1 week',
     );
+    return '$_temp0';
   }
 
   @override
@@ -66,12 +68,13 @@ class PaywallLocalizationsEn extends PaywallLocalizations {
 
   @override
   String nday(num count) {
-    return intl.Intl.pluralLogic(
+    String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      one: '1 day',
       other: '$count days',
+      one: '1 day',
     );
+    return '$_temp0';
   }
 
   @override

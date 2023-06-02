@@ -9,5 +9,5 @@ class IconAndText {
 
   /// Icons are colored with iconTheme: IconThemeData(color: Colors.teal) in
   /// your roots Theme
-  IconAndText(this.icon, this.text);
+  const IconAndText(this.icon, this.text);
 }

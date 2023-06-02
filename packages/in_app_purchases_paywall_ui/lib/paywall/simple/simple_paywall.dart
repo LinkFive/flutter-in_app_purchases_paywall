@@ -1,9 +1,8 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/base/base_paywall.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/model/active_plan.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/icon_and_text.dart';
-import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/model/text_and_url.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/simple_paywall_purchase.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/simple/simple_paywall_success.dart';
 
@@ -19,46 +18,27 @@ class SimplePaywall extends BasePaywall {
   /// root theme: ThemeData(...)
   /// Icons are colored with iconTheme: IconThemeData(color: Colors.teal)
   SimplePaywall({
-    String? title,
-    String? subTitle,
-    String? continueText,
-    TextAndUrl? tosData,
-    TextAndUrl? ppData,
-    Widget? headerContainer,
-    List<IconAndText>? bulletPoints,
-    Widget? campaignWidget,
-    String? restoreText,
-    String? successTitle,
-    String? successSubTitle,
-    Widget? successWidget,
-    bool isSubscriptionLoading = false,
-    bool isPurchaseInProgress = false,
-    PurchaseState? purchaseState = null,
-    List<SubscriptionData>? subscriptionListData = null,
-    CallbackInterface? callbackInterface = null,
-    PurchaseStateStreamInterface? purchaseStateStreamInterface = null,
-    List<ActivePlan>? activePlanList = null,
-  }) : super(
-          title: title,
-          subTitle: subTitle,
-          continueText: continueText,
-          tosData: tosData,
-          ppData: ppData,
-          headerContainer: headerContainer,
-          bulletPoints: bulletPoints,
-          campaignWidget: campaignWidget,
-          restoreText: restoreText,
-          successTitle: successTitle,
-          successSubTitle: successSubTitle,
-          successWidget: successWidget,
-          isSubscriptionLoading: isSubscriptionLoading,
-          isPurchaseInProgress: isPurchaseInProgress,
-          purchaseState: purchaseState ?? PurchaseState.NOT_PURCHASED,
-          subscriptionListData: subscriptionListData,
-          callbackInterface: callbackInterface,
-          purchaseStateStreamInterface: purchaseStateStreamInterface,
-          activePlanList: activePlanList,
-        );
+    super.key,
+    super.title,
+    super.subTitle,
+    super.continueText,
+    super.tosData,
+    super.ppData,
+    super.headerContainer,
+    super.bulletPoints,
+    super.campaignWidget,
+    super.restoreText,
+    super.successTitle,
+    super.successSubTitle,
+    super.successWidget,
+    super.isSubscriptionLoading,
+    super.isPurchaseInProgress,
+    super.purchaseState,
+    super.subscriptionListData,
+    super.callbackInterface,
+    super.purchaseStateStreamInterface,
+    super.activePlanList,
+  });
 
   @override
   State createState() => _SimplePaywallState();
@@ -67,14 +47,13 @@ class SimplePaywall extends BasePaywall {
 /// State to control the State Streams
 class _SimplePaywallState extends BasePaywallState<SimplePaywall> {
   @override
-  Widget buildPaywall(BuildContext context, ThemeData theme) {
+  Widget buildPaywall(BuildContext context) {
     return SimplePaywallPurchase(
-        callbackInterface: widget.callbackInterface,
         isSubscriptionLoading: widget.isSubscriptionLoading);
   }
 
   @override
-  Widget buildSuccess(BuildContext context, ThemeData theme) {
+  Widget buildSuccess(BuildContext context) {
     return SimplePaywallSuccess();
   }
 }

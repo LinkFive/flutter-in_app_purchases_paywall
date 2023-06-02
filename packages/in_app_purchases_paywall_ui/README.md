@@ -1,4 +1,4 @@
-This package is an in app purchases paywall UI for Flutter
+This package is an in app purchases paywall UI for Flutter. Ready for Dart 3 and Flutter 3.10
 
 # Paywall design for everyone
 This simple to use Paywall UI is developed for the flutter community. Fully customizable and easy to integrate.
@@ -182,6 +182,14 @@ Now you have a **fully functional subscription system**.
 
 ## Navigator 2.0 & Provider Example
 Check out the following example: [Provider and Navigator Example](https://pub.dev/packages/linkfive_purchases/example)
+
+---
+
+## Responsive layout for Tablet
+
+We added the library [responsive_spacing](https://pub.dev/packages/responsive_spacing) to make the paywall a bit more responsive. On lage screens, it adds margin and breaks the layout into 2 columns.
+
+<img src="https://raw.githubusercontent.com/LinkFive/flutter-in_app_purchases_paywall/master/packages/in_app_purchases_paywall_ui/resources/tablet-landscape.png" alt="tablet-landscape"/>
 
 ---
 

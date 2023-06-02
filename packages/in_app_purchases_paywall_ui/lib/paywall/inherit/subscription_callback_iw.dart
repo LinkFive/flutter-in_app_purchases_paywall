@@ -10,10 +10,9 @@ class SubscriptionCallbackIW extends InheritedWidget {
   final CallbackInterface callbackInterface;
 
   SubscriptionCallbackIW(
-      {required Widget child,
+      {required super.child,
       required this.callbackInterface,
-      this.subscriptionListData = null})
-      : super(child: child);
+      this.subscriptionListData});
 
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) => true;

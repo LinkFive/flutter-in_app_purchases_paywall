@@ -58,18 +58,18 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_inappwebview
-      sha256: dcbaeeac2e47d5c4649a456b009a2fe230f9c35e33c3124ca16f868b4c789a2e
+      sha256: f73505c792cf083d5566e1a94002311be497d984b5607f25be36d685cf6361cf
       url: "https://pub.dev"
     source: hosted
-    version: "5.4.3+7"
+    version: "5.7.2+3"
   flutter_lints:
     dependency: "direct dev"
     description:
       name: flutter_lints
-      sha256: b543301ad291598523947dc534aaddc5aaad597b709d2426d3a0e0d44c5cb493
+      sha256: aeb0b80a8b3709709c9cc496cdc027c5b3216796bc0af0ce1007eaf24464fd4c
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.4"
+    version: "2.0.1"
   flutter_localizations:
     dependency: transitive
     description: flutter
@@ -89,17 +89,18 @@ packages:
     dependency: "direct main"
     description:
       name: in_app_purchases_interface
-      sha256: "3ffea1749c42752aa09a92f1c18123a18340a0aed5ff020f58ba265693b276ff"
+      sha256: bce28cf91213f23d53035d8c2c02b3ed45c05f5edfcbe1e985da65ceb75c6c70
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.8"
+    version: "1.0.0"
   in_app_purchases_intl:
     dependency: "direct main"
     description:
-      path: "../in_app_purchases_intl"
-      relative: true
-    source: path
-    version: "0.0.7"
+      name: in_app_purchases_intl
+      sha256: aeeb78d3d282d93f71fce502e69ce0ddc442200116d791b4b09b300585aad242
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   intl:
     dependency: transitive
     description:
@@ -117,13 +118,13 @@ packages:
     source: hosted
     version: "0.6.7"
   lints:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: lints
-      sha256: a2c3d198cb5ea2e179926622d433331d8b58374ab8f29cdda6e863bd62fd369c
+      sha256: "6b0206b0bf4f04961fc5438198ccb3a885685cd67d4d4a32cc20ad7f8adbe015"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.1"
+    version: "2.1.0"
   matcher:
     dependency: transitive
     description:
@@ -164,6 +165,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  responsive_spacing:
+    dependency: "direct main"
+    description:
+      name: responsive_spacing
+      sha256: "946e9e03d6b3c389e0bf6962da8c1a6f932955db3be08aba8cff8d97e5901060"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -221,10 +230,10 @@ packages:
     dependency: "direct main"
     description:
       name: url_launcher
-      sha256: "4f0d5f9bf7efba3da5a7ff03bd33cc898c84bac978c068e1c94483828e709592"
+      sha256: eb1e00ab44303d50dd487aab67ebc575456c146c6af44422f9c13889984c00f3
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.5"
+    version: "6.1.11"
   url_launcher_android:
     dependency: transitive
     description:
@@ -290,5 +299,5 @@ packages:
     source: hosted
     version: "2.1.4"
 sdks:
-  dart: ">=3.0.0-0 <4.0.0"
-  flutter: ">=2.10.0"
+  dart: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"

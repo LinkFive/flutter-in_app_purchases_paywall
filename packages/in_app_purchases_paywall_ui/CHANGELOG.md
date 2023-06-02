@@ -1,3 +1,21 @@
+## 1.0.0
+* Flutter 3.10 Update
+* Dart 3.0.0 Update
+
+### Theme style changes
+* `bodyText1` is now `bodyLarge`
+* `bodyText2` is now `bodyMedium`
+* `headline5` is now `headlineSmall`
+* `headline6` is now `titleLarge`
+* `button` is now `labelLarge`
+* `bodyText1` is now `bodyLarge`
+* `caption` is now `bodySmall`
+* `subtitle2` is now `titleSmall`
+* `subtitle1` is now `titleMedium`
+
+### Responsive
+* we added a new dependency responsive_spacing to modify the paywall to be a responsive. 
+
 ## 0.7.0
 Starting September 30, 2022, every app must include a deep link to the store's subscription page. We have added the link on the success page.
 

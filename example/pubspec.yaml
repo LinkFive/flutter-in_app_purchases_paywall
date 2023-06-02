@@ -1,33 +1,35 @@
 name: example
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.13.0 <3.0.0"
+  sdk: ^3.0.0
+  flutter: ^3.10.0
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_countdown_timer: ^4.1.0
-
-  in_app_purchases_paywall_ui: #^0.3.0
-    path: ../packages/in_app_purchases_paywall_ui
-  in_app_purchases_intl:
-    path: ../packages/in_app_purchases_intl
+  in_app_purchases_paywall_ui: ^0.7.0
+  in_app_purchases_intl: ^1.0.0
   flutter_localizations:
     sdk: flutter
-  intl: ^0.17.0
-  cupertino_icons: ^1.0.4
+  intl: ^0.18.0
+  cupertino_icons: ^1.0.5
+  responsive_spacing:
+    path: /Users/alexanderthiele/projects/myflutter/responsive_spacing
+
+dependency_overrides:
+  in_app_purchases_paywall_ui:
+    path: ../packages/in_app_purchases_paywall_ui
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
 flutter:
-
   uses-material-design: true
-
   assets:
     - assets/images/

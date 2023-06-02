@@ -4,8 +4,7 @@ import 'package:in_app_purchases_interface/in_app_purchases_interface.dart';
 
 /// Default Purchase Handler
 /// Extend for your own logic
-class DefaultPurchaseHandler
-    implements PurchaseStateStreamInterface, CallbackInterface {
+class DefaultPurchaseHandler implements PurchaseStateStreamInterface, CallbackInterface {
   /// initial value for purchase in Progress
   final bool initialIsPurchaseInProgress;
 
@@ -23,15 +22,14 @@ class DefaultPurchaseHandler
   bool _loadedSubscriptionsOnce = false;
 
   DefaultPurchaseHandler(
-      {this.initialIsPurchaseInProgress = false,
-      this.initialPurchaseState = PurchaseState.NOT_PURCHASED}) {
-    this._isPendingPurchase = this.initialIsPurchaseInProgress;
-    this._purchaseState = this.initialPurchaseState;
+      {this.initialIsPurchaseInProgress = false, this.initialPurchaseState = PurchaseState.NOT_PURCHASED}) {
+    _isPendingPurchase = initialIsPurchaseInProgress;
+    _purchaseState = initialPurchaseState;
   }
 
   //#region Pending Purchase
   /// StreamController list of Pending Purchase Streams
-  List<StreamController<bool>> _streamControllerPendingPurchase = [];
+  final List<StreamController<bool>> _streamControllerPendingPurchase = [];
 
   /// Sets the value and updates all Stream listeners
   ///
@@ -43,18 +41,18 @@ class DefaultPurchaseHandler
     // Clean streams
     _cleanStreams(_streamControllerPendingPurchase);
     // send data to stream
-    _streamControllerPendingPurchase.forEach((element) {
+    for (var element in _streamControllerPendingPurchase) {
       if (element.hasListener) {
         element.add(_isPendingPurchase);
       }
-    });
+    }
   }
 
   //#endregion
 
   //#region PurchaseState
   /// StreamController list of Pending Purchase Streams
-  List<StreamController<PurchaseState>> _streamControllerPurchaseState = [];
+  final List<StreamController<PurchaseState>> _streamControllerPurchaseState = [];
 
   /// Sets the value and updates all Stream listeners
   ///
@@ -67,11 +65,11 @@ class DefaultPurchaseHandler
     _cleanStreams(_streamControllerPurchaseState);
 
     // send data to stream
-    _streamControllerPurchaseState.forEach((element) {
+    for (var element in _streamControllerPurchaseState) {
       if (element.hasListener) {
         element.add(_purchaseState);
       }
-    });
+    }
   }
 
   //#endregion
@@ -132,7 +130,7 @@ class DefaultPurchaseHandler
         // if the subscription loaded successful, make sure to not call
         // it again to avoid looping behaviour
         if (success) {
-          this._loadedSubscriptionsOnce = true;
+          _loadedSubscriptionsOnce = true;
         }
       }
     }

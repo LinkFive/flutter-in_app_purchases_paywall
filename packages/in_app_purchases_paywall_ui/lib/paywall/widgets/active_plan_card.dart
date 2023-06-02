@@ -7,7 +7,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 class ActivePlanCard extends StatelessWidget {
   final ActivePlan plan;
 
-  ActivePlanCard(this.plan);
+  const ActivePlanCard(this.plan);
 
   @override
   Widget build(BuildContext context) {

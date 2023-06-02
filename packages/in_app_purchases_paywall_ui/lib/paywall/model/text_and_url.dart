@@ -8,5 +8,5 @@ class TextAndUrl {
   /// URL that the user will go to
   final String url;
 
-  TextAndUrl(this.name, this.url);
+  const TextAndUrl(this.name, this.url);
 }

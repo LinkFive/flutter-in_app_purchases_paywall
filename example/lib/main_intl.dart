@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       ],
       localizationsDelegates: [
         PaywallLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate
+        ...GlobalMaterialLocalizations.delegates
       ],
       home: MyHomePage(),
     );
@@ -95,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 price: "3,99€",
                 dealPercentage: 0,
                 productDetails: "Dynamic purchase data",
-                index: 3)
+                index: 3),
           ],
           // Shown if isPurchaseSuccess == true
           successTitle: "Success!!",

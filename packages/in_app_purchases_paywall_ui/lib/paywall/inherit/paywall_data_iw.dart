@@ -1,45 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:in_app_purchases_paywall_ui/in_app_purchases_paywall_ui.dart';
+import 'package:in_app_purchases_paywall_ui/paywall/model/paywall_data.dart';
 
 /// Inherited Widget to pass subscriptions and callbackInterface
 class PaywallDataIW extends InheritedWidget {
-  /// All subscription Data
-  final String? title;
-  final String? subTitle;
-  final String? continueText;
-  final TextAndUrl? tosData;
-  final TextAndUrl? ppData;
-  final List<IconAndText>? bulletPoints;
-  final Widget? campaignWidget;
-  final String? restoreText;
-  final String? successTitle;
-  final String? successSubTitle;
-  final Widget? successWidget;
-  final List<ActivePlan>? activePlanList;
+  /// Stored for all elements
+  final PaywallData paywallData;
 
-  PaywallDataIW(
-      {required Widget child,
-      this.title,
-      this.subTitle,
-      this.continueText,
-      this.tosData,
-      this.ppData,
-      this.bulletPoints,
-      this.campaignWidget,
-      this.restoreText,
-      this.successTitle,
-      this.successSubTitle,
-      this.successWidget,
-      this.activePlanList})
-      : super(child: child);
-
-  PaywallDataIW.empty() : this(child: Text("No Widget found"));
+  PaywallDataIW({required super.child, required this.paywallData});
 
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) => true;
-
-  static PaywallDataIW of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<PaywallDataIW>() ??
-        PaywallDataIW.empty();
-  }
 }

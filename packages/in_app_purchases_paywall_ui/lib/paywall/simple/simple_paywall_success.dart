@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:in_app_purchases_intl/helper/paywall_helper.dart';
-import 'package:in_app_purchases_paywall_ui/paywall/inherit/paywall_data_iw.dart';
+import 'package:in_app_purchases_paywall_ui/paywall/model/paywall_data.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/model/active_plan.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/widgets/active_plan_card.dart';
 import 'package:in_app_purchases_paywall_ui/paywall/widgets/insets/page_insets.dart';
 
 /// This Widget is without a scaffold. Use SimplePayWallScaffold if you want to have an appBar
 class SimplePaywallSuccess extends StatelessWidget {
-  SimplePaywallSuccess();
+
+  const SimplePaywallSuccess({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final paywallData = PaywallDataIW.of(context);
+    final paywallData = PaywallData.of(context);
     final successTitle = paywallData.successTitle;
     final successSubTitle = paywallData.successSubTitle;
     final successWidget = paywallData.successWidget;
@@ -39,7 +40,7 @@ class SimplePaywallSuccess extends StatelessWidget {
             child: Center(
               child: Text(
                 successSubTitle,
-                style: Theme.of(context).textTheme.bodyText2,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
           ),

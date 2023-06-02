@@ -1,5 +1,7 @@
 abstract class ActivePlan {
   String get link;
+
+  const ActivePlan();
 }
 
 ///
@@ -16,17 +18,18 @@ class GooglePlayActivePlan extends ActivePlan {
   ///
   final String package;
 
-  GooglePlayActivePlan(this.productId, this.package);
+  const GooglePlayActivePlan(this.productId, this.package);
 
   @override
-  String get link =>
-      "https://play.google.com/store/account/subscriptions?sku=$productId&package=$package";
+  String get link => "https://play.google.com/store/account/subscriptions?sku=$productId&package=$package";
 }
 
 ///
 /// This is a general link to the Google Play Store
 ///
 class GooglePlayGeneralActivePlan extends ActivePlan {
+  const GooglePlayGeneralActivePlan();
+
   @override
   String get link => "https://play.google.com/store/account/subscriptions";
 }
@@ -35,6 +38,8 @@ class GooglePlayGeneralActivePlan extends ActivePlan {
 /// Link to Apple App Store Subscription Page
 ///
 class AppleAppStoreActivePlan extends ActivePlan {
+  const AppleAppStoreActivePlan();
+
   @override
   String get link => "https://apps.apple.com/account/subscriptions";
 }

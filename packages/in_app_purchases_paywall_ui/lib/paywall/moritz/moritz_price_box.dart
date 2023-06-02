@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:in_app_purchases_paywall_ui/in_app_purchases_paywall_ui.dart';
+import 'package:responsive_spacing/responsive_spacing.dart';
+import 'package:responsive_spacing/widgets/gutter.dart';
 
 class MoritzPriceBox extends StatelessWidget {
   final SubscriptionData data;
@@ -7,24 +9,19 @@ class MoritzPriceBox extends StatelessWidget {
   final bool highlight;
   final Function(int index) onSelectIndex;
 
-  /// used to change text color inside the box to primary.
-  /// Otherwise the text color is too bright on the box
-
-  final widthMargin = 8;
-
   MoritzPriceBox(this.data, this.width, this.highlight, this.onSelectIndex);
 
   @override
   Widget build(BuildContext context) {
+
+    final widthMargin = context.spacingConfig.padding.size;
+
     return GestureDetector(
       onTap: () {
         onSelectIndex(data.index);
       },
       child: Column(children: [
-        Container(
-          width: width,
-          height: 16,
-        ),
+        GutterColumn(),
         _HighlightedWidget(data, width, widthMargin),
         Container(
             decoration: BoxDecoration(
@@ -34,9 +31,9 @@ class MoritzPriceBox extends StatelessWidget {
               borderRadius: BorderRadius.circular(4),
             ),
             child: Container(
-              width: width - widthMargin - 8,
+              width: width - widthMargin - context.spacingConfig.padding.size/2,
               margin: EdgeInsets.all(4),
-              padding: EdgeInsets.only(top: 16, bottom: 16),
+              padding: EdgeInsets.symmetric(vertical: context.spacingConfig.padding.size),
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primaryContainer,
                 borderRadius: BorderRadius.circular(4),
@@ -44,9 +41,9 @@ class MoritzPriceBox extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    "${data.durationShort.replaceAll(" ", "\n")}",
+                    data.durationShort.replaceAll(" ", "\n"),
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline6?.apply(
+                    style: Theme.of(context).textTheme.titleLarge?.apply(
                         color: Theme.of(context).colorScheme.onPrimaryContainer,
                         fontWeightDelta: 2),
                   ),
@@ -71,7 +68,7 @@ class MoritzPriceBox extends StatelessWidget {
 class _HighlightedWidget extends StatelessWidget {
   final SubscriptionData data;
   final double width;
-  final int widthMargin;
+  final double widthMargin;
 
   _HighlightedWidget(this.data, this.width, this.widthMargin);
 
@@ -96,7 +93,7 @@ class _HighlightedWidget extends StatelessWidget {
           data.highlightText!,
           style: Theme.of(context)
               .textTheme
-              .bodyText1
+              .bodyLarge
               ?.apply(color: Theme.of(context).colorScheme.onPrimary),
         ),
         alignment: Alignment.center,
@@ -139,18 +136,18 @@ class _PricePerMonthWidget extends StatelessWidget {
     }
     double pricePerMonth = data.rawPrice! / months;
     return Padding(
-      padding: EdgeInsets.only(top: 16),
+      padding: EdgeInsets.only(top: context.spacingConfig.padding.size),
       child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
               "${pricePerMonth.toStringAsFixed(2)}${data.currencySymbol}",
-              style: Theme.of(context).textTheme.subtitle1?.apply(
+              style: Theme.of(context).textTheme.titleMedium?.apply(
                   color: Theme.of(context).colorScheme.onPrimaryContainer),
             ),
             Text("/${data.monthText ?? "month"}",
-                style: Theme.of(context).textTheme.subtitle2?.apply(
+                style: Theme.of(context).textTheme.titleSmall?.apply(
                     color: Theme.of(context).colorScheme.onPrimaryContainer))
           ]),
     );
@@ -167,16 +164,16 @@ class _PriceWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     TextStyle? textStyle = Theme.of(context)
         .textTheme
-        .subtitle1
+        .titleMedium
         ?.apply(color: Theme.of(context).colorScheme.onPrimaryContainer);
     if (highlight) {
       textStyle = textStyle?.apply(fontWeightDelta: 2);
     }
 
     return Container(
-      margin: EdgeInsets.only(top: 16),
+      margin: EdgeInsets.only(top: context.spacingConfig.padding.size),
       child: Text(
-        "${data.price}",
+        data.price,
         style: textStyle,
       ),
     );
@@ -191,13 +188,13 @@ class _PercentageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle? textStyle = Theme.of(context).textTheme.headline6;
+    TextStyle? textStyle = Theme.of(context).textTheme.titleLarge;
     if (data.dealPercentage >= 50) {
       textStyle =
-          Theme.of(context).textTheme.headline5?.apply(fontWeightDelta: 3);
+          Theme.of(context).textTheme.headlineSmall?.apply(fontWeightDelta: 3);
     } else if (data.dealPercentage >= 30) {
       textStyle =
-          Theme.of(context).textTheme.headline6?.apply(fontWeightDelta: 1);
+          Theme.of(context).textTheme.titleLarge?.apply(fontWeightDelta: 1);
     }
     textStyle = textStyle?.apply(
         color: Theme.of(context).colorScheme.primary,

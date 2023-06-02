@@ -14,11 +14,11 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.0
-  lints: ^2.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  lints: ^2.1.0
 
 flutter:
   generate: true

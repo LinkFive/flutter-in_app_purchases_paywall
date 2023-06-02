@@ -17,16 +17,13 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
 
-        // primary color schema
-        primarySwatch: Colors.green,
-
         // custom icon theme
         iconTheme: IconThemeData(color: Colors.lightGreen),
 
         // color scheme
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber, brightness: Brightness.light),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green, brightness: Brightness.light),
         elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(primary: Colors.green)
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.green)
         )
       ),
       supportedLocales: [
@@ -35,7 +32,7 @@ class MyApp extends StatelessWidget {
       ],
       localizationsDelegates: [
         PaywallLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate
+        ...GlobalMaterialLocalizations.delegates
       ],
       home: MyHomePage(),
     );
@@ -83,17 +80,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 monthText: translations.month,
                 duration: "P1Y",
                 index: 3),
-            SubscriptionData(
-                durationTitle: translations.quarterly.toTitleCase(),
-                durationShort: translations.nmonth(3),
-                price: "€8,99",
-                dealPercentage: 42,
-                productDetails: "Dynamic purchase data",
-                currencySymbol: "€",
-                rawPrice: 8.99,
-                monthText: translations.month,
-                duration: "P3M",
-                index: 2),
             SubscriptionData(
                 durationTitle: translations.monthly.toTitleCase(),
                 durationShort: translations.nmonth(1),

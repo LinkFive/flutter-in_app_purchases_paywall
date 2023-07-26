@@ -81,7 +81,7 @@ packages:
     source: hosted
     version: "0.6.7"
   lints:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: lints
       sha256: "6b0206b0bf4f04961fc5438198ccb3a885685cd67d4d4a32cc20ad7f8adbe015"

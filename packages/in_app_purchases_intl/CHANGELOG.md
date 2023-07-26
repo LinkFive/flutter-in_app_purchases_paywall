@@ -1,3 +1,7 @@
+## 1.0.1
+* New String extension `fromIso8601(PaywallLocalizations paywallIntl)`
+* deprecated `toDurationStrings(BuildContext context)`
+
 ## 1.0.0
 * Flutter 3.10 Update
 * Dart 3.0.0 Update

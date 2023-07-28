@@ -46,7 +46,7 @@ class _ActivePlanGooglePlayGeneralWidget extends StatelessWidget {
             SizedBox(height: 12),
             ElevatedButton(
                 onPressed: () async {
-                  await launchUrlString(plan.link);
+                  await launchUrlString(plan.link, mode: LaunchMode.externalApplication);
                 },
                 child: Text(PaywallL10NHelper.of(context)
                     .manage_subscription_google_play_button))
@@ -76,7 +76,7 @@ class _ActivePlanGooglePlayWidget extends StatelessWidget {
             SizedBox(height: 12),
             ElevatedButton(
                 onPressed: () async {
-                  await launchUrlString(plan.link);
+                  await launchUrlString(plan.link, mode: LaunchMode.externalApplication);
                 },
                 child: Text(PaywallL10NHelper.of(context)
                     .manage_subscription_productId(plan.productId)))
@@ -106,7 +106,7 @@ class _ActivePlanAppleAppStoreGeneralWidget extends StatelessWidget {
             SizedBox(height: 12),
             ElevatedButton(
                 onPressed: () async {
-                  await launchUrlString(plan.link);
+                  await launchUrlString(plan.link, mode: LaunchMode.externalApplication);
                 },
                 child: Text(PaywallL10NHelper.of(context)
                     .manage_subscription_apple_appstore_button))

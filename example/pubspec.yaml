@@ -12,14 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_countdown_timer: ^4.1.0
-  in_app_purchases_paywall_ui: ^0.7.0
-  in_app_purchases_intl: ^1.0.0
+  in_app_purchases_paywall_ui: ^1.0.0
+  in_app_purchases_intl: ^1.0.1
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.0
   cupertino_icons: ^1.0.5
-  responsive_spacing:
-    path: /Users/alexanderthiele/projects/myflutter/responsive_spacing
+  responsive_spacing: ^1.1.0
 
 dependency_overrides:
   in_app_purchases_paywall_ui:

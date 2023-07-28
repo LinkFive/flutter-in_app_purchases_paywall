@@ -105,17 +105,17 @@ packages:
     dependency: "direct main"
     description:
       name: in_app_purchases_intl
-      sha256: aeeb78d3d282d93f71fce502e69ce0ddc442200116d791b4b09b300585aad242
+      sha256: "162d0d10cb7634b5ada3245f85d37571d0d6804ce0488239437e6c1ffae53d30"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   in_app_purchases_paywall_ui:
     dependency: "direct main"
     description:
       path: "../packages/in_app_purchases_paywall_ui"
       relative: true
     source: path
-    version: "0.7.0"
+    version: "1.0.1"
   intl:
     dependency: "direct main"
     description:
@@ -132,14 +132,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.7"
-  lints:
-    dependency: transitive
-    description:
-      name: lints
-      sha256: "6b0206b0bf4f04961fc5438198ccb3a885685cd67d4d4a32cc20ad7f8adbe015"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.0"
   matcher:
     dependency: transitive
     description:
@@ -183,10 +175,11 @@ packages:
   responsive_spacing:
     dependency: "direct main"
     description:
-      path: "/Users/alexanderthiele/projects/myflutter/responsive_spacing"
-      relative: false
-    source: path
-    version: "1.0.0"
+      name: responsive_spacing
+      sha256: "946e9e03d6b3c389e0bf6962da8c1a6f932955db3be08aba8cff8d97e5901060"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -244,10 +237,10 @@ packages:
     dependency: transitive
     description:
       name: url_launcher
-      sha256: eb1e00ab44303d50dd487aab67ebc575456c146c6af44422f9c13889984c00f3
+      sha256: "781bd58a1eb16069412365c98597726cd8810ae27435f04b3b4d3a470bacd61e"
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.11"
+    version: "6.1.12"
   url_launcher_android:
     dependency: transitive
     description:

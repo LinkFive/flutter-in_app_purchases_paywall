@@ -1,3 +1,6 @@
+## 1.0.1
+* The ActivePlan button now opens in externalApplication mode and opens the correct GooglePlay Plan Page.
+
 ## 1.0.0
 * Flutter 3.10 Update
 * Dart 3.0.0 Update
